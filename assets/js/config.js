@@ -1,19 +1,19 @@
 ﻿/**
- * CONFIGURACION DE LANDING PAGE - EMPRENDIMIENTO Y BIENESTAR MEXICO (es-MX)
+ * CONFIGURACION DE LANDING PAGE - EMPRENDIMIENTO Y BIENESTAR DIGITAL
  * Lider de Equipo y Mentora: Maria de Jesus Vera
- * Contacto oficial: Puebla, Mexico (+52 222 770 8716)
+ * Cobertura: Paises Hispanohablantes
  */
 
 window.APP_CONFIG = {
   // --- DATOS DE LA MENTORA Y LIDER DE EQUIPO ---
   advisor: {
     name: "Mar\u00EDa de Jes\u00FAs Vera",
-    role: "L\u00EDder de Equipo y Mentora de Emprendimiento",
-    city: "Puebla, M\u00E9xico (Cobertura en toda la Rep\u00FAblica Mexicana)",
+    role: "L\u00EDder de Equipo y Mentora de Emprendimiento Internacional",
+    city: "Cobertura y Mentor\u00EDa en Pa\u00EDses Hispanohablantes",
     email: "equilibrionutricion8@gmail.com",
     whatsappNumber: "522227708716",
-    displayPhone: "222 770 8716",
-    whatsappDefaultMessage: "Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n en bienestar digital y c\u00F3mo iniciar con el modelo."
+    displayPhone: "+52 222 770 8716",
+    whatsappDefaultMessage: "Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n internacional en bienestar digital y c\u00F3mo iniciar con el modelo en mi pa\u00EDs."
   },
 
   // --- ENLACES OFICIALES ---
