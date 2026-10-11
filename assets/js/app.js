@@ -252,75 +252,91 @@
       // ========================================================
       // 8. EMBUDO DE VIDEO INTERACTIVO AUTOMATICO (M1 a M5)
       // ========================================================
-      const funnelSteps = {
+            const funnelSteps = {
         1: {
           id: 1,
-          title: "Paso 1: Presentaci\u00F3n & Calificaci\u00F3n",
-          subtitle: "Evaluaci\u00F3n inicial de bienestar y negocio digital",
-          badge: "Paso 1 de 4",
-          progress: 25,
+          title: "Paso 1: Gancho y Cambio de Modelo",
+          subtitle: "Filtro de Deseo",
+          badge: "Paso 1 de 5",
+          progress: 20,
           videoSrc: "assets/video/M1.mp4",
-          questionTitle: "Pregunta de Calificaci\u00F3n 1",
-          questionDesc: "\u00BFDeseas conocer c\u00F3mo generar un ingreso alternativo y mejorar tu bienestar celular?",
-          yesText: "S\u00ED, continuar",
+          questionTitle: "¿Buscas diversificar tus ingresos?",
+          questionDesc: "¿Te interesa conocer cómo construir un negocio digital en la industria del bienestar dedicando de 10 a 12 horas a la semana, sin necesidad de vender al menudeo ni cargar inventarios?",
+          yesText: "Sí, me interesa conocerlo",
           yesSubtext: "Pasa al video 2",
           noText: "No en este momento",
           noSubtext: "Finalizar consulta",
           nextYes: 2,
-          nextNo: 5
+          nextNo: 6 // Descarte amable
         },
         2: {
           id: 2,
-          title: "Paso 2: Respaldo Cient\u00EDfico & Log\u00EDstica",
-          subtitle: "Profundizando en el modelo automatizado",
-          badge: "Paso 2 de 4",
-          progress: 50,
+          title: "Paso 2: Apalancamiento y Logística Automatizada",
+          subtitle: "Filtro de Sistema",
+          badge: "Paso 2 de 5",
+          progress: 40,
           videoSrc: "assets/video/M2.mp4",
-          questionTitle: "Pregunta de Calificaci\u00F3n 2",
-          questionDesc: "\u00BFTe hace sentido apalancarte en biotecnolog\u00EDa comprobada con env\u00EDos y cobros 100% automatizados?",
-          yesText: "S\u00ED, me interesa",
+          questionTitle: "Apalancamiento y Logística Resuelta",
+          questionDesc: "¿Te hace sentido apalancarte en una plataforma de e-commerce internacional donde la logística, cobros y envíos están 100% automatizados?",
+          yesText: "Sí, me hace sentido",
           yesSubtext: "Pasa al video 3",
           noText: "No por ahora",
           noSubtext: "Finalizar consulta",
           nextYes: 3,
-          nextNo: 5
+          nextNo: 6 // Descarte amable
         },
         3: {
           id: 3,
-          title: "Paso 3: Mentor\u00EDa & Plan de Expansi\u00F3n",
-          subtitle: "Acompa\u00F1amiento 1 a 1 personalizado",
-          badge: "Paso 3 de 4",
-          progress: 75,
+          title: "Paso 3: Respaldo Científico e Ingresos Residuales",
+          subtitle: "Filtro de Solidez",
+          badge: "Paso 3 de 5",
+          progress: 60,
           videoSrc: "assets/video/M3.mp4",
-          questionTitle: "Pregunta de Calificaci\u00F3n 3",
-          questionDesc: "\u00BFTe gustar\u00EDa recibir una llamada de orientaci\u00F3n 1 a 1 sin costo con la mentora Mar\u00EDa de Jes\u00FAs Vera?",
-          yesText: "S\u00ED, quiero hablar con Mar\u00EDa de Jes\u00FAs",
-          yesSubtext: "Pasa a elegir horario de llamada",
+          questionTitle: "Respaldo Científico y Sostenibilidad",
+          questionDesc: "¿Consideras indispensable que un proyecto comercial cuente con más de 45 años de investigación científica y patentes internacionales para garantizar su crecimiento?",
+          yesText: "Sí, es indispensable",
+          yesSubtext: "Pasa al video 4",
           noText: "No por ahora",
           noSubtext: "Finalizar consulta",
           nextYes: 4,
-          nextNo: 5
+          nextNo: 6 // Descarte amable
         },
         4: {
           id: 4,
-          title: "Paso 4: Coordinaci\u00F3n de Llamada",
-          subtitle: "Selecciona tu momento preferido",
-          badge: "Paso Final",
-          progress: 100,
+          title: "Paso 4: Mentoría y Sistema de Duplicación",
+          subtitle: "Filtro de Compromiso",
+          badge: "Paso 4 de 5",
+          progress: 80,
           videoSrc: "assets/video/M4.mp4",
-          questionTitle: "\u00BFCu\u00E1ndo prefieres que hablemos?",
-          questionDesc: "Elige la alternativa que mejor se adapte a tu horario y pa\u00EDs para coordinar con Mar\u00EDa de Jes\u00FAs Vera:"
+          questionTitle: "Acompañamiento y Capacitación",
+          questionDesc: "¿Estás dispuesto(a) a seguir un sistema probado de capacitación y recibir orientación personalizada 1 a 1 directamente con la mentora María de Jesús Vera?",
+          yesText: "Sí, estoy dispuesto(a)",
+          yesSubtext: "Pasa al video 5 de agendamiento",
+          noText: "No por ahora",
+          noSubtext: "Finalizar consulta",
+          nextYes: 5,
+          nextNo: 6 // Descarte amable
         },
         5: {
           id: 5,
-          title: "Agradecimiento & Comunidad",
-          subtitle: "Recursos y contenido gratuito",
-          badge: "Finalizado",
+          title: "Paso 5: Llamada a la Acción y Agendamiento",
+          subtitle: "Filtro de Cierre",
+          badge: "Paso 5 de 5 • Sesión de Orientación",
           progress: 100,
           videoSrc: "assets/video/M5.mp4",
+          questionTitle: "¿Cuándo prefieres realizar tu llamada de orientación?",
+          questionDesc: "Selecciona la alternativa de horario que mejor se adapte a ti para coordinar tu sesión personalizada con la mentora María de Jesús Vera:"
+        },
+        6: {
+          id: 6,
+          title: "Agradecimiento",
+          subtitle: "Filtro de Perfil",
+          badge: "Consulta Finalizada",
+          progress: 100,
+          videoSrc: "",
           isDisqualified: true,
-          messageTitle: "Gracias por tu sinceridad",
-          messageDesc: "En este momento nuestro modelo podr\u00EDa no adaptarse a lo que buscas, pero te invitamos a seguir nuestro contenido en redes sociales y explorar nuestra comunidad."
+          messageTitle: "Gracias por tu tiempo",
+          messageDesc: "Gracias por tu tiempo. Nuestro modelo está diseñado exclusivamente para personas que buscan construir un activo a través de redes y apalancamiento digital. Si en el futuro deseas diversificar tus ingresos, siempre podrás regresar a esta página."
         }
       };
 
@@ -357,8 +373,8 @@
       });
 
       const canCloseFunnelModal = computed(() => {
-        if (videoFunnel.currentStep === 5) return true;
-        if (videoFunnel.currentStep === 4 && (videoFunnel.bookingSubmitted || videoFunnel.immediateSubmitted)) return true;
+        if (videoFunnel.currentStep === 6) return true; // Descarte
+        if (videoFunnel.currentStep === 5 && (videoFunnel.bookingSubmitted || videoFunnel.immediateSubmitted)) return true; // Cita agendada
         return false;
       });
 
@@ -383,10 +399,18 @@
       const playFunnelStep = (stepId) => {
         videoFunnel.currentStep = stepId;
         videoFunnel.isPausedForAnswer = false;
-        videoFunnel.hasEnded = false;
+        videoFunnel.hasEnded = (stepId === 6);
         videoFunnel.selectedSlotOption = null;
         videoFunnel.bookingSubmitted = false;
         videoFunnel.immediateSubmitted = false;
+
+        // Si es descarte amable (Paso 6), pausar video y mostrar pantalla de inmediato
+        if (stepId === 6) {
+          videoFunnel.isPlaying = false;
+          const vid = document.getElementById("funnelVideoPlayer");
+          if (vid) vid.pause();
+          return;
+        }
 
         const stepData = funnelSteps[stepId];
         if (!stepData) return;
@@ -683,6 +707,7 @@
         onFunnelVideoEnded,
         onFunnelVideoPlay,
         onFunnelVideoPause,
+        selectFunnelSlot,
         selectOptionA_ProximaHora,
         selectOptionB_HoyDia,
         selectOptionC_ElegirFecha,

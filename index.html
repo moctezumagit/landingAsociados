@@ -142,14 +142,14 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- PREGUNTAS Y RESPUESTAS: SOLO SE MUESTRAN AL FINALIZAR EL VIDEO -->
+        <!-- PREGUNTAS Y RESPUESTAS: SE MUESTRAN AL FINALIZAR CADA VIDEO O EN DESCARTE -->
         <!-- ======================================================== -->
         <div v-if="videoFunnel.hasEnded" 
              id="funnelQuestionContainer"
              class="p-4 sm:p-6 bg-slate-900 border-t border-slate-800 animate-fade-in flex flex-col">
           
-          <!-- PASOS 1, 2 Y 3: PREGUNTAS DE CALIFICACION (SI / NO) -->
-          <div v-if="videoFunnel.currentStep >= 1 && videoFunnel.currentStep <= 3">
+          <!-- PASOS 1, 2, 3 Y 4: PREGUNTAS DE CALIFICACION Y FILTRO (SI / NO) -->
+          <div v-if="videoFunnel.currentStep >= 1 && videoFunnel.currentStep <= 4">
             <div class="mb-3.5">
               <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
@@ -177,7 +177,7 @@
                 <svg class="w-5 h-5 text-white group-hover:translate-x-1 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
               </button>
 
-              <!-- Boton NO -->
+              <!-- Boton NO (Descarte Amable) -->
               <button @click="answerFunnelQuestion(false)"
                       type="button"
                       class="group relative p-4 rounded-2xl font-bold bg-slate-800/90 hover:bg-slate-800 text-slate-300 border border-slate-700 hover:border-slate-600 active:scale-95 transition-all text-left flex items-center justify-between cursor-pointer">
@@ -200,10 +200,10 @@
             </div>
           </div>
 
-          <!-- PASO 4: CONTACTO Y AGENDAMIENTO CON MARIA DE JESUS VERA -->
-          <div v-if="videoFunnel.currentStep === 4">
+          <!-- PASO 5: LLAMADA A LA ACCION Y AGENDAMIENTO CON MARIA DE JESUS VERA (+52 222 770 8716) -->
+          <div v-if="videoFunnel.currentStep === 5">
 
-            <!-- TARJETA DE LA MENTORA MARIA DE JESUS VERA -->
+            <!-- TARJETA OFICIAL DE LA MENTORA MARIA DE JESUS VERA -->
             <div class="mb-4 p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-between gap-3">
               <div class="flex items-center gap-3">
                 <img :src="config.advisor.image" 
@@ -212,29 +212,35 @@
                 <div>
                   <div class="flex items-center gap-1.5 flex-wrap">
                     <span class="text-xs sm:text-sm font-bold text-white">{{ config.advisor.name }}</span>
-                    <span class="text-[10px] font-semibold text-emerald-300 bg-emerald-950/80 border border-emerald-500/40 px-2 py-0.5 rounded-full">Mentora en Linea</span>
+                    <span class="text-[10px] font-semibold text-emerald-300 bg-emerald-950/80 border border-emerald-500/40 px-2 py-0.5 rounded-full">Mentora Oficial</span>
                   </div>
                   <p class="text-xs text-slate-300 font-mono mt-0.5">WhatsApp directo: {{ config.advisor.displayPhone }}</p>
                 </div>
               </div>
             </div>
 
-            <!-- PANTALLA DE CONFIRMACION PARA OPCION A (INMEDIATO) -->
-            <div v-if="videoFunnel.immediateSubmitted" class="py-4 text-center animate-fade-in">
+            <!-- PANTALLA DE CONFIRMACION TRAS ENVIAR -->
+            <div v-if="videoFunnel.bookingSubmitted" class="py-4 text-center animate-fade-in">
               <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto mb-2 text-2xl font-bold">
                 &#10003;
               </div>
-              <h4 class="text-base sm:text-lg font-black text-white">&iexcl;Mensaje preparado con &eacute;xito!</h4>
+              <h4 class="text-base sm:text-lg font-black text-white">&iexcl;Sesi&oacute;n coordinada con &eacute;xito!</h4>
               <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-md mx-auto leading-relaxed">
-                Tu solicitud ya fue registrada. La mentora <strong class="text-emerald-300 font-bold">{{ config.advisor.name }}</strong> te contactar&aacute; en la pr&oacute;xima hora para orientarte de forma personalizada.
+                Tu solicitud ha sido preparada. La mentora <strong class="text-emerald-300 font-bold">{{ config.advisor.name }}</strong> revisar&aacute; tu horario preferido para orientarte de forma personalizada.
               </p>
 
               <div class="mt-4 flex flex-wrap items-center justify-center gap-2.5">
-                <a :href="videoFunnel.whatsappImmediateUrl"
+                <a :href="videoFunnel.whatsappBookingUrl"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer">
                   <span>&#128172; Abrir chat con Mar&iacute;a de Jes&uacute;s</span>
+                </a>
+                <a :href="videoFunnel.calendarUrl"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 flex items-center gap-2 shadow-md hover:shadow-lg transition-all">
+                  <span>&#128197; Ver en Google Calendar</span>
                 </a>
                 <button type="button"
                         @click="closeVideoFunnelModal(true)"
@@ -244,208 +250,122 @@
               </div>
             </div>
 
-            <!-- CUANDO NO SE HA ENVIADO EN INMEDIATO: MOSTRAR OPCIONES DE AGENDA -->
+            <!-- FORMULARIO Y SELECCION DE HORARIO (3 BOTONES DE OPCION) -->
             <div v-else>
               <div class="mb-3.5">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-blue-400 flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                  <span>Paso Final &bull; Agenda y Contacto con la Mentora</span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                  <span>{{ currentFunnelStepData.questionTitle }}</span>
                 </span>
-                <h3 class="text-lg sm:text-xl font-black text-white mt-1">&iquest;Cu&aacute;ndo prefieres que hablemos?</h3>
-                <p class="text-xs sm:text-sm text-slate-300 mt-0.5">Elige tu alternativa preferida para recibir tu orientaci&oacute;n personalizada:</p>
+                <p class="text-xs sm:text-sm text-slate-300 mt-1">
+                  {{ currentFunnelStepData.questionDesc }}
+                </p>
               </div>
 
-              <!-- Opciones A, B, C -->
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-                <!-- Opcion A -->
-                <button @click="selectOptionA_ProximaHora()"
-                        type="button"
-                        :class="videoFunnel.selectedSlotOption === 'proxima_hora' ? 'ring-2 ring-emerald-400 bg-emerald-950/40 border-emerald-500' : 'bg-slate-800/80 hover:bg-slate-800 border-slate-700 hover:border-emerald-500/50'"
-                        class="group p-3.5 rounded-2xl border transition-all text-left flex flex-col justify-between cursor-pointer hover:-translate-y-0.5 shadow-md">
-                  <div>
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-2xl">&#9889;</span>
-                      <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Inmediato</span>
-                    </div>
-                    <span class="block text-sm sm:text-base font-extrabold text-white group-hover:text-emerald-300">En la pr&oacute;xima hora</span>
-                    <p class="text-xs text-slate-300 mt-1">Alerta directa por WhatsApp a Mar&iacute;a de Jes&uacute;s para orientaci&oacute;n prioritaria.</p>
-                  </div>
-                  <span class="mt-3 text-xs font-bold text-emerald-400 flex items-center gap-1">Chatear ahora por WhatsApp &rarr;</span>
-                </button>
-
-                <!-- Opcion B -->
-                <button @click="selectOptionB_HoyDia()"
-                        type="button"
-                        :class="videoFunnel.selectedSlotOption === 'hoy_dia' ? 'ring-2 ring-blue-400 bg-blue-950/40 border-blue-500' : 'bg-slate-800/80 hover:bg-slate-800 border-slate-700 hover:border-blue-500/50'"
-                        class="group p-3.5 rounded-2xl border transition-all text-left flex flex-col justify-between cursor-pointer hover:-translate-y-0.5 shadow-md">
-                  <div>
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-2xl">&#128197;</span>
-                      <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">Hoy mismo</span>
-                    </div>
-                    <span class="block text-sm sm:text-base font-extrabold text-white group-hover:text-blue-300">Hoy durante el d&iacute;a</span>
-                    <p class="text-xs text-slate-300 mt-1">Registra tu franja horaria preferida de hoy y confirma tu cita.</p>
-                  </div>
-                  <span class="mt-3 text-xs font-bold text-blue-400 flex items-center gap-1">Elegir franja &rarr;</span>
-                </button>
-
-                <!-- Opcion C -->
-                <button @click="selectOptionC_ElegirFecha()"
-                        type="button"
-                        :class="videoFunnel.selectedSlotOption === 'elegir_fecha' ? 'ring-2 ring-purple-400 bg-purple-950/40 border-purple-500' : 'bg-slate-800/80 hover:bg-slate-800 border-slate-700 hover:border-purple-500/50'"
-                        class="group p-3.5 rounded-2xl border transition-all text-left flex flex-col justify-between cursor-pointer hover:-translate-y-0.5 shadow-md">
-                  <div>
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-2xl">&#128198;</span>
-                      <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">Personalizado</span>
-                    </div>
-                    <span class="block text-sm sm:text-base font-extrabold text-white group-hover:text-purple-300">Elegir d&iacute;a y hora</span>
-                    <p class="text-xs text-slate-300 mt-1">Selecciona d&iacute;a y hora en la agenda para tu llamada personalizada.</p>
-                  </div>
-                  <span class="mt-3 text-xs font-bold text-purple-400 flex items-center gap-1">Abrir agenda &rarr;</span>
-                </button>
-              </div>
-
-              <!-- Formulario de agendamiento para B y C -->
-              <div v-if="videoFunnel.selectedSlotOption === 'hoy_dia' || videoFunnel.selectedSlotOption === 'elegir_fecha'"
-                   class="mt-3 p-4 sm:p-5 rounded-2xl bg-slate-950/90 border border-slate-700 animate-fade-in">
+              <!-- LAS 3 OPCIONES SOLICITADAS:
+                   [ Hoy mismo / Lo antes posible ]
+                   [ Mañana por la mañana ]
+                   [ Mañana por la tarde ] -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-4">
                 
-                <div v-if="!videoFunnel.bookingSubmitted">
-                  <div class="flex items-center justify-between mb-3">
-                    <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-                      <span>&#9997;&#65039;</span>
-                      <span>{{ videoFunnel.selectedSlotOption === 'hoy_dia' ? 'Completa tus datos para llamarte hoy' : 'Selecciona fecha y hora de tu cita' }}</span>
-                    </h4>
-                    <span class="text-[11px] text-emerald-400 font-semibold">Registro Seguro</span>
+                <button type="button"
+                        @click="selectFunnelSlot('Hoy mismo / Lo antes posible')"
+                        :class="videoFunnel.selectedSlotOption === 'Hoy mismo / Lo antes posible' ? 'ring-2 ring-amber-400 bg-amber-950/50 border-amber-500 text-white font-black' : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700'"
+                        class="p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xl">&#9889;</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">Inmediato</span>
                   </div>
+                  <span class="text-xs sm:text-sm font-bold leading-tight">Hoy mismo / Lo antes posible</span>
+                </button>
 
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
-                    <div>
-                      <label class="block text-xs font-semibold text-slate-300 mb-1">Tu Nombre Completo *</label>
-                      <input v-model="videoFunnel.bookingForm.name"
-                             type="text"
-                             placeholder="Ej. Juan P&eacute;rez"
-                             class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-teal">
-                      <span v-if="videoFunnel.bookingErrors.name" class="text-[11px] text-rose-400 font-medium block mt-0.5">{{ videoFunnel.bookingErrors.name }}</span>
-                    </div>
-                    <div>
-                      <label class="block text-xs font-semibold text-slate-300 mb-1">Tu WhatsApp con prefijo de pa&iacute;s *</label>
-                      <input v-model="videoFunnel.bookingForm.phone"
-                             type="tel"
-                             placeholder="Ej. +52 222 123 4567 &oacute; +57 300..."
-                             class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-teal">
-                      <span v-if="videoFunnel.bookingErrors.phone" class="text-[11px] text-rose-400 font-medium block mt-0.5">{{ videoFunnel.bookingErrors.phone }}</span>
-                    </div>
+                <button type="button"
+                        @click="selectFunnelSlot('Mañana por la mañana')"
+                        :class="videoFunnel.selectedSlotOption === 'Mañana por la mañana' ? 'ring-2 ring-teal-400 bg-teal-950/50 border-teal-500 text-white font-black' : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700'"
+                        class="p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xl">&#128197;</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">9:00 - 12:00</span>
                   </div>
+                  <span class="text-xs sm:text-sm font-bold leading-tight">Ma&ntilde;ana por la ma&ntilde;ana</span>
+                </button>
 
-                  <!-- Si es Opcion B: Selector de Franja Horaria de Hoy -->
-                  <div v-if="videoFunnel.selectedSlotOption === 'hoy_dia'" class="mb-4">
-                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Franja horaria preferida para hoy *</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                      <button v-for="slot in ['Mañana (9:00 AM - 12:00 PM)', 'Mediodía / Tarde (12:00 PM - 4:00 PM)', 'Tarde-Noche (4:00 PM - 8:00 PM)']"
-                              :key="slot"
-                              type="button"
-                              @click="videoFunnel.bookingForm.timeSlot = slot"
-                              :class="videoFunnel.bookingForm.timeSlot === slot ? 'bg-teal-600 text-white border-teal-400 font-bold' : 'bg-slate-900 text-slate-300 border-slate-700 hover:border-slate-500'"
-                              class="p-2.5 rounded-xl border text-xs font-medium text-center transition-all cursor-pointer">
-                        {{ slot }}
-                      </button>
-                    </div>
+                <button type="button"
+                        @click="selectFunnelSlot('Mañana por la tarde')"
+                        :class="videoFunnel.selectedSlotOption === 'Mañana por la tarde' ? 'ring-2 ring-blue-400 bg-blue-950/50 border-blue-500 text-white font-black' : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700'"
+                        class="p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xl">&#128198;</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">14:00 - 18:00</span>
                   </div>
-
-                  <!-- Si es Opcion C: Selector de Fecha y Hora -->
-                  <div v-if="videoFunnel.selectedSlotOption === 'elegir_fecha'" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                    <div>
-                      <label class="block text-xs font-semibold text-slate-300 mb-1">Fecha de la cita *</label>
-                      <input v-model="videoFunnel.bookingForm.date"
-                             type="date"
-                             class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-teal">
-                    </div>
-                    <div>
-                      <label class="block text-xs font-semibold text-slate-300 mb-1">Hora de la cita *</label>
-                      <input v-model="videoFunnel.bookingForm.time"
-                             type="time"
-                             class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-teal">
-                    </div>
-                  </div>
-
-                  <!-- Boton de Envio -->
-                  <div class="flex flex-col sm:flex-row items-center gap-3">
-                    <button @click="submitBookingFunnel"
-                            type="button"
-                            class="btn-shine w-full sm:w-auto px-6 py-3 rounded-xl font-extrabold text-xs sm:text-sm text-slate-950 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-lg shadow-amber-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer">
-                      <span>Confirmar Cita & Abrir Google Calendar</span>
-                      <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </button>
-                    <span class="text-[11px] text-slate-400">Tus datos se guardan de forma segura y se confirma tu cita.</span>
-                  </div>
-                </div>
-
-                <!-- PANTALLA DE CITA CONFIRMADA -->
-                <div v-else class="text-center py-4 animate-fade-in">
-                  <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-2 text-2xl font-bold">
-                    &#10003;
-                  </div>
-                  <h4 class="text-base sm:text-lg font-black text-white">&iexcl;Cita registrada con &eacute;xito!</h4>
-                  <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-md mx-auto">
-                    Tu solicitud ha quedado guardada con &eacute;xito con la mentora <strong class="text-emerald-300">{{ config.advisor.name }}</strong>. Hemos preparado tu cita para Google Calendar y WhatsApp.
-                  </p>
-
-                  <div class="mt-4 flex flex-wrap items-center justify-center gap-2.5">
-                    <a :href="videoFunnel.calendarUrl"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 flex items-center gap-2 shadow-md hover:shadow-lg transition-all">
-                      <span>&#128197; Ver evento en Google Calendar</span>
-                    </a>
-                    <a :href="videoFunnel.whatsappBookingUrl"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 flex items-center gap-2 shadow-md hover:shadow-lg transition-all">
-                      <span>&#128172; Confirmar por WhatsApp</span>
-                    </a>
-                    <button type="button"
-                            @click="closeVideoFunnelModal(true)"
-                            class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 flex items-center gap-2 shadow-md transition-all cursor-pointer">
-                      <span>&#10003; Cerrar video y continuar</span>
-                    </button>
-                  </div>
-                </div>
+                  <span class="text-xs sm:text-sm font-bold leading-tight">Ma&ntilde;ana por la tarde</span>
+                </button>
 
               </div>
+
+              <!-- DATOS DEL PROSPECTO PARA PRECARGAR EN WHATSAPP -->
+              <div class="p-4 rounded-2xl bg-slate-950/90 border border-slate-800 space-y-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Tu Nombre Completo *</label>
+                    <input v-model="videoFunnel.bookingForm.name"
+                           type="text"
+                           placeholder="Ej. Juan P&eacute;rez"
+                           class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-teal">
+                    <span v-if="videoFunnel.bookingErrors.name" class="text-[11px] text-rose-400 font-medium block mt-0.5">{{ videoFunnel.bookingErrors.name }}</span>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Tu WhatsApp con prefijo de pa&iacute;s *</label>
+                    <input v-model="videoFunnel.bookingForm.phone"
+                           type="tel"
+                           placeholder="Ej. +52 222 123 4567"
+                           class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-teal">
+                    <span v-if="videoFunnel.bookingErrors.phone" class="text-[11px] text-rose-400 font-medium block mt-0.5">{{ videoFunnel.bookingErrors.phone }}</span>
+                  </div>
+                </div>
+
+                <div class="pt-1 flex flex-col sm:flex-row items-center gap-3">
+                  <button @click="submitBookingFunnel"
+                          type="button"
+                          class="btn-shine w-full sm:w-auto px-6 py-3.5 rounded-xl font-black text-xs sm:text-sm text-slate-950 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-xl shadow-amber-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                    <span>&#128172; Agendar y Chatear por WhatsApp con Mar&iacute;a</span>
+                    <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </button>
+                  <span class="text-[11px] text-slate-400">Atenci&oacute;n personalizada directa al WhatsApp oficial +52 222 770 8716.</span>
+                </div>
+              </div>
+
             </div>
+
           </div>
 
-          <!-- PASO 5: DESCALIFICACION Y DESPEDIDA CORDIAL (M5) -->
-          <div v-if="videoFunnel.currentStep === 5" class="text-center">
-            <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-800 text-slate-300 mb-2">
-              &#129309; Comunidad & Recursos Gratuitos
-            </span>
-            <h3 class="text-base sm:text-lg font-black text-white mb-1.5">{{ currentFunnelStepData.messageTitle }}</h3>
-            <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed mb-4">
-              {{ currentFunnelStepData.messageDesc }}
+          <!-- PASO 6: PANTALLA FINAL DE DESCARTE AMABLE (PARA RESPUESTAS NO) -->
+          <div v-if="videoFunnel.currentStep === 6" class="text-center py-2 animate-fade-in">
+            <div class="w-12 h-12 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center mx-auto mb-3 text-2xl font-bold border border-slate-700">
+              🤝
+            </div>
+            <h3 class="text-base sm:text-lg font-black text-white mb-2">Gracias por tu tiempo</h3>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed mb-5">
+              Gracias por tu tiempo. Nuestro modelo est&aacute; dise&ntilde;ado exclusivamente para personas que buscan construir un activo a trav&eacute;s de redes y apalancamiento digital. Si en el futuro deseas diversificar tus ingresos, siempre podr&aacute;s regresar a esta p&aacute;gina.
             </p>
 
-            <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
-              <a href="https://www.instagram.com/equilibrionutricion8?stkn=NHp1MjhkYWFuenJ1" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-pink-600/20 text-pink-300 border border-pink-500/30 hover:bg-pink-600/30 flex items-center gap-1">Instagram</a>
-              <a href="https://www.tiktok.com/@equilibriobienestarnut" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-white border border-slate-700 hover:bg-slate-700 flex items-center gap-1">TikTok</a>
-              <a href="https://www.facebook.com/share/1DWUMNvaXq/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-blue-600/20 text-blue-300 border border-blue-500/30 hover:bg-blue-600/30 flex items-center gap-1">Facebook</a>
-              <a href="https://www.youtube.com/channel/UCixehQX5txYGv-WPZ8OeeeA" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-red-600/20 text-red-300 border border-red-500/30 hover:bg-red-600/30 flex items-center gap-1">YouTube</a>
-            </div>
-
             <div class="flex items-center justify-center gap-3">
-              <button @click="restartFunnel" type="button" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 inline-flex items-center gap-2 cursor-pointer transition-colors shadow-sm">
+              <button @click="restartFunnel" 
+                      type="button" 
+                      class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 inline-flex items-center gap-2 cursor-pointer transition-colors shadow-sm">
                 <span>&#8635; Volver a iniciar el video interactivo</span>
               </button>
-              <button @click="closeVideoFunnelModal(true)" type="button" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-md transition-all">
+              <button @click="closeVideoFunnelModal(true)" 
+                      type="button" 
+                      class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-md transition-all">
                 <span>&#10003; Cerrar video y ver la p&aacute;gina</span>
               </button>
             </div>
           </div>
 
         </div>
-
       </div>
+    </div>
     </div>
     
     <!-- ======================================================== -->
