@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es-MX" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <title>Negocio Digital en Bienestar Celular | Mentora Mar&iacute;a de Jes&uacute;s Vera</title>
   <link rel="icon" type="image/jpeg" href="assets/img/logo.jpg">
   
-  <!-- SEO & Metadatos Locales para M&eacute;xico (es-MX) -->
+  <!-- SEO & Metadatos Locales para Mexico (es-MX) -->
   <meta name="description" content="Construye un negocio digital en bienestar celular con log&iacute;stica y env&iacute;os 100% automatizados. Genera un ingreso alternativo dedicando de 10 a 12 horas semanales con la mentor&iacute;a de Mar&iacute;a de Jes&uacute;s Vera.">
   <meta name="keywords" content="negocio digital bienestar Mexico, emprendimiento Puebla, Maria de Jesus Vera, ingresos residuales Mexico, drop-shipping salud celular, ganar dinero tiempo parcial">
   <meta name="author" content="Mar&iacute;a de Jes&uacute;s Vera - Mentora y L&iacute;der de Emprendimiento">
@@ -35,11 +35,20 @@
         extend: {
           colors: {
             brand: {
-              blue: '#0046AD',
-              lightBlue: '#1D70B8',
-              deep: '#0B2545',
-              navy: '#071E3D',
-              light: '#F0F6FF'
+              teal: '#0D7C8A',
+              tealDark: '#0B4F5B',
+              tealDeep: '#062A31',
+              tealLight: '#14B8A6',
+              sage: '#5B7B4B',
+              sageLight: '#E8F3E5',
+              sand: '#F7F5F0',
+              cream: '#FAF8F5',
+              light: '#F0FDF9',
+              // Mapeo armonizado para clases existentes
+              blue: '#0D7C8A',
+              lightBlue: '#14B8A6',
+              deep: '#0B4F5B',
+              navy: '#062A31'
             },
             cta: {
               amber: '#F59E0B',
@@ -52,8 +61,8 @@
               gold: '#F59E0B',
               goldLight: '#FEF3C7',
               goldDark: '#D97706',
-              emerald: '#10B981',
-              emeraldDark: '#059669'
+              emerald: '#0D7C8A',
+              emeraldDark: '#0B4F5B'
             }
           },
           fontFamily: {
@@ -70,37 +79,35 @@
   <!-- Vue 3 CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 </head>
+<body class="bg-[#FAF8F5] text-slate-800 antialiased selection:bg-teal-500 selection:text-white">
 
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-brand-blue selection:text-white text-base">
-
-  <!-- CONTENEDOR PRINCIPAL VUE 3 -->
-  <div id="app" class="flex-grow flex flex-col">
-
-    <!-- CINTILLO SUPERIOR DE ALERTA CRO -->
-    <div class="bg-gradient-to-r from-brand-navy via-brand-blue to-brand-navy text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm">
-      <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
-        <span class="inline-block w-2.5 h-2.5 rounded-full bg-cta-amber animate-pulse"></span>
-        <span>Convocatoria abierta para nuevos asociados en M&eacute;xico | <strong>Mentor&iacute;a 1 a 1 con Mar&iacute;a de Jes&uacute;s Vera</strong></span>
-      </div>
+  <div id="app" v-cloak class="min-h-screen flex flex-col justify-between">
+    
+    <!-- ======================================================== -->
+    <!-- BARRA DE ANUNCIOS SUPERIOR: ENFOQUE EN MEXICO -->
+    <!-- ======================================================== -->
+    <div class="bg-gradient-to-r from-brand-navy via-brand-blue to-brand-deep text-white text-xs sm:text-sm py-2 px-4 text-center font-semibold tracking-wide flex items-center justify-center gap-2 shadow-inner">
+      <span class="inline-block w-2 h-2 rounded-full bg-cta-amber animate-pulse"></span>
+      <span>Expansi&oacute;n Nacional en M&eacute;xico: Convocatoria abierta para nuevos asociados independientes en Puebla y las 32 entidades.</span>
     </div>
 
-    <!-- ENCABEZADO / NAVBAR -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs transition-all duration-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- ======================================================== -->
+    <!-- ENCABEZADO Y NAVEGACION -->
+    <!-- ======================================================== -->
+    <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
         
-        <!-- LOGO Y PRESENTACION DE LA MENTORA -->
-        <a href="#" class="flex items-center gap-3.5 group">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-navy to-brand-blue p-0.5 shadow-md group-hover:shadow-brand-blue/30 transition-all overflow-hidden flex items-center justify-center">
-            <img src="assets/img/logo.jpg" alt="Mar&iacute;a de Jes&uacute;s Vera" class="w-full h-full object-cover rounded-[10px]" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-            <div class="hidden w-full h-full bg-brand-blue text-white font-black text-lg items-center justify-center">MV</div>
+        <!-- LOGO Y TITULO DEL PROYECTO -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-brand-teal shadow-md flex items-center justify-center bg-white group-hover:scale-105 transition-transform shrink-0">
+            <img src="assets/img/logo.jpg" alt="Equilibrio y Bienestar" class="w-full h-full object-cover">
           </div>
           <div class="flex flex-col">
-            <span class="font-extrabold text-slate-900 text-lg leading-tight group-hover:text-brand-blue transition-colors">
-              Mar&iacute;a de Jes&uacute;s Vera
+            <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 group-hover:text-brand-blue transition-colors leading-tight">
+              Equilibrio y Bienestar
             </span>
-            <span class="text-xs text-brand-lightBlue font-semibold flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-              Mentora y L&iacute;der de Emprendimiento
+            <span class="text-xs font-semibold text-slate-500">
+              Mentor&iacute;a con Mar&iacute;a de Jes&uacute;s Vera
             </span>
           </div>
         </a>
@@ -110,15 +117,14 @@
           <a href="#para-quien" class="hover:text-brand-blue transition-colors">Para Qui&eacute;n Es</a>
           <a href="#pilares" class="hover:text-brand-blue transition-colors">Los 4 Pilares</a>
           <a href="#testimonios" class="hover:text-brand-blue transition-colors">Prueba Social</a>
-          <a href="#calculadora" class="hover:text-brand-blue transition-colors">Simulador</a>
-          <a href="#paquetes" class="hover:text-brand-blue transition-colors">Opciones de Inicio</a>
           <a href="#mentora" class="hover:text-brand-blue transition-colors">Tu Mentora</a>
+          <a href="#calculadora" class="hover:text-brand-blue transition-colors">Simulador</a>
           <a href="#faq" class="hover:text-brand-blue transition-colors">Preguntas</a>
         </nav>
 
         <!-- BOTON CTA HEADER -->
         <div class="flex items-center gap-3">
-          <button @click="contactAdvisorWhatsApp()" class="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-600 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-md hover:shadow-emerald-500/30 transition-all flex items-center gap-2 transform active:scale-95 min-h-[44px]">
+          <button @click="contactAdvisorWhatsApp()" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-teal-600 hover:to-emerald-600 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-md hover:shadow-teal-500/30 transition-all flex items-center gap-2 transform active:scale-95 min-h-[44px]">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
             <span class="hidden sm:inline">WhatsApp con Mar&iacute;a</span>
             <span class="sm:hidden">WhatsApp</span>
@@ -131,7 +137,7 @@
     <!-- ======================================================== -->
     <!-- BLOQUE 1: HERO SECTION ("ABOVE THE FOLD") OPTIMIZADO CRO -->
     <!-- ======================================================== -->
-    <section class="relative pt-8 pb-14 md:pt-14 md:pb-20 overflow-hidden bg-gradient-to-b from-white via-blue-50/40 to-slate-50 border-b border-slate-200/80">
+    <section class="relative pt-8 pb-14 md:pt-14 md:pb-20 overflow-hidden bg-gradient-to-b from-[#FAF8F5] via-teal-50/40 to-white border-b border-slate-200/80">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -139,14 +145,14 @@
           <!-- COLUMNA PRINCIPAL DE VALOR -->
           <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
             
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/80 border border-blue-200 text-brand-blue text-xs sm:text-sm font-bold tracking-wide uppercase">
-              <span class="w-2 h-2 rounded-full bg-brand-blue"></span>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100/80 border border-teal-200 text-brand-teal text-xs sm:text-sm font-bold tracking-wide uppercase">
+              <span class="w-2 h-2 rounded-full bg-brand-teal"></span>
               Modelo Comprobado en M&eacute;xico
             </div>
 
             <!-- H1 DE ALTA CONVERSION BASADO EN BENEFICIO -->
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.15]">
-              Construye un Negocio Digital en Bienestar Celular con <span class="bg-gradient-to-r from-brand-blue to-brand-lightBlue bg-clip-text text-transparent">Log&iacute;stica y Env&iacute;os 100% Automatizados</span>.
+              Construye un Negocio Digital en Bienestar Celular con <span class="bg-gradient-to-r from-brand-teal via-teal-600 to-emerald-600 bg-clip-text text-transparent">Log&iacute;stica y Env&iacute;os 100% Automatizados</span>.
             </h1>
 
             <!-- SUBTITULO: RESPUESTAS CLARAS A LAS 3 PREGUNTAS -->
@@ -157,73 +163,75 @@
             <!-- 4 DIFERENCIADORES CONCRETOS -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-left max-w-xl mx-auto lg:mx-0 text-sm font-medium text-slate-700">
               <div class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-slate-200/80 shadow-xs">
-                <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
+                <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
                 <span class="text-xs sm:text-sm leading-snug"><strong>Cero inventarios o cobros:</strong> Drop-shipping oficial DHL/Estafeta</span>
               </div>
               <div class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-slate-200/80 shadow-xs">
-                <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
+                <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
                 <span class="text-xs sm:text-sm leading-snug"><strong>Biotecnolog&iacute;a canadiense:</strong> +45 a&ntilde;os de ciencia y patentes m&eacute;dicas</span>
               </div>
               <div class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-slate-200/80 shadow-xs">
-                <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
+                <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
                 <span class="text-xs sm:text-sm leading-snug"><strong>Mentor&iacute;a 1 a 1:</strong> Acompa&ntilde;amiento directo desde Puebla, M&eacute;xico</span>
               </div>
               <div class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-slate-200/80 shadow-xs">
-                <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
+                <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
                 <span class="text-xs sm:text-sm leading-snug"><strong>Ganancias en pesos:</strong> Dep&oacute;sitos directos a tu banco en M&eacute;xico</span>
               </div>
             </div>
 
             <!-- CTAS DE ALTO CONTRASTE ABOVE THE FOLD (BOTON DORADO/AMBAR DE MAXIMO IMPACTO) -->
             <div class="pt-3 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
-              <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, quiero solicitar el plan de expansi\u00F3n en bienestar digital y conocer los paquetes de inicio.')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-base px-8 py-4 rounded-xl shadow-xl hover:shadow-amber-500/30 border border-amber-300 transition-all transform hover:-translate-y-0.5 active:translate-y-0 min-h-[52px]">
+              <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, quiero solicitar el plan de expansi\u00F3n en bienestar digital y conocer los detalles de inicio.')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-base px-8 py-4 rounded-xl shadow-xl hover:shadow-amber-500/30 border border-amber-300 transition-all transform hover:-translate-y-0.5 active:translate-y-0 min-h-[52px] cta-glow">
                 <svg class="w-5 h-5 fill-current text-slate-950" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
                 <span>Solicitar Plan de Expansi&oacute;n por WhatsApp</span>
               </button>
 
-              <a href="#mentora" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-slate-800 font-bold text-sm px-6 py-4 rounded-xl border border-slate-300 shadow-sm transition-all min-h-[52px]">
-                <span>Ver Presentaci&oacute;n del Modelo</span>
-                <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              <a href="#para-quien" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm px-6 py-4 rounded-xl border border-slate-200 transition-all min-h-[52px]">
+                <span>Descubrir si es para m&iacute;</span>
+                <span>&darr;</span>
               </a>
             </div>
 
-            <!-- AVISO DE CONFIANZA -->
-            <p class="text-xs text-slate-500 pt-1">
-              Pl&aacute;tica de orientaci&oacute;n sin costo &bull; Asesor&iacute;a directa desde Puebla, M&eacute;xico para toda la Rep&uacute;blica.
-            </p>
+            <!-- PRUEBA SOCIAL INMEDIATA -->
+            <div class="pt-2 flex items-center justify-center lg:justify-start gap-4 text-xs font-semibold text-slate-500">
+              <div class="flex -space-x-2">
+                <span class="inline-block w-7 h-7 rounded-full bg-teal-200 border-2 border-white flex items-center justify-center text-[10px] font-bold text-teal-800">&#10003;</span>
+                <span class="inline-block w-7 h-7 rounded-full bg-emerald-200 border-2 border-white flex items-center justify-center text-[10px] font-bold text-emerald-800">&#9733;</span>
+                <span class="inline-block w-7 h-7 rounded-full bg-amber-200 border-2 border-white flex items-center justify-center text-[10px] font-bold text-amber-800">&#10003;</span>
+              </div>
+              <span>Respaldado por m&aacute;s de 45 a&ntilde;os de ciencia &bull; Sin riesgos operativos</span>
+            </div>
 
           </div>
 
-          <!-- COLUMNA IMAGEN / HERO CARD -->
-          <div class="lg:col-span-5">
+          <!-- COLUMNA VISUAL HERO -->
+          <div class="lg:col-span-5 relative">
             <div class="relative mx-auto max-w-md lg:max-w-none">
               
-              <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900">
-                <img src="assets/img/hero-wellness.jpg" alt="Emprendimiento y Trabajo Remoto en Bienestar" class="w-full h-[420px] object-cover object-center">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/30 to-transparent"></div>
+              <!-- EFECTO RESPLANDOR TEAL / SAGE -->
+              <div class="absolute -inset-2 bg-gradient-to-r from-teal-500/20 to-emerald-500/20 rounded-3xl blur-2xl -z-10"></div>
+              
+              <!-- FOTOGRAFIA HERO AMBIENTAL -->
+              <div class="rounded-3xl overflow-hidden border-2 border-teal-100 shadow-2xl bg-white aspect-[4/3] sm:aspect-[16/10] relative">
+                <img src="assets/img/hero-wellness.jpg" alt="Emprendimiento digital y bienestar en Mexico" class="w-full h-full object-cover">
                 
-                <div class="absolute bottom-0 left-0 right-0 p-6 text-white space-y-2">
-                  <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/90 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-xs">
-                    Equipo Oficial en M&eacute;xico
+                <!-- BADGE FLOTANTE 1 -->
+                <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 border border-slate-100 shadow-lg flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-teal-100 text-brand-teal flex items-center justify-center font-black text-sm shrink-0">
+                    MEX
                   </div>
-                  <h3 class="text-xl font-black leading-snug">
-                    Liderazgo, Salud Celular y Libertad Financiera
-                  </h3>
-                  <p class="text-xs text-slate-200">
-                    Aprende de la mano de Mar&iacute;a de Jes&uacute;s Vera c&oacute;mo convertir tu tiempo libre en un negocio s&oacute;lido y rentable.
-                  </p>
+                  <div class="text-xs">
+                    <p class="font-extrabold text-slate-900 leading-tight">Modelo 100% Digital en M&eacute;xico</p>
+                    <p class="text-slate-500">Log&iacute;stica de entrega en las 32 entidades</p>
+                  </div>
                 </div>
               </div>
 
-              <!-- FLOATING BADGE -->
-              <div class="absolute -top-4 -right-4 bg-white p-3.5 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 font-black text-lg">
-                  &#9733;
-                </div>
-                <div>
-                  <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Plan Comisiones</div>
-                  <div class="text-sm font-extrabold text-slate-900">Hasta 47% de Retorno</div>
-                </div>
+              <!-- BADGE FLOTANTE 2 -->
+              <div class="hidden sm:flex absolute -top-4 -right-4 bg-white rounded-2xl py-2 px-3.5 border border-slate-100 shadow-md items-center gap-2 text-xs font-bold text-slate-800 animate-float">
+                <span class="text-amber-500 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <span>Mentor&iacute;a 1 a 1</span>
               </div>
 
             </div>
@@ -231,35 +239,6 @@
 
         </div>
 
-      </div>
-    </section>
-
-    <!-- METRICAS DE CREDIBILIDAD -->
-    <section class="bg-white border-b border-slate-200/80 py-7">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          
-          <div class="space-y-1">
-            <div class="text-3xl sm:text-4xl font-black text-brand-blue">+45 A&ntilde;os</div>
-            <div class="text-xs sm:text-sm font-semibold text-slate-600">Investigaci&oacute;n Cient&iacute;fica</div>
-          </div>
-
-          <div class="space-y-1">
-            <div class="text-3xl sm:text-4xl font-black text-brand-blue">100% Digital</div>
-            <div class="text-xs sm:text-sm font-semibold text-slate-600">Drop-shipping DHL/Estafeta</div>
-          </div>
-
-          <div class="space-y-1">
-            <div class="text-3xl sm:text-4xl font-black text-brand-blue">6 Formas</div>
-            <div class="text-xs sm:text-sm font-semibold text-slate-600">De Ganar en Pesos ($ MXN)</div>
-          </div>
-
-          <div class="space-y-1">
-            <div class="text-3xl sm:text-4xl font-black text-emerald-600">100% Legal</div>
-            <div class="text-xs sm:text-sm font-semibold text-slate-600">Registro Sanitario en M&eacute;xico</div>
-          </div>
-
-        </div>
       </div>
     </section>
 
@@ -270,63 +249,68 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-            Adaptado a tu Estilo de Vida
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 border border-teal-200 text-brand-teal text-xs font-bold uppercase tracking-wider">
+            Filtro de Perfiles &bull; &iquest;Es este proyecto para ti?
           </div>
           <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            &iquest;Para Qui&eacute;n es Esta Oportunidad de Negocio?
+            Dise&ntilde;ado para Diferentes Estilos de Vida
           </h2>
           <p class="text-slate-600 text-base sm:text-lg">
-            No importa tu profesi&oacute;n actual ni si nunca has vendido nada. Selecciona tu perfil y descubre c&oacute;mo se adapta a ti:
+            No necesitas renunciar a lo que haces hoy. Selecciona tu perfil y descubre c&oacute;mo este modelo se adapta a tus tiempos y metas:
           </p>
         </div>
 
-        <!-- BOTONES DE PESTANAS (TOUCH FRIENDLY >= 48PX) -->
-        <div class="flex flex-wrap justify-center gap-3 mb-10">
-          <button 
-            v-for="tab in audienceTabs" 
-            :key="tab.id"
-            @click="activeAudienceTab = tab.id"
-            :class="activeAudienceTab === tab.id ? 'bg-brand-blue text-white shadow-md' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'"
-            class="px-5 py-3.5 rounded-xl font-bold text-sm sm:text-base transition-all flex items-center gap-2 min-h-[48px]">
-            <span>{{ tab.label }}</span>
-          </button>
-        </div>
-
-        <!-- CONTENIDO DE LA PESTANA ACTIVA -->
-        <div class="bg-slate-50 border border-slate-200/80 rounded-3xl p-8 sm:p-12 max-w-4xl mx-auto shadow-xs">
-          <div class="space-y-6">
-            
-            <div class="inline-block px-3 py-1 rounded-full bg-blue-100 text-brand-blue text-xs font-extrabold tracking-wide uppercase">
-              {{ audienceData[activeAudienceTab].tag }}
-            </div>
-
-            <h3 class="text-2xl sm:text-3xl font-black text-slate-900 leading-snug">
-              {{ audienceData[activeAudienceTab].title }}
-            </h3>
-
-            <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
-              {{ audienceData[activeAudienceTab].subtitle }}
-            </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-200">
-              <div 
-                v-for="(benefit, bIdx) in audienceData[activeAudienceTab].benefits" 
-                :key="bIdx"
-                class="flex items-start gap-3 text-sm font-semibold text-slate-700">
-                <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">&#10003;</span>
-                <span>{{ benefit }}</span>
-              </div>
-            </div>
-
-            <div class="pt-6">
-              <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, me identifico con el perfil de ' + audienceData[activeAudienceTab].tag + '. Me gustar\u00EDa solicitar el plan de expansi\u00F3n.')" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black text-sm px-7 py-3.5 rounded-xl shadow-md transition-all min-h-[48px]">
-                <span>Solicitar Plan de Expansi&oacute;n por WhatsApp</span>
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
-              </button>
-            </div>
-
+        <!-- PESTANAS INTERACTIVAS VUE 3 -->
+        <div class="max-w-4xl mx-auto">
+          
+          <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8">
+            <button 
+              v-for="profile in profiles" 
+              :key="profile.id"
+              @click="activeProfile = profile.id"
+              :class="activeProfile === profile.id ? 'bg-brand-blue text-white shadow-md shadow-teal-700/20' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'"
+              class="px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all min-h-[48px] flex items-center gap-2">
+              <span>{{ profile.icon }}</span>
+              <span>{{ profile.title }}</span>
+            </button>
           </div>
+
+          <!-- CONTENIDO DEL PERFIL SELECCIONADO -->
+          <div class="bg-gradient-to-br from-teal-50/50 via-white to-slate-50 rounded-3xl border border-teal-100 p-8 sm:p-10 shadow-sm transition-all duration-300">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              
+              <div class="md:col-span-8 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+                  {{ currentProfile.badge }}
+                </div>
+                <h3 class="text-2xl font-black text-slate-900">
+                  {{ currentProfile.headline }}
+                </h3>
+                <p class="text-slate-600 text-base leading-relaxed">
+                  {{ currentProfile.description }}
+                </p>
+
+                <!-- BENEFICIOS CLAVE DEL PERFIL -->
+                <ul class="space-y-2.5 pt-2">
+                  <li v-for="(benefit, bIdx) in currentProfile.benefits" :key="bIdx" class="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                    <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">&#10003;</span>
+                    <span>{{ benefit }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- CTA CONTEXTUAL POR PERFIL -->
+              <div class="md:col-span-4 flex flex-col justify-center items-center text-center space-y-4 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs">
+                <div class="text-4xl">{{ currentProfile.icon }}</div>
+                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Plan personalizado</span>
+                <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, me identifico con el perfil de ' + currentProfile.title + ' y quiero conocer el plan de expansi\u00F3n en M\u00E9xico.')" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black py-3.5 px-4 rounded-xl text-xs sm:text-sm shadow-md transition-all min-h-[48px]">
+                  Consultar Plan para mi Perfil
+                </button>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -335,73 +319,89 @@
     <!-- ======================================================== -->
     <!-- BLOQUE 3: LOS 4 PILARES DEL MODELO DE NEGOCIO -->
     <!-- ======================================================== -->
-    <section id="pilares" class="py-16 sm:py-24 bg-slate-50/60 border-b border-slate-200/80">
+    <section id="pilares" class="py-16 sm:py-24 bg-gradient-to-b from-white via-teal-50/30 to-[#FAF8F5] border-b border-slate-200/80">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/80 border border-blue-200 text-brand-blue text-xs font-bold uppercase tracking-wider">
-            Solidez & Respaldo
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 border border-teal-200 text-brand-teal text-xs font-bold uppercase tracking-wider">
+            La Estructura Operativa
           </div>
           <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Los 4 Pilares del Modelo de Negocio
+            Los 4 Pilares de Alta Conversi&oacute;n del Modelo
           </h2>
           <p class="text-slate-600 text-base sm:text-lg">
-            Un sistema probado que combina biotecnolog&iacute;a patentada, comercio electr&oacute;nico automatizado y mentor&iacute;a personalizada:
+            La raz&oacute;n por la cual este sistema permite generar ingresos s&oacute;lidos sin descuidar tu empleo es su infraestructura totalmente resuelta:
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
-          <!-- PILAR 1: DROP-SHIPPING OFICIAL -->
-          <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-brand-blue/30 transition-all group space-y-4">
-            <div class="w-14 h-14 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-black group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          <!-- PILAR 1 -->
+          <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-xs hover:shadow-lg transition-all space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-teal-100 text-brand-teal flex items-center justify-center font-black text-xl">
+                &#128230;
+              </div>
+              <span class="text-xs font-bold text-teal-800 uppercase tracking-wider">Pilar 01 &bull; Log&iacute;stica</span>
+              <h3 class="text-xl font-black text-slate-900 leading-snug">Drop-shipping Oficial DHL &amp; Estafeta</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Tus clientes compran en tu plataforma virtual en pesos mexicanos. La compa&ntilde;a cobra directamente y despacha el pedido a la puerta del cliente. Cero empaques ni inventarios en tu casa.
+              </p>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors">
-              Drop-shipping 100% Automatizado
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Cero gesti&oacute;n de inventarios o cobros personales. Tus clientes compran en tu plataforma digital; la empresa cobra y despacha por DHL y Estafeta a todo M&eacute;xico.
-            </p>
+            <div class="pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+              Cobertura en toda la Rep&uacute;blica Mexicana
+            </div>
           </div>
 
-          <!-- PILAR 2: BIOTECNOLOGIA CELULAR +45 ANOS -->
-          <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-brand-blue/30 transition-all group space-y-4">
-            <div class="w-14 h-14 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center font-black group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          <!-- PILAR 2 -->
+          <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-xs hover:shadow-lg transition-all space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-teal-100 text-brand-teal flex items-center justify-center font-black text-xl">
+                &#129516;
+              </div>
+              <span class="text-xs font-bold text-teal-800 uppercase tracking-wider">Pilar 02 &bull; Ciencia</span>
+              <h3 class="text-xl font-black text-slate-900 leading-snug">+45 A&ntilde;os de Biotecnolog&iacute;a Celular</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Formulaciones patentadas de origen canadiense con respaldo de m&aacute;s de 45 a&ntilde;os de investigaci&oacute;n cient&iacute;fica, registradas en prestigiosos compendios m&eacute;dicos internacionales como el PDR.
+              </p>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors">
-              Biotecnolog&iacute;a de +45 A&ntilde;os
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Nutrac&eacute;utico patentado con donador de ciste&iacute;na enlazada para glutati&oacute;n celular. Sin competencia en el mercado, con patentes m&eacute;dicas y presencia en PDR y CPS.
-            </p>
+            <div class="pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+              M&aacute;xima credibilidad sin objeciones
+            </div>
           </div>
 
-          <!-- PILAR 3: ALTA CONSUMIBILIDAD Y RETENCION -->
-          <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-brand-blue/30 transition-all group space-y-4">
-            <div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-black group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <!-- PILAR 3 -->
+          <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-xs hover:shadow-lg transition-all space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-black text-xl">
+                &#9851;
+              </div>
+              <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Pilar 03 &bull; Recompra</span>
+              <h3 class="text-xl font-black text-slate-900 leading-snug">Alta Consumibilidad Mensual</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                A diferencia de productos que se compran una sola vez, el bienestar celular genera h&aacute;bito de consumo mensual. Una vez que tu cliente nota la energ&iacute;a y vitalidad, recompra peri&oacute;dicamente generando ingreso residual.
+              </p>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors">
-              Alta Consumibilidad & Retenci&oacute;n
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Al notar mejoras reales en su energ&iacute;a y salud, los clientes recompran de forma recurrente mes a mes, garantiz&aacute;ndote ingresos residuales sostenibles y en constante crecimiento.
-            </p>
+            <div class="pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+              Retenci&oacute;n y estabilidad mes tras mes
+            </div>
           </div>
 
-          <!-- PILAR 4: MENTORIA 1 A 1 -->
-          <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md hover:border-brand-blue/30 transition-all group space-y-4">
-            <div class="w-14 h-14 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-black group-hover:scale-110 transition-transform">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          <!-- PILAR 4 -->
+          <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-xs hover:shadow-lg transition-all space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center font-black text-xl">
+                &#129309;
+              </div>
+              <span class="text-xs font-bold text-amber-800 uppercase tracking-wider">Pilar 04 &bull; Acompa&ntilde;amiento</span>
+              <h3 class="text-xl font-black text-slate-900 leading-snug">Mentor&iacute;a 1 a 1 y Duplicaci&oacute;n</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                No comienzas a ciegas. Recibes el paso a paso directamente de Mar&iacute;a de Jes&uacute;s Vera desde Puebla, con gu&iacute;as de conversaci&oacute;n, materiales digitales y apoyo en tus primeras interacciones.
+              </p>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 group-hover:text-brand-blue transition-colors">
-              Mentor&iacute;a 1 a 1 de Mar&iacute;a
-            </h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Acompa&ntilde;amiento directo paso a paso desde Puebla, M&eacute;xico. Te ense&ntilde;amos a presentar, resolver dudas y apalancarte en el sistema de duplicaci&oacute;n sin costo extra.
-            </p>
+            <div class="pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+              Nunca caminas en solitario
+            </div>
           </div>
 
         </div>
@@ -410,73 +410,64 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- BLOQUE 4: PRUEBA SOCIAL Y CREDIBILIDAD -->
+    <!-- BLOQUE 4: PRUEBA SOCIAL Y CREDIBILIDAD (MENTORA Y TESTIMONIOS) -->
     <!-- ======================================================== -->
     <section id="testimonios" class="py-16 sm:py-24 bg-white border-b border-slate-200/80">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-            Casos de &Eacute;xito
+            Prueba Social &bull; Resultados en M&eacute;xico
           </div>
           <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Personas Reales Construyendo Activos Digitales
+            Personas Reales Construyendo su Libertad en M&eacute;xico
           </h2>
           <p class="text-slate-600 text-base sm:text-lg">
-            Emprendedores en M&eacute;xico que comenzaron desde cero a tiempo parcial:
+            Conoce experiencias de quienes ya aplican el sistema de duplicaci&oacute;n con Mar&iacute;a de Jes&uacute;s Vera:
           </p>
         </div>
 
-        <!-- TARJETAS DE TESTIMONIOS -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div 
-            v-for="(test, tIdx) in testimonials" 
-            :key="tIdx"
-            class="bg-slate-50 border border-slate-200/80 rounded-2xl p-7 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow space-y-5">
-            
+        <!-- GRID DE TESTIMONIOS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div v-for="(t, idx) in testimonials" :key="idx" class="bg-gradient-to-br from-[#FAF8F5] to-white rounded-3xl p-7 border border-slate-200/80 shadow-xs space-y-4 flex flex-col justify-between">
             <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="inline-block px-2.5 py-1 rounded-md bg-blue-100 text-brand-blue text-xs font-bold">{{ test.badge }}</span>
-                <span class="text-amber-500 font-bold text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <div class="flex items-center gap-1 text-amber-500 text-sm">
+                &#9733;&#9733;&#9733;&#9733;&#9733;
               </div>
-              <p class="text-slate-700 text-sm leading-relaxed italic">
-                &ldquo;{{ test.text }}&rdquo;
+              <p class="text-sm text-slate-700 leading-relaxed italic">
+                &ldquo;{{ t.quote }}&rdquo;
               </p>
             </div>
-
             <div class="pt-4 border-t border-slate-200 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-brand-blue text-white font-black text-sm flex items-center justify-center shrink-0">
-                {{ test.name.charAt(0) }}
+              <div class="w-10 h-10 rounded-full bg-teal-100 text-brand-teal flex items-center justify-center font-black text-sm shrink-0">
+                {{ t.initials }}
               </div>
               <div>
-                <div class="text-sm font-extrabold text-slate-900 leading-tight">{{ test.name }}</div>
-                <div class="text-xs text-slate-500">{{ test.role }} &bull; {{ test.city }}</div>
+                <p class="text-sm font-bold text-slate-900">{{ t.name }}</p>
+                <p class="text-xs text-slate-500">{{ t.role }} &bull; {{ t.city }}</p>
               </div>
             </div>
-
           </div>
         </div>
 
-      </div>
-    </section>
-
-    <!-- FOTO PROFESIONAL Y BIO DE MENTORIA: MARIA DE JESUS VERA -->
-    <section id="mentora" class="py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-blue-50/40 border-b border-slate-200/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="bg-white rounded-3xl border border-slate-200/80 p-8 sm:p-14 shadow-lg">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <!-- MENTORA MARÃA DE JESÃšS VERA -->
+        <div id="mentora" class="bg-gradient-to-br from-teal-50/60 via-white to-slate-50 rounded-3xl border border-teal-200 p-8 sm:p-12 shadow-sm">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            <div class="lg:col-span-5 flex justify-center">
-              <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
-                <img src="assets/img/consultation.jpg" alt="Mar&iacute;a de Jes&uacute;s Vera - Mentora de Negocios" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
+            <div class="lg:col-span-5 relative">
+              <div class="relative max-w-sm mx-auto">
+                <div class="rounded-3xl overflow-hidden border-2 border-teal-200 shadow-xl aspect-[4/3] bg-white">
+                  <img src="assets/img/consultation.jpg" alt="Mentora Maria de Jesus Vera en Puebla Mexico" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white rounded-full py-1.5 px-4 border border-teal-100 shadow-md text-xs font-bold text-brand-teal shrink-0 whitespace-nowrap">
+                  Puebla, M&eacute;xico &bull; Asesor&iacute;a 1 a 1
+                </div>
               </div>
             </div>
 
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-brand-blue text-xs font-bold uppercase tracking-wider">
-                Tu Gu&iacute;a y Mentora en M&eacute;xico
+            <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-wider">
+                Liderazgo y Acompa&ntilde;amiento
               </div>
 
               <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
@@ -489,19 +480,19 @@
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left text-sm text-slate-700 font-medium">
                 <div class="flex items-center gap-2">
-                  <span class="text-emerald-500 font-bold">&#10003;</span>
+                  <span class="text-emerald-600 font-bold">&#10003;</span>
                   <span>Mentor&iacute;a 1 a 1 para nuevos asociados</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-emerald-500 font-bold">&#10003;</span>
+                  <span class="text-emerald-600 font-bold">&#10003;</span>
                   <span>Apoyo en presentaciones y llamadas con prospectos</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-emerald-500 font-bold">&#10003;</span>
+                  <span class="text-emerald-600 font-bold">&#10003;</span>
                   <span>Comunidad activa de soporte en WhatsApp</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-emerald-500 font-bold">&#10003;</span>
+                  <span class="text-emerald-600 font-bold">&#10003;</span>
                   <span>Estrategias digitales de prospecci&oacute;n sin costo</span>
                 </div>
               </div>
@@ -522,13 +513,13 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- BLOQUE 5: SIMULADOR DE INGRESOS Y PAQUETES DE INICIO -->
+    <!-- BLOQUE 5: SIMULADOR DE INGRESOS EN MONEDA NACIONAL ($ MXN) -->
     <!-- ======================================================== -->
-    <section id="calculadora" class="py-16 sm:py-24 bg-gradient-to-b from-blue-50/50 via-white to-slate-50 border-b border-slate-200/80">
+    <section id="calculadora" class="py-16 sm:py-24 bg-gradient-to-b from-teal-50/40 via-white to-[#FAF8F5] border-b border-slate-200/80">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/80 border border-blue-200 text-brand-blue text-xs font-bold uppercase tracking-wider">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 border border-teal-200 text-brand-teal text-xs font-bold uppercase tracking-wider">
             Simulador en Moneda Nacional ($ MXN)
           </div>
           <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
@@ -547,39 +538,52 @@
             <div>
               <div class="flex justify-between items-center mb-2">
                 <label class="text-sm font-bold text-slate-700">Clientes habituales que consumen suplementaci&oacute;n al mes:</label>
-                <span class="text-base font-extrabold text-brand-blue bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">{{ simCustomers }} clientes</span>
+                <span class="text-base font-extrabold text-brand-teal bg-teal-50 px-3 py-1 rounded-lg border border-teal-100">{{ simCustomers }} clientes</span>
               </div>
-              <input type="range" min="1" max="25" v-model.number="simCustomers" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-blue">
-              <p class="text-xs text-slate-500 mt-1">Margen promedio de venta directa: $550 MXN por cliente mensual.</p>
+              <input type="range" min="2" max="30" v-model.number="simCustomers" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+              <div class="flex justify-between text-xs text-slate-400 mt-1">
+                <span>2 clientes</span>
+                <span>15 clientes</span>
+                <span>30 clientes</span>
+              </div>
             </div>
 
-            <!-- CONTROL ASOCIADOS -->
+            <!-- CONTROL SOCIOS -->
             <div>
               <div class="flex justify-between items-center mb-2">
-                <label class="text-sm font-bold text-slate-700">Nuevos emprendedores y asociados activos en tu equipo:</label>
-                <span class="text-base font-extrabold text-brand-blue bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">{{ simPartners }} socios</span>
+                <label class="text-sm font-bold text-slate-700">Socios activos en tu equipo de trabajo:</label>
+                <span class="text-base font-extrabold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-100">{{ simPartners }} socios</span>
               </div>
-              <input type="range" min="1" max="15" v-model.number="simPartners" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-blue">
-              <p class="text-xs text-slate-500 mt-1">Estimaci&oacute;n de bonos de inicio y comisiones residuales de equipo.</p>
+              <input type="range" min="0" max="15" v-model.number="simPartners" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+              <div class="flex justify-between text-xs text-slate-400 mt-1">
+                <span>0 socios</span>
+                <span>7 socios</span>
+                <span>15 socios</span>
+              </div>
             </div>
 
           </div>
 
-          <!-- RESULTADO CALCULADO -->
-          <div class="bg-gradient-to-br from-brand-navy to-brand-blue text-white rounded-2xl p-6 sm:p-8 text-center space-y-3">
-            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-200">Ingreso Mensual Estimado Proyectado</span>
-            <div class="text-4xl sm:text-5xl font-black tracking-tight text-white">
-              ${{ projectedMonthlyIncome.toLocaleString('es-MX') }} <span class="text-xl font-bold text-blue-200">MXN / mes</span>
+          <!-- RESULTADO ESTIMADO -->
+          <div class="bg-gradient-to-br from-teal-50 via-emerald-50/50 to-white rounded-2xl p-6 border border-teal-100 text-center space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-teal-800">Estimaci&oacute;n Mensual en Pesos Mexicanos</span>
+            <div class="text-4xl sm:text-5xl font-black text-brand-teal tracking-tight">
+              ${{ estimatedEarnings.toLocaleString('es-MX') }} <span class="text-lg font-bold text-slate-500">MXN / mes</span>
             </div>
-            
-            <!-- LEYENDA OBLIGATORIA DE META ADS / COMPLIANCE -->
-            <p class="text-xs text-blue-100/90 max-w-xl mx-auto pt-2 border-t border-white/10 leading-relaxed">
-              &ldquo;Las proyecciones son ilustrativas y dependen del esfuerzo, tiempo y dedicaci&oacute;n de cada asociado independiente. No constituyen una garant&iacute;a de ingresos fijos.&rdquo;
+            <p class="text-xs text-slate-500 max-w-md mx-auto">
+              *Proyecci&oacute;n combinada entre venta directa mayorista y comisiones de equipo residual.
             </p>
           </div>
 
-          <div class="text-center">
-            <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, calcul\u00E9 mi meta en el simulador de la landing. Deseo solicitar el plan de expansi\u00F3n por WhatsApp.')" class="inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-base px-8 py-4 rounded-xl shadow-lg hover:shadow-amber-500/30 border border-amber-300 transition-all min-h-[48px]">
+          <!-- DISCLAIMER OBLIGATORIO DE CUMPLIMIENTO META ADS -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center">
+            <p class="text-xs text-slate-500 leading-relaxed">
+              <strong>Aviso de exenci&oacute;n de responsabilidad (Meta Ads Compliance):</strong> Las proyecciones son ilustrativas y dependen del esfuerzo, tiempo y dedicaci&oacute;n de cada asociado independiente. No constituyen una garant&iacute;a de ingresos fijos.
+            </p>
+          </div>
+
+          <div class="text-center pt-2">
+            <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, hice una simulaci\u00F3n en la landing page y me gustar\u00EDa revisar c\u00F3mo alcanzar una meta mensual de $' + estimatedEarnings.toLocaleString('es-MX') + ' MXN.')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black text-sm sm:text-base px-8 py-4 rounded-xl shadow-md transition-all min-h-[48px]">
               <svg class="w-5 h-5 fill-current text-slate-950" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
               <span>Solicitar Plan de Expansi&oacute;n por WhatsApp</span>
             </button>
@@ -587,107 +591,23 @@
 
         </div>
 
-      </div>
-    </section>
-
-    <!-- PAQUETES DE INICIO -->
-    <section id="paquetes" class="py-16 sm:py-24 bg-white border-b border-slate-200/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-            Opciones de Arranque
+        <!-- ORIENTACION Y REQUERIMIENTOS: EL ASESOR BRINDA LA INFORMACION PERSONALIZADA -->
+        <div class="mt-12 bg-white rounded-3xl p-8 sm:p-10 border border-teal-200/90 shadow-xl text-center max-w-3xl mx-auto space-y-5">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-brand-teal text-xs font-bold uppercase tracking-wider">
+            <span>&#128172;</span> Orientaci&oacute;n y Opciones de Inicio Personalizadas
           </div>
-          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Paquetes de Inicio de Negocio en M&eacute;xico
-          </h2>
-          <p class="text-slate-600 text-base sm:text-lg">
-            Te integras adquiriendo producto con el m&aacute;ximo descuento preferencial mayorista. En la llamada por WhatsApp, Mar&iacute;a de Jes&uacute;s Vera te explicar&aacute; a detalle c&oacute;mo arrancar seg&uacute;n tus metas:
+          <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            &iquest;Deseas conocer las opciones para arrancar seg&uacute;n tus metas?
+          </h3>
+          <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+            Cada persona tiene tiempos y metas diferentes. En una llamada breve o conversaci&oacute;n por WhatsApp, <strong>Mar&iacute;a de Jes&uacute;s Vera</strong> te presentar&aacute; de forma transparente los requerimientos, promociones vigentes y las mejores alternativas de integraci&oacute;n para tu perfil.
           </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          <!-- PAQUETE 1 -->
-          <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 flex flex-col justify-between space-y-6">
-            <div class="space-y-4">
-              <span class="text-xs font-black tracking-wider uppercase text-slate-500">Paquete B&aacute;sico</span>
-              <h3 class="text-2xl font-black text-slate-900">Inicio Esencial</h3>
-              <p class="text-sm text-slate-600">Ideal si deseas arrancar con una inversi&oacute;n accesible y comenzar a compartir los beneficios del producto.</p>
-              
-              <div class="pt-4 border-t border-slate-200">
-                <span class="text-xs text-slate-500 font-semibold">Inversi&oacute;n aproximada</span>
-                <div class="text-3xl font-black text-slate-900">~$6,400 <span class="text-sm font-semibold text-slate-500">MXN</span></div>
-              </div>
-
-              <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
-                <li class="flex items-center gap-2"><span>&#10003;</span> <span>Cajas de suplementaci&oacute;n b&aacute;sica</span></li>
-                <li class="flex items-center gap-2"><span>&#10003;</span> <span>Acceso a c&oacute;digo y tienda virtual</span></li>
-                <li class="flex items-center gap-2"><span>&#10003;</span> <span>Oficina en l&iacute;nea para seguimiento</span></li>
-                <li class="flex items-center gap-2"><span>&#10003;</span> <span>Capacitaci&oacute;n inicial del equipo</span></li>
-              </ul>
-            </div>
-
-            <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, me interesa conocer m\u00E1s sobre el Paquete Inicio Esencial en M\u00E9xico.')" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3.5 rounded-xl text-sm transition-all min-h-[48px]">
-              Consultar Paquete
+          <div class="pt-2">
+            <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, vi el simulador en la landing page y me gustar\u00EDa conocer las opciones de inicio disponibles seg\u00FAn mis metas.')" class="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-sm sm:text-base px-8 py-4 rounded-xl shadow-xl hover:shadow-amber-500/30 border border-amber-300 transition-all transform hover:-translate-y-0.5 active:translate-y-0 min-h-[48px] cta-glow">
+              <svg class="w-5 h-5 fill-current text-slate-950" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
+              <span>Solicitar Opciones de Inicio por WhatsApp</span>
             </button>
           </div>
-
-          <!-- PAQUETE 2: RECOMENDADO -->
-          <div class="bg-gradient-to-b from-white to-blue-50/50 rounded-3xl p-8 border-2 border-brand-blue shadow-xl relative flex flex-col justify-between space-y-6">
-            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-blue to-brand-lightBlue text-white text-xs font-black uppercase tracking-wider py-1 px-4 rounded-full shadow-md">
-              M&aacute;s Popular y Completo
-            </div>
-
-            <div class="space-y-4 pt-2">
-              <span class="text-xs font-black tracking-wider uppercase text-brand-blue">&Eacute;xito Total</span>
-              <h3 class="text-2xl font-black text-slate-900">Paquete Bienestar &Eacute;xito</h3>
-              <p class="text-sm text-slate-600">El paquete m&aacute;s solicitado: combina f&oacute;rmulas avanzadas y b&aacute;sicas con el m&aacute;ximo volumen de producto y ahorro.</p>
-              
-              <div class="pt-4 border-t border-slate-200">
-                <span class="text-xs text-slate-500 font-semibold">Inversi&oacute;n aproximada</span>
-                <div class="text-3xl font-black text-brand-blue">~$10,800 <span class="text-sm font-semibold text-slate-500">MXN</span></div>
-              </div>
-
-              <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
-                <li class="flex items-center gap-2 font-semibold"><span>&#10003;</span> <span>Surtido de f&oacute;rmulas avanzadas y b&aacute;sicas</span></li>
-                <li class="flex items-center gap-2 font-semibold"><span>&#10003;</span> <span>M&aacute;ximo ahorro preferencial (hasta 45%)</span></li>
-                <li class="flex items-center gap-2 font-semibold"><span>&#10003;</span> <span>M&aacute;ximo puntaje de arranque para bonos</span></li>
-                <li class="flex items-center gap-2 font-semibold"><span>&#10003;</span> <span>Mentor&iacute;a prioritaria con Mar&iacute;a de Jes&uacute;s</span></li>
-                <li class="flex items-center gap-2 font-semibold"><span>&#10003;</span> <span>Kit de capacitaci&oacute;n y bienvenida</span></li>
-              </ul>
-            </div>
-
-            <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, quiero solicitar el Paquete Bienestar \u00C9xito en M\u00E9xico.')" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black py-4 rounded-xl text-sm shadow-md transition-all min-h-[48px]">
-              Elegir Paquete &Eacute;xito
-            </button>
-          </div>
-
-          <!-- PAQUETE 3 -->
-          <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 flex flex-col justify-between space-y-6">
-            <div class="space-y-4">
-              <span class="text-xs font-black tracking-wider uppercase text-slate-500">Salud Integral</span>
-              <h3 class="text-2xl font-black text-slate-900">Salud Familiar</h3>
-              <p class="text-sm text-slate-600">Dise&ntilde;ado para quienes buscan bienestar celular para su familia y arrancar con producto para demostraci&oacute;n.</p>
-              
-              <div class="pt-4 border-t border-slate-200">
-                <span class="text-xs text-slate-500 font-semibold">Inversi&oacute;n aproximada</span>
-                <div class="text-3xl font-black text-slate-900">~$9,500 <span class="text-sm font-semibold text-slate-500">MXN</span></div>
-              </div>
-
-              <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
-                <li class="flex items-center gap-2"><span>&#10003;</span> <span>F&oacute;rmulas combinadas para bienestar celular</span></li>
-                <li class="flex items-center gap-2"><span>&#10003;</span> <span>Descuento preferencial de equipo garantizado</span></li>
-                <li class="flex items-center gap-2"><span>&#10003;</span> <span>Vaso mezclador oficial y material</span></li>
-                <li class="flex items-center gap-2"><span>&#10003;</span> <span>Acceso al sistema educativo del equipo</span></li>
-              </ul>
-            </div>
-
-            <button @click="contactAdvisorWhatsApp('Hola Mar\u00EDa de Jes\u00FAs, me gustar\u00EDa informaci\u00F3n sobre el Paquete Salud Familiar.')" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3.5 rounded-xl text-sm transition-all min-h-[48px]">
-              Consultar Paquete
-            </button>
-          </div>
-
         </div>
 
       </div>
@@ -697,10 +617,10 @@
     <!-- BLOQUE 6: FORMULARIO FINAL + PREGUNTAS FRECUENTES (FAQ) -->
     <!-- ======================================================== -->
     <!-- FORMULARIO DE POSTULACION / REGISTRO -->
-    <section id="postulacion" class="py-16 sm:py-24 bg-gradient-to-r from-brand-navy via-brand-blue to-brand-deep text-white text-center relative overflow-hidden">
+    <section id="postulacion" class="py-16 sm:py-24 bg-gradient-to-r from-brand-navy via-brand-tealDark to-brand-deep text-white text-center relative overflow-hidden">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
         
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-blue-200 text-xs sm:text-sm font-bold tracking-wide uppercase">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-teal-200 text-xs sm:text-sm font-bold tracking-wide uppercase">
           <span class="w-2 h-2 rounded-full bg-cta-amber"></span>
           Postulaci&oacute;n y Contacto Directo
         </div>
@@ -709,118 +629,96 @@
           &iquest;Listo para Iniciar tu Negocio en M&eacute;xico?
         </h2>
 
-        <p class="text-base sm:text-lg text-blue-100 max-w-2xl mx-auto">
-          Completa el formulario para recibir el plan de expansi&oacute;n personalizado y coordinar tu pl&aacute;tica de orientaci&oacute;n con Mar&iacute;a de Jes&uacute;s Vera:
+        <p class="text-base sm:text-lg text-teal-100 max-w-2xl mx-auto leading-relaxed">
+          Llena tus datos a continuaci&oacute;n. Tu informaci&oacute;n se sincroniza con nuestro equipo y se abrir&aacute; WhatsApp para coordinar tu sesi&oacute;n de bienvenida con <strong>Mar&iacute;a de Jes&uacute;s Vera</strong>.
         </p>
 
-        <!-- FORMULARIO REACTIVO -->
-        <div class="bg-white text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl text-left max-w-2xl mx-auto border border-white/20">
+        <!-- CAJA DEL FORMULARIO -->
+        <div class="bg-white text-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl text-left border border-slate-100 max-w-2xl mx-auto mt-8">
           
-          <div v-if="submitSuccess" class="bg-emerald-50 border border-emerald-200 p-6 rounded-2xl text-center space-y-3">
-            <div class="text-4xl font-black text-emerald-600">&#10003;</div>
-            <h3 class="text-xl font-bold text-emerald-900">&iexcl;Informaci&oacute;n recibida con &eacute;xito!</h3>
-            <p class="text-sm text-emerald-700">Te estamos redirigiendo a WhatsApp con Mar&iacute;a de Jes&uacute;s Vera para atenderte de inmediato.</p>
-          </div>
-
-          <form v-else @submit.prevent="submitApplication" class="space-y-4">
+          <form @submit.prevent="submitForm" class="space-y-4">
             
             <!-- NOMBRE -->
             <div>
-              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1">Tu Nombre Completo *</label>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Nombre Completo *</label>
               <input 
-                v-model="form.name" 
                 type="text" 
-                placeholder="Ej. Ana Laura Dom&iacute;nguez" 
-                class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-base transition-all">
-              <span v-if="errors.name" class="text-xs text-rose-500 font-semibold mt-1 block">{{ errors.name }}</span>
+                v-model="form.name" 
+                required 
+                placeholder="Ej. Carolina M&eacute;ndez"
+                class="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-base focus:border-brand-teal focus:ring-2 focus:ring-teal-100 outline-none transition-all">
             </div>
 
-            <!-- TELEFONO / CELULAR EN MEXICO -->
+            <!-- TELEFONO CELULAR (MEXICO 10 DIGITOS) -->
             <div>
-              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1">N&uacute;mero de Celular / WhatsApp (10 d&iacute;gitos) *</label>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">WhatsApp / Tel&eacute;fono Celular (10 d&iacute;gitos en M&eacute;xico) *</label>
               <div class="flex">
-                <span class="inline-flex items-center px-3.5 rounded-l-xl border border-r-0 border-slate-300 bg-slate-100 text-slate-600 font-bold text-sm">
-                  MX +52
+                <span class="inline-flex items-center px-4 rounded-l-xl border border-r-0 border-slate-200 bg-slate-50 text-slate-500 font-bold text-sm">
+                  +52
                 </span>
                 <input 
-                  v-model="form.phone" 
                   type="tel" 
-                  maxlength="14"
-                  placeholder="Ej. 222 123 4567" 
-                  class="w-full px-4 py-3.5 rounded-r-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-base transition-all">
+                  v-model="form.phone" 
+                  required 
+                  maxlength="10"
+                  placeholder="Ej. 2221234567"
+                  class="w-full px-4 py-3.5 rounded-r-xl border border-slate-200 text-base focus:border-brand-teal focus:ring-2 focus:ring-teal-100 outline-none transition-all">
               </div>
-              <span v-if="errors.phone" class="text-xs text-rose-500 font-semibold mt-1 block">{{ errors.phone }}</span>
+              <p class="text-[11px] text-slate-400 mt-1">Escribe tu n&uacute;mero celular a 10 d&iacute;gitos para recibir el plan por WhatsApp.</p>
             </div>
 
-            <!-- CIUDAD / ESTADO -->
+            <!-- CIUDAD / ESTADO EN MEXICO -->
             <div>
-              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1">Ciudad o Estado de la Rep&uacute;blica</label>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Ciudad o Estado en M&eacute;xico *</label>
               <input 
-                v-model="form.city" 
                 type="text" 
-                placeholder="Ej. Puebla, CDMX, Guadalajara, Monterrey..." 
-                class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-base transition-all">
+                v-model="form.city" 
+                required 
+                placeholder="Ej. Puebla, CDMX, Guadalajara, Monterrey..."
+                class="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-base focus:border-brand-teal focus:ring-2 focus:ring-teal-100 outline-none transition-all">
             </div>
 
-            <!-- META DE INGRESOS -->
-            <div>
-              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1">&iquest;Cu&aacute;l es tu meta de ingresos mensual?</label>
-              <select 
-                v-model="form.goal" 
-                class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-base transition-all bg-white">
-                <option v-for="g in businessGoals" :key="g.id" :value="g.label">{{ g.label }}</option>
-              </select>
+            <!-- META DE INGRESO MENSUAL -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Meta mensual deseada</label>
+                <select 
+                  v-model="form.incomeGoal"
+                  class="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:border-brand-teal focus:ring-2 focus:ring-teal-100 outline-none transition-all bg-white">
+                  <option value="$8,000 - $15,000 MXN">$8,000 - $15,000 MXN</option>
+                  <option value="$15,000 - $30,000 MXN">$15,000 - $30,000 MXN</option>
+                  <option value="$30,000 - $60,000 MXN">$30,000 - $60,000 MXN</option>
+                  <option value="M&aacute;s de $60,000 MXN">M&aacute;s de $60,000 MXN</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Tiempo disponible</label>
+                <select 
+                  v-model="form.timeAvailability"
+                  class="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:border-brand-teal focus:ring-2 focus:ring-teal-100 outline-none transition-all bg-white">
+                  <option value="5 a 10 horas semanales">5 a 10 horas semanales</option>
+                  <option value="10 a 15 horas semanales">10 a 15 horas semanales</option>
+                  <option value="15 a 25 horas semanales">15 a 25 horas semanales</option>
+                  <option value="Tiempo completo">Tiempo completo</option>
+                </select>
+              </div>
             </div>
 
-            <!-- DISPONIBILIDAD -->
-            <div>
-              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1">&iquest;Cu&aacute;nto tiempo puedes dedicarle a la semana?</label>
-              <select 
-                v-model="form.timeAvailability" 
-                class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-base transition-all bg-white">
-                <option value="Tiempos libres (5 a 8 hrs/semana)">Tiempos libres (5 a 8 hrs a la semana)</option>
-                <option value="Medio Tiempo (10 a 12 hrs/semana)">Medio Tiempo (10 a 12 hrs a la semana)</option>
-                <option value="Tiempo Completo (+20 hrs/semana)">Tiempo Completo (+20 hrs a la semana)</option>
-              </select>
+            <!-- BOTON ENVIAR Y WHATSAPP -->
+            <div class="pt-3">
+              <button 
+                type="submit" 
+                :disabled="isSubmitting"
+                class="w-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-base py-4 rounded-xl shadow-xl hover:shadow-amber-500/30 border border-amber-300 transition-all flex items-center justify-center gap-2 transform active:scale-98 min-h-[52px]">
+                <span v-if="!isSubmitting">Solicitar Plan de Expansi&oacute;n por WhatsApp</span>
+                <span v-else>Conectando con WhatsApp...</span>
+              </button>
             </div>
 
-            <!-- EXPERIENCIA -->
-            <div>
-              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1">&iquest;Tienes experiencia previa en ventas o proyectos?</label>
-              <select 
-                v-model="form.experience" 
-                class="w-full px-4 py-3.5 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-base transition-all bg-white">
-                <option value="Sin experiencia (deseo capacitaci&oacute;n desde cero)">Sin experiencia (quiero aprender desde cero)</option>
-                <option value="Experiencia b&aacute;sica en ventas">Experiencia b&aacute;sica en ventas / atenci&oacute;n</option>
-                <option value="He participado en negocios independientes">He participado en negocios independientes</option>
-                <option value="Profesional de salud o nutrici&oacute;n">Soy profesional de la salud / nutrici&oacute;n / deporte</option>
-              </select>
-            </div>
-
-            <!-- COMENTARIOS ADICIONALES -->
-            <div>
-              <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-1">&iquest;Alguna duda o comentario en particular?</label>
-              <textarea 
-                v-model="form.message" 
-                rows="2" 
-                placeholder="Escribe aqu&iacute; cualquier detalle o duda..." 
-                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-base transition-all"></textarea>
-            </div>
-
-            <!-- BOTON ENVIAR DE ALTO CONTRASTE -->
-            <button 
-              type="submit" 
-              :disabled="isSubmitting"
-              class="w-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-4.5 rounded-xl text-base sm:text-lg shadow-xl hover:shadow-amber-500/30 border border-amber-300 transition-all flex items-center justify-center gap-2.5 disabled:opacity-50 min-h-[52px]">
-              <span v-if="isSubmitting">Enviando informaci&oacute;n...</span>
-              <span v-else class="flex items-center gap-2.5">
-                <svg class="w-5 h-5 fill-current text-slate-950" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
-                <span>Solicitar Plan de Expansi&oacute;n por WhatsApp</span>
-              </span>
-            </button>
-
-            <p class="text-[11px] text-slate-500 text-center">
-              Tus datos est&aacute;n protegidos. S&oacute;lo ser&aacute;n utilizados para coordinar tu orientaci&oacute;n personalizada con Mar&iacute;a de Jes&uacute;s Vera.
+            <!-- PRIVACIDAD -->
+            <p class="text-[11px] text-slate-400 text-center pt-1">
+              &#128274; Tus datos est&aacute;n protegidos. No compartimos tu informaci&oacute;n con terceros.
             </p>
 
           </form>
@@ -830,117 +728,97 @@
       </div>
     </section>
 
-    <!-- PREGUNTAS FRECUENTES (FAQ ACORDEON) PARA DERRIBAR OBJECIONES -->
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
     <section id="faq" class="py-16 sm:py-24 bg-white border-b border-slate-200/80">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center space-y-4 mb-12">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/80 border border-blue-200 text-brand-blue text-xs font-bold uppercase tracking-wider">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 border border-teal-200 text-brand-teal text-xs font-bold uppercase tracking-wider">
             Respuestas Claras
           </div>
           <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Preguntas Frecuentes sobre el Proyecto
+            Preguntas Frecuentes
           </h2>
-          <p class="text-slate-600 text-base">
-            Derribamos las principales dudas antes de tu llamada:
+          <p class="text-slate-600 text-base sm:text-lg">
+            Todo lo que necesitas saber antes de iniciar tu proceso de postulaci&oacute;n:
           </p>
         </div>
 
-        <div class="space-y-4">
+        <!-- ACORDEON FAQ -->
+        <div class="space-y-3.5">
           <div 
-            v-for="(faq, fIndex) in faqs" 
-            :key="fIndex"
-            class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50 transition-all">
-            
+            v-for="(faq, fIdx) in faqs" 
+            :key="fIdx"
+            class="border border-slate-200/80 rounded-2xl overflow-hidden bg-white transition-all">
             <button 
-              @click="toggleFaq(fIndex)"
-              class="w-full text-left px-6 py-5 font-bold text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-100/80 transition-colors min-h-[52px]">
-              <span class="text-base sm:text-lg leading-snug">{{ faq.q }}</span>
-              <span class="text-xl font-black text-brand-blue shrink-0">{{ openFaqIndex === fIndex ? '-' : '+' }}</span>
+              @click="toggleFaq(fIdx)" 
+              class="w-full py-5 px-6 text-left font-bold text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors min-h-[48px]">
+              <span class="text-sm sm:text-base">{{ faq.q }}</span>
+              <span class="text-xl font-bold text-brand-teal shrink-0">{{ openFaqIndex === fIdx ? 'âˆ’' : '+' }}</span>
             </button>
-
             <div 
-              v-show="openFaqIndex === fIndex" 
-              class="px-6 pb-5 pt-1 text-base text-slate-600 leading-relaxed border-t border-slate-200/60 bg-white">
+              v-show="openFaqIndex === fIdx" 
+              class="px-6 pb-5 pt-1 text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-[#FAF8F5]">
               {{ faq.a }}
             </div>
-
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- PIE DE PAGINA (FOOTER) -->
-    <footer class="bg-slate-900 text-slate-400 text-sm py-12 border-t border-slate-800">
+    <!-- ======================================================== -->
+    <!-- PIE DE PAGINA -->
+    <!-- ======================================================== -->
+    <footer class="bg-brand-navy text-slate-400 py-12 border-t border-teal-900/40">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-teal-900/60">
           
-          <div class="space-y-3">
-            <h4 class="text-white font-extrabold text-base">Mar&iacute;a de Jes&uacute;s Vera</h4>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Mentora de Negocios y L&iacute;der de Equipo.<br>
-              Puebla, M&eacute;xico &bull; Atenci&oacute;n en toda la Rep&uacute;blica Mexicana.
-            </p>
-          </div>
-
-          <div class="space-y-3">
-            <h4 class="text-white font-extrabold text-base">Contacto Oficial</h4>
-            <div class="text-xs text-slate-400 space-y-1">
-              <div>WhatsApp: <strong>{{ config.advisor.displayPhone }}</strong></div>
-              <div>Correo: <strong>{{ config.advisor.email }}</strong></div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden border border-teal-500/40 bg-white shrink-0">
+              <img src="assets/img/logo.jpg" alt="Equilibrio y Bienestar" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <p class="font-extrabold text-white text-base">Equilibrio y Bienestar</p>
+              <p class="text-xs text-slate-400">Mar&iacute;a de Jes&uacute;s Vera &bull; Puebla, M&eacute;xico</p>
             </div>
           </div>
 
-          <div class="space-y-3">
-            <h4 class="text-white font-extrabold text-base">Redes Sociales</h4>
-            <div class="flex items-center gap-3">
-              <a :href="config.socialLinks.facebook" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-blue text-white flex items-center justify-center transition-colors">
-                f
-              </a>
-              <a :href="config.socialLinks.instagram" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-pink-600 text-white flex items-center justify-center transition-colors">
-                ig
-              </a>
-              <a :href="config.socialLinks.tiktok" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center transition-colors">
-                tt
-              </a>
-              <a :href="config.socialLinks.youtube" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-red-600 text-white flex items-center justify-center transition-colors">
-                yt
-              </a>
-            </div>
+          <!-- REDES SOCIALES -->
+          <div class="flex items-center gap-4 text-xs font-semibold">
+            <a href="https://wa.me/522227708716" target="_blank" class="hover:text-white transition-colors">WhatsApp</a>
+            <a href="https://www.facebook.com/share/1DWUMNvaXq/" target="_blank" class="hover:text-white transition-colors">Facebook</a>
+            <a href="https://www.instagram.com/equilibrionutricion8?stkn=NHp1MjhkYWFuenJ1" target="_blank" class="hover:text-white transition-colors">Instagram</a>
+            <a href="https://www.tiktok.com/@equilibriobienestarnut" target="_blank" class="hover:text-white transition-colors">TikTok</a>
+            <a href="https://www.youtube.com/channel/UCixehQX5txYGv-WPZ8OeeeA" target="_blank" class="hover:text-white transition-colors">YouTube</a>
           </div>
 
         </div>
 
-        <div class="border-t border-slate-800 pt-6 text-xs text-slate-500 space-y-2 text-center sm:text-left">
-          <p>
-            <strong>Aviso de Descargo y Transparencia:</strong> Este sitio web es propiedad y est&aacute; operado por Mar&iacute;a de Jes&uacute;s Vera, emprendedora y l&iacute;der independiente. Los productos recomendados son suplementos alimenticios y no est&aacute;n destinados a diagnosticar, tratar, curar ni prevenir ninguna enfermedad. Los ingresos y resultados financieros expuestos son referenciales y dependen exclusivamente del esfuerzo, habilidades y dedicaci&oacute;n individual de cada persona.
-          </p>
-          <p>
-            &copy; 2026 Mar&iacute;a de Jes&uacute;s Vera &bull; Emprendimiento y Bienestar en M&eacute;xico. Todos los derechos reservados.
+        <div class="text-center text-xs text-slate-500 space-y-2">
+          <p>&copy; 2026 Equilibrio y Bienestar &bull; Mar&iacute;a de Jes&uacute;s Vera. Todos los derechos reservados.</p>
+          <p class="max-w-3xl mx-auto text-[11px] leading-relaxed">
+            Aviso Legal: Esta p&aacute;gina presenta una oportunidad de distribuci&oacute;n y emprendimiento independiente en el &aacute;rea de bienestar celular. Los ingresos reales var&iacute;an en funci&oacute;n del tiempo, dedicaci&oacute;n, habilidades individuales y esfuerzo comercial de cada persona.
           </p>
         </div>
 
       </div>
     </footer>
 
-    <!-- BOTON FLOTANTE DE WHATSAPP CON ACCION CLARA -->
+    <!-- BOTON FLOTANTE DE WHATSAPP -->
     <div class="fixed bottom-6 right-6 z-50">
       <button 
         @click="contactAdvisorWhatsApp()" 
-        class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all group relative min-h-[48px]"
-        title="Platicar con Mar&iacute;a de Jes&uacute;s Vera por WhatsApp">
-        <svg class="w-7 h-7 sm:w-8 sm:h-8 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
-        <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3.5 py-1.5 rounded-lg bg-slate-900 text-white text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg pointer-events-none hidden sm:block">
-          &iexcl;Solicitar Plan por WhatsApp!
-        </span>
+        aria-label="Contactar por WhatsApp a Maria de Jesus Vera"
+        class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all animate-pulse-glow border-2 border-white">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
       </button>
     </div>
 
   </div>
 
-  <!-- SCRIPTS DE CONFIGURACION Y APLICACION VUE -->
+  <!-- SCRIPT DE LA APLICACION VUE 3 -->
   <script src="assets/js/config.js"></script>
   <script src="assets/js/app.js"></script>
 </body>

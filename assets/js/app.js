@@ -1,4 +1,4 @@
-/**
+﻿/**
  * LANDING PAGE DE EMPRENDIMIENTO Y BIENESTAR MEXICO (es-MX)
  * Motor reactivo Vue 3 con validacion y optimizacion de conversion (CRO)
  * Mentora y Lider de Equipo: Maria de Jesus Vera | Contacto: +52 222 770 8716
@@ -17,7 +17,7 @@ const app = createApp({
         email: "equilibrionutricion8@gmail.com",
         whatsappNumber: "522227708716",
         displayPhone: "222 770 8716",
-        whatsappDefaultMessage: "Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n en bienestar digital y la disponibilidad de paquetes de inicio."
+        whatsappDefaultMessage: "Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n en bienestar digital y c\u00F3mo iniciar con el modelo."
       },
       socialLinks: {
         whatsappDirect: "https://wa.me/522227708716"
@@ -165,7 +165,7 @@ const app = createApp({
       },
       {
         q: "\u00BFCu\u00E1l es la inversi\u00F3n para comenzar mi negocio en M\u00E9xico?",
-        a: "Tu inicio se realiza adquiriendo un Paquete de Inicio con descuento preferencial mayorista (con hasta 45% de ahorro). En la llamada de orientaci\u00F3n por WhatsApp, Mar\u00EDa de Jes\u00FAs Vera te detallar\u00E1 exactamente las opciones disponibles seg\u00FAn tus metas."
+        a: "La inversi\u00F3n inicial es sumamente accesible y se realiza directamente con la compa\u00F1\u00EDa con descuento preferencial mayorista. En la llamada de orientaci\u00F3n personalizada por WhatsApp, Mar\u00EDa de Jes\u00FAs Vera te detallar\u00E1 exactamente las alternativas y facilidades disponibles seg\u00FAn tus objetivos particulares."
       },
       {
         q: "\u00BFQu\u00E9 respaldo legal y cient\u00EDfico tiene este proyecto en M\u00E9xico?",
@@ -240,7 +240,7 @@ const app = createApp({
 
       // 2. Preparar mensaje exacto y contextualizado para WhatsApp
       const waMsg = [
-        `Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n en bienestar digital y la disponibilidad de paquetes de inicio.`,
+        `Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n en bienestar digital y c\u00F3mo iniciar con el modelo.`,
         ``,
         `\uD83D\uDC64 *Nombre:* ${leadData.nombre}`,
         `\uD83D\uDCF1 *Celular:* ${form.phone.trim()}`,
