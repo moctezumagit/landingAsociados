@@ -10,7 +10,7 @@
     return;
   }
 
-  const { createApp, ref, reactive, computed, onMounted } = Vue;
+  const { createApp, ref, reactive, computed, onMounted, nextTick } = Vue;
 
   const app = createApp({
     setup() {
@@ -252,7 +252,7 @@
       // ========================================================
       // 8. EMBUDO DE VIDEO INTERACTIVO AUTOMATICO (M1 a M5)
       // ========================================================
-            const funnelSteps = {
+      const funnelSteps = {
         1: {
           id: 1,
           title: "Paso 1: Gancho y Cambio de Modelo",
@@ -348,7 +348,7 @@
         isPausedForAnswer: false,
         hasEnded: false,
         autoplayBlocked: false,
-        selectedSlotOption: null,
+        selectedSlotOption: "Hoy mismo / Lo antes posible",
         bookingSubmitted: false,
         immediateSubmitted: false,
         whatsappImmediateUrl: "",
@@ -356,11 +356,7 @@
         whatsappBookingUrl: "",
         bookingForm: {
           name: "",
-          phone: "",
-          timeSlot: "Ma\u00F1ana (9:00 AM - 12:00 PM)",
-          date: new Date().toISOString().split("T")[0],
-          time: "11:00",
-          notes: ""
+          phone: ""
         },
         bookingErrors: {
           name: "",
@@ -373,8 +369,8 @@
       });
 
       const canCloseFunnelModal = computed(() => {
-        if (videoFunnel.currentStep === 6) return true; // Descarte
-        if (videoFunnel.currentStep === 5 && (videoFunnel.bookingSubmitted || videoFunnel.immediateSubmitted)) return true; // Cita agendada
+        if (videoFunnel.currentStep === 6) return true; // Descarte amable
+        if (videoFunnel.currentStep === 5 && videoFunnel.bookingSubmitted) return true; // Cita agendada
         return false;
       });
 
@@ -400,9 +396,12 @@
         videoFunnel.currentStep = stepId;
         videoFunnel.isPausedForAnswer = false;
         videoFunnel.hasEnded = (stepId === 6);
-        videoFunnel.selectedSlotOption = null;
         videoFunnel.bookingSubmitted = false;
         videoFunnel.immediateSubmitted = false;
+
+        if (stepId === 5 && !videoFunnel.selectedSlotOption) {
+          videoFunnel.selectedSlotOption = "Hoy mismo / Lo antes posible";
+        }
 
         // Si es descarte amable (Paso 6), pausar video y mostrar pantalla de inmediato
         if (stepId === 6) {
@@ -413,56 +412,46 @@
         }
 
         const stepData = funnelSteps[stepId];
-        if (!stepData) return;
+        if (!stepData || !stepData.videoSrc) return;
 
         const attemptPlay = () => {
           const vid = document.getElementById("funnelVideoPlayer");
           if (!vid) return;
 
-          vid.pause();
-          vid.currentTime = 0;
-          if (vid.src !== stepData.videoSrc) {
+          if (!vid.src || !vid.src.endsWith(stepData.videoSrc)) {
             vid.src = stepData.videoSrc;
             vid.load();
           }
+          vid.currentTime = 0;
+          vid.playsInline = true;
+          vid.muted = videoFunnel.isMuted;
 
-          if (!videoFunnel.isMuted) {
-            vid.muted = false;
-            const playPromise = vid.play();
-            if (playPromise !== undefined) {
-              playPromise.then(() => {
-                videoFunnel.isPlaying = true;
-                videoFunnel.isMuted = false;
-                videoFunnel.autoplayBlocked = false;
-              }).catch(() => {
-                vid.muted = true;
-                videoFunnel.isMuted = true;
-                vid.play().then(() => {
-                  videoFunnel.isPlaying = true;
-                  videoFunnel.autoplayBlocked = false;
-                }).catch(() => {
-                  videoFunnel.autoplayBlocked = true;
-                  videoFunnel.isPlaying = false;
-                });
-              });
-            }
-          } else {
-            vid.muted = true;
-            videoFunnel.isMuted = true;
-            const playPromise = vid.play();
-            if (playPromise !== undefined) {
-              playPromise.then(() => {
+          const playPromise = vid.play();
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              videoFunnel.isPlaying = true;
+              videoFunnel.autoplayBlocked = false;
+            }).catch((err) => {
+              console.warn("[Video Funnel] Autoplay inicial con audio restringido:", err);
+              vid.muted = true;
+              videoFunnel.isMuted = true;
+              vid.play().then(() => {
                 videoFunnel.isPlaying = true;
                 videoFunnel.autoplayBlocked = false;
-              }).catch(() => {
+              }).catch((err2) => {
+                console.warn("[Video Funnel] Autoplay requiere interacción del usuario:", err2);
                 videoFunnel.autoplayBlocked = true;
                 videoFunnel.isPlaying = false;
               });
-            }
+            });
           }
         };
 
-        setTimeout(attemptPlay, 60);
+        if (typeof nextTick === "function") {
+          nextTick(attemptPlay);
+        } else {
+          setTimeout(attemptPlay, 60);
+        }
       };
 
       const unmuteVideo = () => {
@@ -471,9 +460,6 @@
           vid.muted = false;
           videoFunnel.isMuted = false;
           videoFunnel.autoplayBlocked = false;
-          if (vid.currentTime < 4) {
-            vid.currentTime = 0;
-          }
           vid.play().then(() => {
             videoFunnel.isPlaying = true;
           }).catch(e => console.warn("[Video Funnel] Audio unmuting:", e));
@@ -534,50 +520,9 @@
         videoFunnel.isPlaying = false;
       };
 
-      // Opcion A: En la proxima hora con Maria de Jesus Vera
-      const selectOptionA_ProximaHora = () => {
-        videoFunnel.selectedSlotOption = "proxima_hora";
-
-        const customMessage = `\u00A1Hola Mar\u00EDa de Jes\u00FAs! Acabo de ver el video interactivo y solicito una llamada en la pr\u00F3xima hora para mi orientaci\u00F3n personalizada en bienestar digital.`;
-        const waUrl = `https://wa.me/${config.advisor.whatsappNumber}?text=${encodeURIComponent(customMessage)}`;
-        videoFunnel.whatsappImmediateUrl = waUrl;
-
-        if (config.googleSheetsUrl) {
-          try {
-            fetch(config.googleSheetsUrl, {
-              method: "POST",
-              mode: "no-cors",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                name: "Interesado en llamada urgente (Paso 4)",
-                phone: "",
-                tipo: "Llamada Urgente Video Funnel",
-                asesora: config.advisor.name,
-                fecha: new Date().toISOString()
-              })
-            }).catch(e => console.warn("Sheets sync:", e));
-          } catch (e) {}
-        }
-
-        videoFunnel.immediateSubmitted = true;
-
-        try {
-          window.open(waUrl, "_blank");
-        } catch (e) {
-          console.warn("Popup blocked:", e);
-        }
-      };
-
-      // Opcion B: Hoy durante el dia
-      const selectOptionB_HoyDia = () => {
-        videoFunnel.selectedSlotOption = "hoy_dia";
-        videoFunnel.bookingSubmitted = false;
-      };
-
-      // Opcion C: Elegir dia y hora
-      const selectOptionC_ElegirFecha = () => {
-        videoFunnel.selectedSlotOption = "elegir_fecha";
-        videoFunnel.bookingSubmitted = false;
+      // Selección de horario para agendamiento (Paso 5)
+      const selectFunnelSlot = (slotName) => {
+        videoFunnel.selectedSlotOption = slotName;
       };
 
       // Creador de enlace a Google Calendar
@@ -598,46 +543,60 @@
         }
       };
 
-      // Envio de reserva de cita (Opciones B y C)
+      // Envío de agendamiento de cita oficial (Paso 5)
       const submitBookingFunnel = async () => {
         videoFunnel.bookingErrors.name = "";
         videoFunnel.bookingErrors.phone = "";
 
-        if (!videoFunnel.bookingForm.name.trim()) {
+        if (!videoFunnel.bookingForm.name || !videoFunnel.bookingForm.name.trim()) {
           videoFunnel.bookingErrors.name = "Por favor ingresa tu nombre completo.";
           return;
         }
-        if (!videoFunnel.bookingForm.phone.trim()) {
-          videoFunnel.bookingErrors.phone = "Por favor ingresa tu WhatsApp con c\u00F3digo de pa\u00EDs.";
+        if (!videoFunnel.bookingForm.phone || !videoFunnel.bookingForm.phone.trim()) {
+          videoFunnel.bookingErrors.phone = "Por favor ingresa tu WhatsApp con código de país.";
           return;
         }
 
-        const isHoy = videoFunnel.selectedSlotOption === "hoy_dia";
-        const slotText = isHoy ? videoFunnel.bookingForm.timeSlot : `${videoFunnel.bookingForm.date} a las ${videoFunnel.bookingForm.time} hrs`;
+        const name = videoFunnel.bookingForm.name.trim();
+        const phone = videoFunnel.bookingForm.phone.trim();
+        const selectedSlot = videoFunnel.selectedSlotOption || "Hoy mismo / Lo antes posible";
 
-        let dateForCalendar = videoFunnel.bookingForm.date;
-        let timeForCalendar = videoFunnel.bookingForm.time || "11:00";
-        if (isHoy) {
-          dateForCalendar = new Date().toISOString().split("T")[0];
-          if (videoFunnel.bookingForm.timeSlot.includes("Ma\u00F1ana")) timeForCalendar = "10:30";
-          else if (videoFunnel.bookingForm.timeSlot.includes("Mediod\u00EDa") || videoFunnel.bookingForm.timeSlot.includes("Tarde")) timeForCalendar = "14:00";
-          else timeForCalendar = "18:00";
+        // Preparar fecha y hora para el calendario
+        const now = new Date();
+        let calDate = now.toISOString().split("T")[0];
+        let calTime = "11:00";
+
+        if (selectedSlot.toLowerCase().includes("hoy")) {
+          calDate = now.toISOString().split("T")[0];
+          const hour = Math.min(now.getHours() + 1, 20);
+          calTime = `${String(hour).padStart(2, "0")}:00`;
+        } else {
+          const tomorrow = new Date(now);
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          calDate = tomorrow.toISOString().split("T")[0];
+          if (selectedSlot.toLowerCase().includes("tarde")) {
+            calTime = "16:00";
+          } else {
+            calTime = "10:30";
+          }
         }
 
-        const eventTitle = `Orientaci\u00F3n Bienestar Digital con Mar\u00EDa de Jes\u00FAs Vera - ${videoFunnel.bookingForm.name.trim()}`;
-        const eventDetails = `Cita de orientaci\u00F3n 1 a 1 de bienestar celular con Mar\u00EDa de Jes\u00FAs Vera (${config.advisor.displayPhone}).\nCliente: ${videoFunnel.bookingForm.name.trim()}\nWhatsApp: ${videoFunnel.bookingForm.phone.trim()}\nHorario seleccionado: ${slotText}`;
+        const eventTitle = `Orientación Bienestar Digital - ${name} con María de Jesús Vera`;
+        const eventDetails = `Sesión de orientación 1 a 1 de bienestar celular con María de Jesús Vera (${config.advisor.displayPhone}).\n\nProspecto: ${name}\nWhatsApp: ${phone}\nHorario preferido: ${selectedSlot}`;
 
         const calUrl = createGoogleCalendarUrl({
           title: eventTitle,
           details: eventDetails,
-          dateStr: dateForCalendar,
-          timeStr: timeForCalendar
+          dateStr: calDate,
+          timeStr: calTime
         });
         videoFunnel.calendarUrl = calUrl;
 
-        const waMessage = `\u00A1Hola Mar\u00EDa de Jes\u00FAs! Acabo de registrar mi cita en el video interactivo:\n\n\uD83D\uDC64 *Nombre:* ${videoFunnel.bookingForm.name.trim()}\n\uD83D\uDCF1 *WhatsApp:* ${videoFunnel.bookingForm.phone.trim()}\n\uD83D\uDCC5 *Horario preferido:* ${slotText}\n\nQuedo a la espera de la llamada para mi orientaci\u00F3n personalizada.`;
-        videoFunnel.whatsappBookingUrl = `https://wa.me/${config.advisor.whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
+        const waMessage = `¡Hola María de Jesús! Acabo de ver el video interactivo y quiero agendar mi sesión de orientación en bienestar digital:\n\n👤 *Nombre:* ${name}\n📱 *WhatsApp:* ${phone}\n📅 *Horario preferido:* ${selectedSlot}\n\nQuedo a la espera de tu respuesta para coordinar la llamada.`;
+        const waUrl = `https://wa.me/${config.advisor.whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
+        videoFunnel.whatsappBookingUrl = waUrl;
 
+        // Sincronización transparente con Google Sheets
         if (config.googleSheetsUrl) {
           try {
             fetch(config.googleSheetsUrl, {
@@ -645,24 +604,32 @@
               mode: "no-cors",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
-                name: videoFunnel.bookingForm.name.trim(),
-                phone: videoFunnel.bookingForm.phone.trim(),
-                meta: `Cita Video Funnel: ${slotText}`,
-                tipo: `Cita Video Funnel (${videoFunnel.selectedSlotOption})`,
+                name: name,
+                phone: phone,
+                meta: `Cita Video Funnel: ${selectedSlot}`,
+                tipo: `Cita Video Funnel (${selectedSlot})`,
                 asesora: config.advisor.name,
                 telefonoAsesora: config.advisor.whatsappNumber,
                 fecha: new Date().toISOString()
               })
-            }).catch(e => console.warn("Sheets sync:", e));
+            }).catch(e => console.warn("[Video Funnel] Sheets sync:", e));
           } catch (e) {}
         }
 
         videoFunnel.bookingSubmitted = true;
 
+        // Abrir WhatsApp directamente
         try {
-          window.open(calUrl, "_blank");
-        } catch (e) {}
+          window.open(waUrl, "_blank");
+        } catch (e) {
+          console.warn("[Video Funnel] Popup blocked:", e);
+        }
       };
+
+      // Métodos de compatibilidad con versiones previas
+      const selectOptionA_ProximaHora = () => selectFunnelSlot("Hoy mismo / Lo antes posible");
+      const selectOptionB_HoyDia = () => selectFunnelSlot("Mañana por la mañana");
+      const selectOptionC_ElegirFecha = () => selectFunnelSlot("Mañana por la tarde");
 
       // Inicialización automática al cargar
       onMounted(() => {

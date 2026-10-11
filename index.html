@@ -91,7 +91,7 @@
       <!-- Contenedor del Modal -->
       <div class="relative w-full max-w-2xl bg-black rounded-3xl overflow-hidden shadow-2xl border border-slate-700/80 my-auto flex flex-col text-white">
         
-        <!-- Boton para Cerrar Ventana Emergente (Solo visible cuando se permite cerrar el flujo) -->
+        <!-- Boton para Cerrar Ventana Emergente (Visible cuando se permite cerrar el flujo) -->
         <button v-if="canCloseFunnelModal"
                 type="button" 
                 @click="closeVideoFunnelModal()"
@@ -103,9 +103,12 @@
           </svg>
         </button>
 
-        <!-- REPRODUCTOR DE VIDEO: SOLO SE MUESTRA EL VIDEO MIENTRAS REPRODUCE -->
-        <div class="relative w-full bg-black overflow-hidden flex flex-col items-center justify-center min-h-[320px] max-h-[75vh]">
+        <!-- REPRODUCTOR DE VIDEO: SE MUESTRA EN LOS PASOS 1 A 5 -->
+        <div v-if="videoFunnel.currentStep >= 1 && videoFunnel.currentStep <= 5"
+             class="relative w-full bg-black overflow-hidden flex flex-col items-center justify-center min-h-[300px] max-h-[72vh]">
+          
           <video id="funnelVideoPlayer"
+                 :key="currentFunnelStepData.videoSrc"
                  :src="currentFunnelStepData.videoSrc"
                  @ended="onFunnelVideoEnded"
                  @play="onFunnelVideoPlay"
@@ -121,7 +124,7 @@
             Tu navegador no soporta video HTML5.
           </video>
 
-          <!-- Boton / Banner Flotante Pulsante: Activar Sonido mientras reproduce en silenciado -->
+          <!-- Boton Flotante Pulsante: Activar Sonido -->
           <div v-if="videoFunnel.isMuted && videoFunnel.isPlaying"
                @click.stop="unmuteVideo"
                class="absolute top-4 inset-x-0 mx-auto w-fit z-30 bg-emerald-600/95 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-2.5 cursor-pointer animate-bounce backdrop-blur-md border border-emerald-300 transition-all active:scale-95">
@@ -129,7 +132,7 @@
             <span class="text-xs sm:text-sm font-extrabold tracking-wide uppercase">Toca para activar el sonido</span>
           </div>
 
-          <!-- Overlay para iniciar con audio si el navegador pauso autoplay al entrar a la pagina -->
+          <!-- Overlay para iniciar con audio si el navegador pauso autoplay -->
           <div v-if="videoFunnel.autoplayBlocked" 
                @click="unmuteVideo"
                class="absolute inset-0 bg-black/80 backdrop-blur-xs flex flex-col items-center justify-center cursor-pointer text-white p-6 z-20">
@@ -138,6 +141,16 @@
             </div>
             <span class="text-base sm:text-lg font-black text-white text-center">Toca para reproducir el video</span>
             <span class="text-xs text-emerald-300 font-semibold mt-1">Con audio activado</span>
+          </div>
+
+          <!-- Acceso directo para responder sin esperar que termine el video -->
+          <div v-if="!videoFunnel.hasEnded && videoFunnel.currentStep >= 1 && videoFunnel.currentStep <= 4"
+               class="absolute bottom-3 right-3 z-30">
+            <button @click="onFunnelVideoEnded"
+                    type="button"
+                    class="px-3 py-1.5 rounded-xl bg-black/75 hover:bg-black text-white text-[11px] font-bold border border-white/20 backdrop-blur-md flex items-center gap-1.5 cursor-pointer transition-all shadow-lg hover:scale-105">
+              <span>Responder &rarr;</span>
+            </button>
           </div>
         </div>
 
@@ -270,7 +283,7 @@
                 
                 <button type="button"
                         @click="selectFunnelSlot('Hoy mismo / Lo antes posible')"
-                        :class="videoFunnel.selectedSlotOption === 'Hoy mismo / Lo antes posible' ? 'ring-2 ring-amber-400 bg-amber-950/50 border-amber-500 text-white font-black' : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700'"
+                        :class="videoFunnel.selectedSlotOption === 'Hoy mismo / Lo antes posible' ? 'ring-2 ring-amber-400 bg-amber-950/60 border-amber-500 text-white font-black' : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700'"
                         class="p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between">
                   <div class="flex items-center justify-between mb-1">
                     <span class="text-xl">&#9889;</span>
@@ -281,7 +294,7 @@
 
                 <button type="button"
                         @click="selectFunnelSlot('Mañana por la mañana')"
-                        :class="videoFunnel.selectedSlotOption === 'Mañana por la mañana' ? 'ring-2 ring-teal-400 bg-teal-950/50 border-teal-500 text-white font-black' : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700'"
+                        :class="videoFunnel.selectedSlotOption === 'Mañana por la mañana' ? 'ring-2 ring-teal-400 bg-teal-950/60 border-teal-500 text-white font-black' : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700'"
                         class="p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between">
                   <div class="flex items-center justify-between mb-1">
                     <span class="text-xl">&#128197;</span>
@@ -292,7 +305,7 @@
 
                 <button type="button"
                         @click="selectFunnelSlot('Mañana por la tarde')"
-                        :class="videoFunnel.selectedSlotOption === 'Mañana por la tarde' ? 'ring-2 ring-blue-400 bg-blue-950/50 border-blue-500 text-white font-black' : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700'"
+                        :class="videoFunnel.selectedSlotOption === 'Mañana por la tarde' ? 'ring-2 ring-blue-400 bg-blue-950/60 border-blue-500 text-white font-black' : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border-slate-700'"
                         class="p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between">
                   <div class="flex items-center justify-between mb-1">
                     <span class="text-xl">&#128198;</span>
@@ -340,16 +353,16 @@
           </div>
 
           <!-- PASO 6: PANTALLA FINAL DE DESCARTE AMABLE (PARA RESPUESTAS NO) -->
-          <div v-if="videoFunnel.currentStep === 6" class="text-center py-2 animate-fade-in">
-            <div class="w-12 h-12 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center mx-auto mb-3 text-2xl font-bold border border-slate-700">
-              🤝
+          <div v-if="videoFunnel.currentStep === 6" class="text-center py-6 px-4 animate-fade-in">
+            <div class="w-14 h-14 rounded-full bg-slate-800 text-slate-200 flex items-center justify-center mx-auto mb-3 text-2xl font-bold border border-slate-700 shadow-inner">
+              &#129309;
             </div>
-            <h3 class="text-base sm:text-lg font-black text-white mb-2">Gracias por tu tiempo</h3>
-            <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed mb-5">
+            <h3 class="text-lg sm:text-xl font-black text-white mb-2">Gracias por tu tiempo</h3>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed mb-6">
               Gracias por tu tiempo. Nuestro modelo est&aacute; dise&ntilde;ado exclusivamente para personas que buscan construir un activo a trav&eacute;s de redes y apalancamiento digital. Si en el futuro deseas diversificar tus ingresos, siempre podr&aacute;s regresar a esta p&aacute;gina.
             </p>
 
-            <div class="flex items-center justify-center gap-3">
+            <div class="flex flex-wrap items-center justify-center gap-3">
               <button @click="restartFunnel" 
                       type="button" 
                       class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 inline-flex items-center gap-2 cursor-pointer transition-colors shadow-sm">
@@ -366,8 +379,7 @@
         </div>
       </div>
     </div>
-    </div>
-    
+
     <!-- ======================================================== -->
     <!-- BARRA DE ANUNCIOS SUPERIOR: COBERTURA INTERNACIONAL -->
     <!-- ======================================================== -->
