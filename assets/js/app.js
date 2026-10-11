@@ -1,7 +1,7 @@
-/**
- * IMMUNOTEC LANDING PAGE & LINK-IN-BIO - VUE 3 APPLICATION
+﻿/**
+ * IMMUNOTEC LANDING PAGE DE ASOCIADOS & RECLUTAMIENTO - VUE 3 APPLICATION
  * CRO (Conversion Rate Optimization) & Tracking Engine
- * Inspirado en la arquitectura visual y experiencia de Hotmart
+ * Líder y Mentora: María de Jesús Vera
  */
 
 const { createApp, ref, reactive, computed, onMounted } = Vue;
@@ -11,666 +11,348 @@ const app = createApp({
     // Configuración global cargada desde config.js
     const config = window.APP_CONFIG || {
       advisor: {
-        name: "Equilibrio y Bienestar",
-        role: "Consultor de Bienestar y Salud Celular Immunotec",
-        city: "México / Internacional",
-        email: "equilibrionutricion8@gmail.com",
-        whatsappNumber: "522227708716",
-        whatsappDefaultMessage: "¡Hola! Vi tu página de Equilibrio y Bienestar y quiero información sobre los productos Immunotec."
+        name: María de Jesús Vera,
+        role: Líder y Consultora Independiente de Immunotec,
+        city: Puebla, México / Cobertura Internacional,
+        email: equilibrionutricion8@gmail.com,
+        whatsappNumber: 522227708716,
+        whatsappDefaultMessage: ¡Hola María de Jesús Vera! Quiero conocer la oportunidad de negocio y cómo asociarme a tu equipo de Immunotec.
       },
       socialLinks: {
-        facebook: "https://www.facebook.com/share/1DWUMNvaXq/",
-        instagram: "https://www.instagram.com/equilibrionutricion8?stkn=NHp1MjhkYWFuenJ1",
-        tiktok: "https://www.tiktok.com/@equilibriobienestarnut",
-        youtube: "https://www.youtube.com/channel/UCixehQX5txYGv-WPZ8OeeeA",
-        whatsappDirect: "https://wa.me/522227708716"
+        whatsappDirect: https://wa.me/522227708716
       },
       googleSheetsUrl: '',
       leadCaptureMethod: 'whatsapp',
-      formspreeId: '',
-      webhookUrl: '',
       pixels: {}
     };
 
-    // Estado del Formulario
+    // Estado del Formulario de Postulación
     const form = reactive({
       name: '',
-      email: '',
       phone: '',
-      goal: 'Sistema Inmune',
-      message: '',
-      contactPreference: 'whatsapp'
+      city: '',
+      goal: 'Ingreso Extra (,000 - ,000 MXN)',
+      timeAvailability: 'Medio Tiempo (5 a 10 hrs/semana)',
+      experience: 'Sin experiencia previa (quiero aprender)',
+      message: ''
     });
 
     const errors = reactive({
       name: '',
-      email: '',
       phone: ''
     });
 
-    // Metas de bienestar disponibles para selección rápida
-    const wellnessGoals = [
-      { id: 'inmune', label: 'Sistema Inmune', icon: '🛡️', desc: 'Refuerzo de defensas y glutatión celular' },
-      { id: 'energia', label: 'Energía & Vitalidad', icon: '⚡', desc: 'Combate el cansancio y aumenta tu rendimiento diario' },
-      { id: 'deporte', label: 'Rendimiento Deportivo', icon: '🏃', desc: 'Fuerza, resistencia y óptima recuperación muscular' },
-      { id: 'salud_general', label: 'Salud General & Longevidad', icon: '🌿', desc: 'Protección celular frente al estrés oxidativo' },
-      { id: 'distribuidor', label: 'Distribución / Negocio', icon: '💼', desc: 'Conoce cómo emprender como asesor independiente' }
+    const isSubmitting = ref(false);
+    const submitSuccess = ref(false);
+
+    // Metas de emprendimiento para selección rápida
+    const businessGoals = [
+      { id: 'ingreso_extra', label: 'Ingreso Extra (,000 - ,000 MXN)', icon: '💵', desc: 'Complementar tus ingresos actuales sin dejar tu empleo' },
+      { id: 'medio_tiempo', label: 'Medio Tiempo (,000 - ,000 MXN)', icon: '🚀', desc: 'Construir una segunda fuente de ingresos sólida y estable' },
+      { id: 'libertad', label: 'Libertad Financiera (+ ,000 MXN)', icon: '👑', desc: 'Carrera de liderazgo, red internacional y libertad de tiempo' },
+      { id: 'salud_pro', label: 'Profesional de Salud / Deporte', icon: '🩺', desc: 'Recomendar ciencia patentada a pacientes, atletas y clientes' }
     ];
 
-    // ========================================================
-    // SECCIÓN ESTILO HOTMART: AUDIENCE SELECTOR ("Para quién es")
-    // ========================================================
-    const activeAudienceTab = ref('defensas');
+    // SECCIÓN AUDIENCIA: Para quién es esta oportunidad
+    const activeAudienceTab = ref('empleados');
 
     const audienceTabs = [
-      { id: 'defensas', label: 'Para Defensas & Salud', icon: '🛡️' },
-      { id: 'deportistas', label: 'Para Deportistas & Fitness', icon: '🏃' },
-      { id: 'longevidad', label: 'Para Adultos & Vitalidad', icon: '🌿' },
-      { id: 'emprendedores', label: 'Para Emprendedores & Negocio', icon: '💼' }
+      { id: 'empleados', label: 'Profesionales & Empleados', icon: '💼' },
+      { id: 'hogar', label: 'Madres & Padres de Familia', icon: '🏡' },
+      { id: 'salud', label: 'Sector Salud & Fitness', icon: '🩺' },
+      { id: 'visionarios', label: 'Emprendedores & Líderes', icon: '🚀' }
     ];
 
     const audienceData = {
-      defensas: {
-        tag: 'Inmunidad & Prevención Diaria',
-        title: 'Protege tu cuerpo desde la célula con el precursor maestro de glutatión.',
-        subtitle: 'Ideal para personas y familias que desean un sistema inmunológico fuerte, resistente y preparado ante cualquier cambio de estación o estrés ambiental.',
-        image: 'assets/img/hero-wellness.jpg',
+      empleados: {
+        tag: 'Segunda Fuente de Ingresos',
+        title: 'Genera ingresos adicionales en tus tiempos libres sin renunciar a tu empleo actual.',
+        subtitle: 'Un modelo flexible que puedes operar desde tu teléfono móvil por las tardes o fines de semana, apalancándote en nuestro sistema probado de duplicación.',
         features: [
-          'Precursor bioactivo de glutatión probado clínicamente en humanos.',
-          'Apoya la producción óptima de anticuerpos y glóbulos blancos.',
-          'Ayuda a desintoxicar órganos vitales como hígado, pulmones y riñones.',
-          'Apto para todas las edades, sin lactosa, sin gluten y sin azúcares añadidos.'
+          'No requiere jefes ni horarios fijos; tú defines el ritmo.',
+          'Aprende habilidades digitales de prospección y ventas de alto impacto.',
+          'Construye un fondo de ahorro o colchón financiero que crece mes tras mes.',
+          'Capacitaciones grabadas y en vivo para que estudies a tu propio horario.'
+        ],
+        stats: [
+          { number: '1-2 hrs', label: 'Dedicación al día' },
+          { number: '100%', label: 'Operable por celular' },
+          { number: '0%', label: 'Riesgo de empleo' }
+        ],
+        ctaText: 'Quiero generar ingresos extra con María de Jesús Vera'
+      },
+      hogar: {
+        tag: 'Trabajo desde Casa con tu Familia',
+        title: 'Monetiza tu tiempo y atiende a tus hijos sin descuidar tu independencia económica.',
+        subtitle: 'Miles de mamás y papás en nuestro equipo han encontrado el equilibrio perfecto: generar ingresos significativos mientras están presentes en cada momento importante de su familia.',
+        features: [
+          'Trabaja 100% desde casa mediante redes sociales, WhatsApp y Zoom.',
+          'Comunidad cálida de apoyo mutuo y desarrollo personal.',
+          'Lleva bienestar y salud celular a tu propio hogar y seres queridos.',
+          'Posibilidad de generar ingresos superiores a un salario promedio de oficina.'
+        ],
+        stats: [
+          { number: '100%', label: 'Home Office real' },
+          { number: 'Flexible', label: 'Horarios familiares' },
+          { number: '+14', label: 'Países para expandirte' }
+        ],
+        ctaText: 'Quiero emprender desde casa con mi familia'
+      },
+      salud: {
+        tag: 'Ética, Ciencia & Prestigio Clínico',
+        title: 'Recomienda el único precursor de glutatión con grado farmacéutico y avales en el PDR.',
+        subtitle: 'Para médicos, enfermeros, nutriólogos, terapeutas y entrenadores que desean brindar soluciones biológicas reales con más de 85 estudios científicos en PubMed.',
+        features: [
+          'Listado en el PDR (EE.UU.) y CPS (Canadá) como producto natural de referencia.',
+          'Sin competencia en el mercado: patente mundial de cisteína bioactiva enlazada.',
+          'Altísima tasa de recompra: tus pacientes y asesorados lo consumen mes tras mes.',
+          'Monetiza tu recomendación profesional con ética y respaldo institucional.'
         ],
         stats: [
           { number: '+45', label: 'Años de investigación' },
-          { number: '100%', label: 'Biodisponible' },
-          { number: '#1', label: 'Patente mundial' }
+          { number: '+85', label: 'Estudios en PubMed' },
+          { number: 'PDR/CPS', label: 'Avales médicos oficiales' }
         ],
-        recommendedProduct: 'Immunocal® Regular',
-        ctaGoal: 'Sistema Inmune',
-        ctaText: 'Quiero asesoría para blindar mis defensas'
+        ctaText: 'Quiero información para profesionales de la salud'
       },
-      deportistas: {
-        tag: 'Alto Rendimiento & Recuperación',
-        title: 'Entrena más fuerte, acelera la recuperación y reduce el ácido láctico.',
-        subtitle: 'Diseñado para atletas de élite, corredores, crossfitters y entusiastas del gimnasio que exigen el máximo rendimiento muscular sin sustancias prohibidas.',
-        image: 'assets/img/science-lifestyle.jpg',
+      visionarios: {
+        tag: 'Liderazgo & Red Internacional',
+        title: 'Construye un patrimonio de ingresos residuales en más de 14 países.',
+        subtitle: 'Si tienes experiencia en redes, ventas o negocios, Immunotec te ofrece el plan de compensación más generoso y sostenible de la industria, con retención récord.',
         features: [
-          'Aumento clínico comprobado de hasta un 13% en fuerza y masa muscular magra.',
-          'Fórmula avanzada con CMP™ (moduladores de citocinas) y RMF para balance de pH.',
-          'Certificación Informed-Sport (libre de dopaje, seguro para competencia olímpica).',
-          'Recuperación celular ultra rápida tras entrenamientos de alta intensidad.'
+          'Plan híbrido unilevel de hasta 8 generaciones con compresión dinámica.',
+          'Bonos de desarrollo de negocio de hasta el 20% en primera línea.',
+          'Bonos de ascenso acelerado desde ,500 hasta más de ,000 MXN.',
+          'Viajes de incentivo Xcelerator a resorts de lujo en el Caribe y Europa.'
         ],
         stats: [
-          { number: '+13%', label: 'Fuerza muscular demostrada' },
-          { number: '0%', label: 'Sustancias dopantes (Clean Sport)' },
-          { number: '24/7', label: 'Recuperación celular' }
+          { number: 'Hasta 47%', label: 'Reparto a la red' },
+          { number: '14+ Países', label: 'Mercado global abierto' },
+          { number: 'Residual', label: 'Ingreso heredable' }
         ],
-        recommendedProduct: 'Immunocal® Platinum + Booster Energy',
-        ctaGoal: 'Rendimiento Deportivo',
-        ctaText: 'Quiero asesoría para mejorar mi rendimiento deportivo'
-      },
-      longevidad: {
-        tag: 'Salud Integral & Envejecimiento Saludable',
-        title: 'Mantén tu agilidad, salud ósea y claridad mental a cualquier edad.',
-        subtitle: 'Para adultos que buscan preservar su energía natural, proteger sus articulaciones y combatir el estrés oxidativo responsable del envejecimiento celular prematuro.',
-        image: 'assets/img/consultation.jpg',
-        features: [
-          'Neutraliza los radicales libres más agresivos a nivel mitocondrial.',
-          'Apoya la densidad ósea y flexibilidad articular gracias a minerales quelados.',
-          'Favorece la concentración, claridad mental y un descanso nocturno reparador.',
-          'Respaldo en los libros de referencia médica internacional PDR (EE.UU.) y CPS (Canadá).'
-        ],
-        stats: [
-          { number: '85+', label: 'Estudios publicados en PubMed' },
-          { number: '30+', label: 'Países con registro sanitario' },
-          { number: '1:1', label: 'Seguimiento en dosificación' }
-        ],
-        recommendedProduct: 'Immunocal® Platinum + Omega Gen V',
-        ctaGoal: 'Salud General & Longevidad',
-        ctaText: 'Quiero asesoría para vitalidad y longevidad'
-      },
-      emprendedores: {
-        tag: 'Distribución Oficial & Oportunidad',
-        title: 'Genera ingresos promoviendo ciencia real y bienestar con Immunotec.',
-        subtitle: 'Conviértete en Consultor Independiente y accede a un modelo de negocio probado con expansión internacional, tienda virtual personalizada y comisiones semanales.',
-        image: 'assets/img/consultation.jpg',
-        features: [
-          'Sin necesidad de inventarios pesados: Immunotec envía directamente a tu cliente.',
-          'Plataforma digital con tienda online propia en más de 30 países.',
-          'Precios de mayorista con hasta 45% de descuento en tus consumos y ventas.',
-          'Acompañamiento, capacitaciones médicas y comerciales desde el primer día.'
-        ],
-        stats: [
-          { number: '30+', label: 'Países para expandirte' },
-          { number: 'Semanal', label: 'Pago de comisiones' },
-          { number: '100%', label: 'Modelo digital y flexible' }
-        ],
-        recommendedProduct: 'Paquete de Inicio / Membresía de Consultor',
-        ctaGoal: 'Distribución / Negocio',
-        ctaText: 'Quiero información sobre cómo ser distribuidor'
+        ctaText: 'Quiero liderar un equipo internacional'
       }
     };
 
-    // ========================================================
-    // SECCIÓN ESTILO HOTMART: CALCULADORA / EVALUADOR DE RUTINA
-    // ========================================================
-    const calc = reactive({
-      goal: 'inmune',
-      activity: 'moderado',
-      age: '36-50'
+    // CALCULADORA DE POTENCIAL DE INGRESOS
+    const selectedRank = ref('oro');
+    const teamMembers = ref(15);
+
+    const ranksList = [
+      { id: 'asociado', name: 'Asociado', minPts: '2,000', incomeRange: ',500 - ,000 MXN', desc: 'Tus primeras recomendaciones y clientes directos.', color: 'border-slate-300' },
+      { id: 'plata', name: 'Plata', minPts: '6,000', incomeRange: ',000 - ,000 MXN', desc: 'Tu primer equipo base de 3 a 5 personas activas.', color: 'border-slate-400' },
+      { id: 'oro', name: 'Oro', minPts: '30,000', incomeRange: ',000 - ,000 MXN', desc: 'Liderazgo consolidado con 15 a 25 asociados en tu red.', color: 'border-amber-400' },
+      { id: 'diamante', name: 'Diamante', minPts: '120,000', incomeRange: ',000 - ,000 MXN', desc: 'Libertad financiera y equipo en crecimiento autónomo.', color: 'border-blue-400' },
+      { id: 'diamante_ejecutivo', name: 'D. Ejecutivo', minPts: '400,000', incomeRange: ',000 - ,000 MXN', desc: 'Líder internacional con múltiples Diamantes en tu equipo.', color: 'border-indigo-400' },
+      { id: 'platino', name: 'Platino', minPts: '1,500,000', incomeRange: '+,000 MXN al mes', desc: 'Máximo rango de Immunotec con impacto mundial.', color: 'border-purple-400' }
+    ];
+
+    const currentRankInfo = computed(() => {
+      return ranksList.find(r => r.id === selectedRank.value) || ranksList[2];
     });
 
-    const calculatedRecommendation = computed(() => {
-      let comboName = 'Combo Inmuno-Protección Esencial';
-      let product = 'Immunocal® Regular (1 a 2 sobres al día)';
-      let booster = 'Recomendado: Booster Nrf2 Antioxidante';
-      let benefit = 'Elevación rápida de glutatión y refuerzo del 100% de tus defensas celulares naturales.';
-      let benefitPct = '+180% de síntesis antioxidante celular';
-
-      if (calc.goal === 'deporte' || calc.activity === 'intenso') {
-        comboName = 'Combo Atleta Pro & Rendimiento';
-        product = 'Immunocal® Platinum (2 sobres diarios)';
-        booster = 'Combinado con: Booster Energy Performance';
-        benefit = 'Máxima recuperación de fibras musculares, aumento de fuerza comprobada y menor dolor post-entreno.';
-        benefitPct = '+13% de fuerza y recuperación 2x más rápida';
-      } else if (calc.goal === 'antiage' || calc.age === '51+') {
-        comboName = 'Combo Longevidad Activa & Articulaciones';
-        product = 'Immunocal® Platinum + Omega Gen V';
-        booster = 'Combinado con: Booster Nrf2 con brócoli sulforafano';
-        benefit = 'Protección integral ósea, articular y cardiovascular, combatiendo la oxidación celular.';
-        benefitPct = 'Blindaje mitocondrial y soporte antiinflamatorio natural';
-      } else if (calc.goal === 'energia') {
-        comboName = 'Combo Vitalidad Total & Claridad';
-        product = 'Immunocal® Regular + Booster Energy';
-        booster = 'Activador Nrf2 con cafeína vegetal de té verde y guaraná';
-        benefit = 'Energía sostenida durante todo el día sin picos de ansiedad ni bajones por la tarde.';
-        benefitPct = 'Claridad mental y energía limpia por más de 6 horas';
-      } else if (calc.goal === 'negocio') {
-        comboName = 'Plan Emprendedor Independiente Immunotec';
-        product = 'Kit de Afiliación con Descuento Mayorista';
-        booster = 'Incluye tienda virtual internacional y oficina virtual';
-        benefit = 'Comienza tu distribución en más de 30 países con respaldo científico y asesoría de equipo.';
-        benefitPct = 'Márgenes de hasta 45% y comisiones semanales';
+    // PAQUETES DE ASOCIACIÓN DE INICIO
+    const packagesList = [
+      {
+        id: 'exito',
+        name: 'Paquete Éxito Total',
+        tag: 'El Más Recomendado para Negocio',
+        discount: '45% Descuento Oficial',
+        points: '2,000 Puntos de Calificación',
+        contents: [
+          '4 Cajas de Immunocal Platinum (salud ósea e inflamación)',
+          '3 Cajas de Immunocal Regular (inmunidad y glutatión puro)',
+          'Membresía Internacional de Negocio incluida de por vida',
+          'Acceso inmediato a la plataforma digital y tienda online',
+          'Mentoría personalizada 1 a 1 con María de Jesús Vera',
+          'Vaso mezclador oficial e instructivo de inicio rápido'
+        ],
+        highlight: true,
+        badge: 'Mayor Rentabilidad'
+      },
+      {
+        id: 'salud_familiar',
+        name: 'Paquete Bienestar Familiar',
+        tag: 'Ideal para Consumo & Primeros Clientes',
+        discount: '43% Descuento Oficial',
+        points: '2,000 Puntos de Calificación',
+        contents: [
+          '3 Cajas de Immunocal Regular (cisteína bioactiva)',
+          '2 Cajas de Immunocal Platinum (CMP y RMF)',
+          '1 Booster Optimizer Verde (activa gen Nrf2)',
+          'Membresía de Consultor Independiente incluida',
+          'Tienda virtual personalizada en 14 países sin costo extra',
+          'Integración al grupo privado de WhatsApp del equipo'
+        ],
+        highlight: false,
+        badge: 'Popular'
+      },
+      {
+        id: 'deporte_energia',
+        name: 'Paquete Alto Rendimiento',
+        tag: 'Para Deportistas y Personas Activas',
+        discount: '42% Descuento Oficial',
+        points: '2,000 Puntos de Calificación',
+        contents: [
+          '3 Cajas de Immunocal Sport (óxido nítrico y fuerza)',
+          '2 Cajas de Immunocal Platinum',
+          '2 Booster Energy (energía limpia de té verde y guaraná)',
+          'Certificación Informed-Sport libre de dopaje',
+          'Membresía y kit de bienvenida oficial',
+          'Capacitaciones semanales de negocio y producto'
+        ],
+        highlight: false,
+        badge: 'Rendimiento'
       }
+    ];
 
-      return {
-        comboName,
-        product,
-        booster,
-        benefit,
-        benefitPct
-      };
-    });
-
-    // ========================================================
-    // PREGUNTAS FRECUENTES (FAQ INTERACTIVO ESTILO HOTMART)
-    // ========================================================
-    const openFaqIndex = ref(0);
-
+    // PREGUNTAS FRECUENTES (FAQ)
+    const openFaq = ref(0);
     const toggleFaq = (index) => {
-      openFaqIndex.value = openFaqIndex.value === index ? null : index;
+      openFaq.value = openFaq.value === index ? -1 : index;
     };
 
-    const faqList = [
+    const faqs = [
       {
-        question: '¿Qué es el Glutatión y por qué no se puede tomar en pastillas normales?',
-        answer: 'El glutatión es el antioxidante maestro del cuerpo, fundamental para la inmunidad, la desintoxicación y la salud celular. Si tomas glutatión directamente en pastillas o cápsulas, el sistema digestivo (los jugos gástricos) lo destruye antes de que llegue a las células. Immunocal® es único y patentado porque NO es glutatión procesado: entrega cisteína bioactiva enlazada, la materia prima exacta que tus células necesitan para fabricar su propio glutatión de manera 100% natural y eficiente.'
+        q: '¿Necesito experiencia previa en ventas o redes de mercadeo?',
+        a: 'No, en lo absoluto. Más del 70% de las personas que ingresan a nuestro equipo nunca antes habían emprendido. Al asociarte con María de Jesús Vera recibes un sistema paso a paso que te enseña exactamente qué decir, cómo presentar el producto y cómo atraer prospectos por redes sociales y WhatsApp.'
       },
       {
-        question: '¿Cuál es la diferencia entre Immunocal Regular e Immunocal Platinum?',
-        answer: 'Immunocal Regular es el aislado de proteína de suero no desnaturalizado original, perfecto para personas de todas las edades que desean fortalecer su sistema inmune y elevar defensas. Immunocal Platinum contiene toda la base de Regular MÁS dos componentes patentados: CMP™ (péptidos moduladores de citocinas para reducir la inflamación celular) y RMF (fórmula moduladora redox para equilibrar el pH, salud ósea y muscular). Platinum es el recomendado para adultos, personas con dolor articular o deportistas.'
+        q: '¿Cuánto tiempo tengo que dedicarle a la semana?',
+        a: 'Tú eres dueño de tu tiempo. La mayoría de los nuevos consultores inician dedicando entre 5 y 10 horas semanales (1 a 2 horas al día), aprovechando sus tiempos libres, sin descuidar su empleo, familia o estudios.'
       },
       {
-        question: '¿Tiene contraindicaciones o efectos secundarios?',
-        answer: 'Immunocal es un suplemento alimenticio completamente seguro con calidad de grado farmacéutico. No contiene grasa, gluten ni lactosa (menos del 1% de traza residual, por lo que es tolerado incluso por personas intolerantes a la lactosa). La única contraindicación médica estricta es para personas que hayan recibido un trasplante reciente de órganos con tratamiento inmunosupresor (para evitar que las defensas eleven su respuesta de rechazo), o personas con alergia severa a las proteínas del suero de leche.'
+        q: '¿Cómo y cuándo me paga Immunotec mis comisiones?',
+        a: 'Immunotec realiza los pagos de manera formal y puntual mediante transferencia bancaria directa a tu cuenta cada mes. Además, los bonos por desarrollo de nuevos clientes y asociados se liquidan con frecuencia semanal.'
       },
       {
-        question: '¿En cuánto tiempo se empiezan a notar los resultados?',
-        answer: 'Los niveles de glutatión celular comienzan a elevarse desde los primeros días de consumo constante. La mayoría de las personas reportan mayor energía, mejor calidad de sueño y menor pesadez a partir de las primeras 2 a 3 semanas. Para metas crónicas de bienestar o rendimiento deportivo, se recomienda un programa inicial continuo de al menos 90 días con seguimiento personalizado de tu asesor.'
+        q: '¿Tengo que comprar inventario obligatorio todos los meses?',
+        a: 'No estás obligado a almacenar cajas en tu casa. El modelo de Immunotec funciona con comercio electrónico directo: tus clientes compran en tu enlace virtual de Immunotec, la empresa les cobra, les envía el producto a su domicilio y a ti te deposita la comisión.'
       },
       {
-        question: '¿Cómo se prepara correctamente para no dañar sus propiedades?',
-        answer: 'Debido a que la cisteína bioactiva es termosensible, Immunocal NUNCA debe mezclarse con líquidos calientes ni batirse en licuadoras de metal con alta fricción. Se prepara fácilmente en el vaso mezclador oficial de Immunotec: añades 30 ml de agua, jugo natural o yogur a temperatura ambiente o frío, viertes el sobre, agitas durante 15 segundos y disfrutas de inmediato.'
+        q: '¿En qué países puedo expandir mi negocio?',
+        a: 'Tu membresía es internacional. Desde el primer día puedes registrar clientes y asociar nuevos consultores en más de 14 países, incluidos México, Estados Unidos, Canadá, Colombia, Perú, España, Guatemala, Ecuador, Reino Unido y más.'
       },
       {
-        question: '¿Cómo puedo comprar con precio oficial de descuento o membresía?',
-        answer: 'Al contactarnos como asesores independientes oficiales, te vinculamos directamente con la plataforma de fábrica de Immunotec en tu país. Esto te permite acceder a los precios con descuento de Cliente Preferente (hasta un 25% menos) o a los paquetes de membresía con precio de mayorista (hasta 45% de descuento), garantizando producto 100% original con envío y factura oficial de la compañía.'
-      },
-      {
-        question: '¿En qué países tienen entrega oficial a domicilio?',
-        answer: 'Immunotec cuenta con distribución y centros de distribución legalmente establecidos en más de 30 países, incluyendo México, Estados Unidos, Canadá, Colombia, Perú, Guatemala, Ecuador, República Dominicana, España, Reino Unido, Irlanda, Portugal, Italia y más. El pedido se entrega por paquetería certificada directo a la puerta de tu hogar.'
+        q: '¿Qué respaldo tiene María de Jesús Vera para apoyarme?',
+        a: 'María de Jesús Vera es una Consultora y Líder Independiente comprometida con el éxito de su equipo. Al integrarte con ella tendrás acceso a mentoría directa, grupo exclusivo de WhatsApp para resolución de dudas en tiempo real y reuniones virtuales semanales.'
       }
     ];
 
-    // ========================================================
-    // TESTIMONIOS Y PRUEBA SOCIAL ESTILO HOTMART
-    // ========================================================
-    const testimonials = [
-      {
-        name: 'Dra. Carmen Valenzuela',
-        role: 'Médico General & Asesora',
-        city: 'Ciudad de México, MX',
-        avatar: 'CV',
-        rating: 5,
-        text: 'Como profesional de la salud, lo primero que revisé fue el respaldo en el PDR de EE.UU. y los estudios en PubMed. Immunocal no es un producto milagro, es ciencia celular pura que apoya la fisiología del cuerpo como ningún otro suplemento.',
-        highlight: 'Respaldo científico comprobado'
-      },
-      {
-        name: 'Alejandro Morales',
-        role: 'Triatleta & Entrenador',
-        city: 'Medellín, CO',
-        avatar: 'AM',
-        rating: 5,
-        text: 'Llevo 2 años usando Immunocal Platinum junto con Booster Energy. Mis tiempos de recuperación entre sesiones dobles de entrenamiento bajaron notablemente y el ácido láctico ya no me frena como antes. Totalmente limpio para doping.',
-        highlight: 'Recuperación muscular insuperable'
-      },
-      {
-        name: 'Martha Sotomayor (62 años)',
-        role: 'Cliente Preferente',
-        city: 'Lima, PE',
-        avatar: 'MS',
-        rating: 5,
-        text: 'Empecé por recomendación de mi hermana porque sentía mucha pesadez y cansancio al final de la tarde. Hoy mi energía es constante, duermo profundo y me siento con vitalidad para jugar con mis nietos todos los fines de semana.',
-        highlight: 'Vitalidad renovada a los 60+'
-      },
-      {
-        name: 'Roberto & Sofía Méndez',
-        role: 'Consultores Independientes',
-        city: 'Houston, TX (EE.UU.)',
-        avatar: 'RM',
-        rating: 5,
-        text: 'Comenzamos como consumidores para mejorar las defensas de la familia. Al ver los resultados, decidimos compartirlo. Hoy tenemos un equipo de distribución en 4 países y un negocio que nos da libertad de tiempo y estabilidad.',
-        highlight: 'Crecimiento e ingresos con propósito'
-      }
-    ];
-
-    // Estados de UI y Modales
-    const isSubmitting = ref(false);
-    const submitted = ref(false);
-    const submitSuccessMessage = ref('');
-    const floatingChatOpen = ref(false);
-    const unreadMessagesCount = ref(1);
-
-    // Detección de parámetros de campaña (UTM) desde Redes Sociales
-    const utmParams = reactive({
-      source: '',
-      medium: '',
-      campaign: '',
-      term: '',
-      content: ''
-    });
-
-    // Simulador de Chat Interactivo en el Hero
-    const chatMessages = ref([
-      {
-        id: 1,
-        sender: 'advisor',
-        time: 'En línea',
-        text: '¡Hola! 👋 Soy tu asesor de bienestar Immunotec. Cuéntame qué meta tienes y te compartiré información útil y personalizada.'
-      }
-    ]);
-
-    const chatOptions = [
-      { text: '🛡️ Quiero fortalecer mi Sistema Inmune', goal: 'Sistema Inmune', reply: '¡Excelente decisión! Immunocal® es el precursor de glutatión patentado número 1 en el mundo. Con gusto te explico cómo tomarlo y cuál es el ideal para ti.' },
-      { text: '⚡ Necesito más energía y menos fatiga', goal: 'Energía & Vitalidad', reply: '¡Perfecto! Para la energía celular y claridad mental, la combinación de Immunocal con Booster es fantástica. Cuéntame tu rutina en el formulario para asesorarte.' },
-      { text: '🏃 Rendimiento físico y deporte', goal: 'Rendimiento Deportivo', reply: '¡Genial! Immunocal Platinum y Booster Energy son los favoritos de atletas de alto rendimiento para acelerar la recuperación y reducir ácido láctico.' },
-      { text: '📦 ¿Cuáles son los precios y combos oficiales?', goal: 'Salud General & Longevidad', reply: 'Tenemos precios directos de laboratorio con descuento especial de cliente preferente o membresía. Déjame tus datos y te envío la lista de precios oficial de tu país.' }
-    ];
-
-    // Interacción del chat interactivo
-    const handleChatOptionClick = (option) => {
-      chatMessages.value.push({
-        id: Date.now(),
-        sender: 'user',
-        time: 'Ahora',
-        text: option.text
-      });
-
-      form.goal = option.goal;
-
-      setTimeout(() => {
-        chatMessages.value.push({
-          id: Date.now() + 1,
-          sender: 'advisor',
-          time: 'Ahora',
-          text: option.reply
-        });
-      }, 500);
-
-      triggerPixelEvent('ViewContent', { content_name: option.goal });
-    };
-
-    // Validación de inputs (Contacto exclusivo por WhatsApp)
-    const validateForm = () => {
-      let isValid = true;
+    // ENVÍO DE FORMULARIO A GOOGLE SHEETS Y WHATSAPP
+    const submitForm = async () => {
       errors.name = '';
-      errors.email = '';
       errors.phone = '';
 
       if (!form.name.trim()) {
-        errors.name = 'Por favor escribe tu nombre completo.';
-        isValid = false;
-      } else if (form.name.trim().length < 3) {
-        errors.name = 'El nombre debe tener al menos 3 caracteres.';
-        isValid = false;
-      }
-
-      if (!form.phone.trim()) {
-        errors.phone = 'Por favor ingresa tu número de WhatsApp con código de área.';
-        isValid = false;
-      } else if (form.phone.trim().replace(/\D/g, '').length < 8) {
-        errors.phone = 'Ingresa un número válido de WhatsApp (mínimo 8-10 dígitos).';
-        isValid = false;
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (form.email.trim() && !emailRegex.test(form.email.trim())) {
-        errors.email = 'Ingresa un formato de correo válido (ej: nombre@correo.com).';
-        isValid = false;
-      }
-
-      return isValid;
-    };
-
-    // Motor de Tracking para Meta Pixel, TikTok Pixel y Google Analytics
-    const triggerPixelEvent = (eventName, params = {}) => {
-      if (typeof window.fbq === 'function') {
-        try {
-          window.fbq('track', eventName, params);
-          console.log(`[Tracking] Meta Pixel evento '${eventName}':`, params);
-        } catch (e) {
-          console.warn('[Tracking] Error enviando a Meta Pixel:', e);
-        }
-      }
-
-      if (typeof window.ttq === 'object' && typeof window.ttq.track === 'function') {
-        try {
-          const ttEventMap = {
-            'Lead': 'SubmitForm',
-            'Contact': 'Contact',
-            'ViewContent': 'ViewContent',
-            'PageView': 'PageView'
-          };
-          const ttEventName = ttEventMap[eventName] || eventName;
-          window.ttq.track(ttEventName, params);
-          console.log(`[Tracking] TikTok Pixel evento '${ttEventName}':`, params);
-        } catch (e) {
-          console.warn('[Tracking] Error enviando a TikTok Pixel:', e);
-        }
-      }
-
-      if (typeof window.gtag === 'function') {
-        try {
-          window.gtag('event', eventName, params);
-          console.log(`[Tracking] GA4 evento '${eventName}':`, params);
-        } catch (e) {
-          console.warn('[Tracking] Error enviando a GA4:', e);
-        }
-      }
-    };
-
-    // Construcción del enlace personalizado de WhatsApp
-    const buildWhatsAppUrl = (customText = null) => {
-      const phone = config.advisor.whatsappNumber || '522227708716';
-      let message = customText;
-
-      if (!message) {
-        if (form.name.trim()) {
-          message = `¡Hola ${config.advisor.name}! 👋\n\n` +
-                    `Mi nombre es *${form.name.trim()}*.\n` +
-                    (form.phone.trim() ? `📱 Mi WhatsApp: *${form.phone.trim()}*\n` : '') +
-                    (form.email.trim() ? `📧 Correo: ${form.email.trim()}\n` : '') +
-                    `🎯 Mi meta principal: *${form.goal}*\n` +
-                    (form.message.trim() ? `💬 Mis dudas u objetivos: "${form.message.trim()}"\n` : '') +
-                    (utmParams.source ? `📍 Origen: Redes Sociales (${utmParams.source})\n` : '') +
-                    `\nQuisiera recibir orientación personalizada sobre los productos Immunotec.`;
-        } else {
-          message = config.advisor.whatsappDefaultMessage || "¡Hola! Vi tu página de Equilibrio y Bienestar y quiero información sobre los productos Immunotec.";
-        }
-      }
-
-      return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    };
-
-    // Apertura directa de WhatsApp con tracking de Contacto
-    const openWhatsApp = (customText = null) => {
-      triggerPixelEvent('Contact', {
-        content_name: 'WhatsApp Click',
-        status: 'Advisor Chat Initiated'
-      });
-      const url = buildWhatsAppUrl(customText);
-      window.open(url, '_blank');
-    };
-
-    // Registro asíncrono en Google Sheets (Google Apps Script Web App)
-    const sendToGoogleSheets = async (data) => {
-      const endpoint = config.googleSheetsUrl || (config.leadCaptureMethod === 'webhook' ? config.webhookUrl : '');
-      if (!endpoint) return;
-
-      try {
-        await fetch(endpoint, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-          },
-          body: JSON.stringify(data)
-        });
-        console.log('[Google Sheets] Solicitud registrada exitosamente en la hoja de cálculo.');
-      } catch (sheetsErr) {
-        console.warn('[Google Sheets] Advertencia al registrar en Google Sheets:', sheetsErr);
-      }
-    };
-
-    // Redirección obligatoria al formulario de contacto para capturar Nombre y Teléfono
-    const goToForm = (contextMessage = '', contextGoal = null) => {
-      // Si el usuario ya completó el formulario en esta sesión, abrir WhatsApp directamente
-      if (submitted.value) {
-        openWhatsApp(contextMessage || null);
+        errors.name = 'Por favor ingresa tu nombre completo.';
         return;
       }
 
-      if (contextGoal) {
-        form.goal = contextGoal;
-      }
-      if (contextMessage && !form.message) {
-        form.message = contextMessage;
-      }
-
-      const formElement = document.getElementById('formulario');
-      if (formElement) {
-        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setTimeout(() => {
-          const nameInput = document.getElementById('nombre');
-          if (nameInput) {
-            nameInput.focus();
-            nameInput.classList.add('ring-4', 'ring-emerald-400/50');
-            setTimeout(() => {
-              nameInput.classList.remove('ring-4', 'ring-emerald-400/50');
-            }, 1800);
-          }
-        }, 500);
-      }
-    };
-
-    // Enviar WhatsApp con datos de la Calculadora pasando obligatoriamente por el formulario
-    const consultCalculatedRoutineOnWhatsApp = () => {
-      const rec = calculatedRecommendation.value;
-      const customMessage = `Hola, utilicé la calculadora en tu página. Me interesa el plan recomendado "${rec.comboName}" (${rec.product} + ${rec.booster}) para mi meta de ${calc.goal.toUpperCase()}. Quisiera recibir orientación de precios y cómo adquirirlo en mi país.`;
-
-      // Si ya llenó el formulario previamente, abrir WhatsApp directamente
-      if (submitted.value) {
-        openWhatsApp(customMessage);
-        return;
-      }
-
-      // Pre-cargar la meta y mensaje calculado en el formulario y llevarlo a completar Nombre y Teléfono
-      form.message = customMessage;
-      if (calc.goal) {
-        const foundGoal = wellnessGoals.find(g => g.id.toLowerCase() === calc.goal.toLowerCase());
-        if (foundGoal) {
-          form.goal = foundGoal.label;
-        }
-      }
-
-      goToForm(customMessage);
-    };
-
-    // Reiniciar formulario para nueva consulta
-    const resetForm = () => {
-      submitted.value = false;
-      form.name = '';
-      form.email = '';
-      form.phone = '';
-      form.message = '';
-      form.goal = 'Sistema Inmune';
-      form.contactPreference = 'whatsapp';
-      errors.name = '';
-      errors.email = '';
-      errors.phone = '';
-    };
-
-    // Envío del Formulario (CRO Lead Generation - Conexión directa a WhatsApp)
-    const submitForm = async () => {
-      if (!validateForm()) {
-        const firstErrorEl = document.querySelector('.text-red-500');
-        if (firstErrorEl) {
-          firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+      const cleanPhone = form.phone.replace(/\D/g, '');
+      if (!cleanPhone || cleanPhone.length < 10) {
+        errors.phone = 'Por favor ingresa un número de WhatsApp válido (mínimo 10 dígitos).';
         return;
       }
 
       isSubmitting.value = true;
 
-      triggerPixelEvent('Lead', {
-        content_name: form.goal,
-        user_name: form.name,
-        user_email: form.email,
-        contact_preference: 'whatsapp',
-        traffic_source: utmParams.source || 'Direct'
-      });
+      // Mensaje detallado para WhatsApp de María de Jesús Vera
+      const waMessage = 
+        ¡Hola María de Jesús Vera! Vengo de tu página web de Oportunidad Immunotec y quiero postularme a tu equipo.\n\n +
+        👤 *Nombre:* \n +
+        📱 *WhatsApp:* \n +
+        📍 *Ciudad:* \n +
+        🎯 *Meta de Ingresos:* \n +
+        ⏰ *Tiempo Disponible:* \n +
+        💼 *Experiencia:* \n\n +
+        ¿Podrías agendar una breve llamada o darme detalles para iniciar?;
 
-      const payload = {
-        name: form.name.trim(),
-        email: form.email.trim(),
-        phone: form.phone.trim(),
-        goal: form.goal,
-        message: form.message.trim(),
-        contactPreference: 'whatsapp',
-        submittedAt: new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' }),
-        source: utmParams.source || 'Directo',
-        campaign: utmParams.campaign || '',
-        utm: { ...utmParams }
-      };
-
-      try {
-        // 1. Envío automático a Google Sheets (sin bloquear apertura de WhatsApp)
-        await sendToGoogleSheets(payload);
-
-        // 2. Envío a Formspree si está configurado
-        if (config.leadCaptureMethod === 'formspree' && config.formspreeId) {
-          try {
-            await fetch(`https://formspree.io/f/${config.formspreeId}`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify(payload)
-            });
-          } catch (formspreeErr) {
-            console.warn('[Formspree] Error:', formspreeErr);
-          }
-        }
-
-        // 3. Respaldo de lead en localStorage del navegador
+      // 1. Guardar en Google Sheets en segundo plano si está configurado
+      if (config.googleSheetsUrl) {
         try {
-          const storedLeads = JSON.parse(localStorage.getItem('immunotec_leads') || '[]');
-          storedLeads.push(payload);
-          localStorage.setItem('immunotec_leads', JSON.stringify(storedLeads));
-        } catch (storageErr) {
-          console.warn('No se pudo guardar copia local en localStorage:', storageErr);
+          const payload = {
+            fecha: new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' }),
+            nombre: form.name.trim(),
+            telefono: form.phone.trim(),
+            ciudad: form.city.trim() || 'No especificada',
+            meta: form.goal,
+            tiempoDisponible: form.timeAvailability,
+            experiencia: form.experience,
+            tipo: 'Postulación a Asociado de Negocio'
+          };
+
+          fetch(config.googleSheetsUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }).catch(e => console.warn('[Sheets Sync Error]', e));
+        } catch (e) {
+          console.warn('[Sheets Sync]', e);
         }
-
-        submitted.value = true;
-        submitSuccessMessage.value = `¡Gracias ${form.name.split(' ')[0]}! Conectando con tu asesor por WhatsApp...`;
-
-        setTimeout(() => {
-          openWhatsApp();
-        }, 1000);
-
-      } catch (err) {
-        console.error('Error al registrar lead:', err);
-        submitted.value = true;
-        submitSuccessMessage.value = `¡Gracias ${form.name.split(' ')[0]}! Haz clic en el botón abajo para abrir WhatsApp.`;
-      } finally {
-        isSubmitting.value = false;
       }
+
+      // 2. Tracking de Píxeles
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', { content_name: 'Postulacion Asociado', value: 1.00, currency: 'USD' });
+      }
+      if (typeof ttq === 'object' && typeof ttq.track === 'function') {
+        ttq.track('SubmitForm');
+      }
+
+      isSubmitting.value = false;
+      submitSuccess.value = true;
+
+      // 3. Redirección a WhatsApp oficial
+      const targetPhone = config.advisor.whatsappNumber || '522227708716';
+      const waUrl = https://wa.me/?text=;
+
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+      }, 500);
     };
 
-    // Selección de meta desde cualquier botón o chip
-    const selectGoalAndScroll = (goalName) => {
-      form.goal = goalName;
-      const target = document.getElementById('formulario');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+    // FUNCIÓN DE CONTACTO DIRECTO POR WHATSAPP
+    const openWhatsAppDirect = (customText = null) => {
+      const targetPhone = config.advisor.whatsappNumber || '522227708716';
+      const text = customText || config.advisor.whatsappDefaultMessage || 
+        ¡Hola María de Jesús Vera! Vi tu página y quiero información para asociarme a tu equipo de Immunotec.;
+      
+      if (typeof fbq === 'function') {
+        fbq('track', 'Contact', { content_name: 'WhatsApp Directo' });
       }
+      if (typeof ttq === 'object' && typeof ttq.track === 'function') {
+        ttq.track('Contact');
+      }
+
+      window.open(https://wa.me/?text=, '_blank');
     };
 
-    // Scroll suave genérico a sección
-    const scrollToSection = (id) => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    };
-
-    // Inicialización y captura de UTMs
     onMounted(() => {
-      const urlParams = new URLSearchParams(window.location.search);
-      utmParams.source = urlParams.get('utm_source') || (document.referrer ? new URL(document.referrer).hostname : 'Direct');
-      utmParams.medium = urlParams.get('utm_medium') || '';
-      utmParams.campaign = urlParams.get('utm_campaign') || '';
-      utmParams.term = urlParams.get('utm_term') || '';
-      utmParams.content = urlParams.get('utm_content') || '';
-
-      const metaParam = urlParams.get('meta') || urlParams.get('goal');
-      if (metaParam) {
-        const found = wellnessGoals.find(g => g.id.toLowerCase() === metaParam.toLowerCase());
-        if (found) form.goal = found.label;
-      }
-
-      console.log('Landing Immunotec inicializada. Origen detectado:', utmParams.source);
+      console.log('🚀 Landing de Oportunidad Immunotec cargada para María de Jesús Vera.');
     });
 
     return {
       config,
       form,
       errors,
-      wellnessGoals,
       isSubmitting,
-      submitted,
-      submitSuccessMessage,
-      floatingChatOpen,
-      unreadMessagesCount,
-      chatMessages,
-      chatOptions,
-      handleChatOptionClick,
-      submitForm,
-      goToForm,
-      openWhatsApp,
-      resetForm,
-      selectGoalAndScroll,
-      scrollToSection,
-      // Nuevos estados estilo Hotmart
+      submitSuccess,
+      businessGoals,
       activeAudienceTab,
       audienceTabs,
       audienceData,
-      calc,
-      calculatedRecommendation,
-      consultCalculatedRoutineOnWhatsApp,
-      openFaqIndex,
+      ranksList,
+      selectedRank,
+      currentRankInfo,
+      teamMembers,
+      packagesList,
+      faqs,
+      openFaq,
       toggleFaq,
-      faqList,
-      testimonials
+      submitForm,
+      openWhatsAppDirect
     };
   }
 });

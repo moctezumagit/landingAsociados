@@ -1,124 +1,68 @@
-# 🚀 Landing Page / Link-in-Bio Immunotec (Estilo Hotmart & Alta Conversión CRO)
+﻿# ðŸš€ Landing Page de Oportunidad de Negocio & Reclutamiento Immunotec
+## LÃ­der y Consultora Independiente: MarÃ­a de JesÃºs Vera
 
-Landing Page y Link-in-Bio corporativa inspirada en la arquitectura visual, módulos y optimización de conversión de **[Hotmart](https://hotmart.com/es)**, adaptada 100% a la orientación y comercialización de productos de nutrición celular y glutatión de **Immunotec** (Immunocal®, Platinum, Booster, Omega Gen V, etc.).
-
----
-
-## 🎨 Características Estilo Hotmart Implementadas
-
-1. **Top Bar & Navbar Flotante**:
-   - Barra superior con aviso de disponibilidad inmediata en más de 30 países.
-   - Navegación moderna tipo glassmorphism con enlaces de salto suave (`Para quién es`, `Ecosistema`, `Calculadora`, `Productos`, `Testimonios`, `FAQ`).
-   - Botón dual: **WhatsApp Directo** y **Recibir Orientación**.
-2. **Cinta de Métricas y Certificaciones (Stats Ribbon)**:
-   - +45 Años de investigación médica.
-   - +85 Ensayos clínicos en PubMed.
-   - 30+ Países con distribución oficial.
-   - PDR (EE.UU.) y CPS (Canadá).
-   - Certificación Clean Sport (Informed-Sport Anti-doping).
-3. **Selector Interactivo de Audiencia ("Para quién es")**:
-   - Pestañas dinámicas estilo Hotmart para cambiar de segmento:
-     - 🛡️ *Para Defensas & Salud Familiar*
-     - 🏃 *Para Deportistas & Fitness*
-     - 🌿 *Para Adultos & Vitalidad / Longevidad*
-     - 💼 *Para Emprendedores & Negocio Independiente*
-   - Tarjetas Bento con estadísticas, puntos clave, producto sugerido y CTA directo.
-4. **Ecosistema Immunotec (Bento Grid)**:
-   - Cuadrícula moderna que explica la ciencia del Glutatión (GSH), el aval médico, la certificación deportiva, la asesoría humana 1:1 y la logística de fábrica.
-5. **Calculadora / Evaluador de Rutina Interactivo (Herramienta de Diagnóstico)**:
-   - Calcula al instante su combinación ideal (ej: *Combo Atleta Pro & Rendimiento*), beneficios estimados y canaliza la solicitud al formulario con captura en Google Sheets antes de abrir WhatsApp.
-6. **Catálogo Detallado con Fichas de Producto**:
-   - Immunocal Regular, Immunocal Platinum, Booster Nrf2, Booster Energy Performance, Omega Gen V y Paquetes de Ahorro Mayorista.
-7. **Historias Reales / Testimonios Verificados**:
-   - Tarjetas de reseñas con 5 estrellas, avatares, roles, ciudades y resultados reales.
-8. **Acordeón Interactivo de Preguntas Frecuentes (FAQ)**:
-   - Respuestas claras sobre qué es el glutatión, cómo se prepara, diferencias entre fórmulas, contraindicaciones, envíos y descuentos.
-9. **Banner de Cierre de Alta Conversión**:
-   - Cierre visual en azul profundo con botón contrastante y acceso directo a WhatsApp.
-10. **Mega Footer Corporativo**:
-    - Columnas temáticas, redes sociales y descargo de responsabilidad legal oficial de Asesor Independiente.
+Landing Page de alta conversiÃ³n diseÃ±ada especÃ­ficamente para la **prospecciÃ³n, atracciÃ³n y reclutamiento de nuevos Asociados y Consultores Independientes de Immunotec**.
 
 ---
 
-## 📁 Estructura del Proyecto
+## ðŸŒŸ CaracterÃ­sticas y MÃ³dulos Implementados
 
-```text
-fanpage/
-│
-├── index.html               # Landing Page completa con Vue 3, Tailwind CSS y Hotmart UI
-├── README.md                # Documentación del proyecto
-│
-└── assets/
-    ├── css/
-    │   └── styles.css       # Estilos Bento Grid, Glassmorphism, animaciones y tokens
-    ├── js/
-    │   ├── config.js        # ⚙️ Tu WhatsApp, Redes Sociales y Píxeles de Publicidad
-    │   └── app.js           # Lógica reactiva Vue 3, calculadora, acordeón, UTMs y tracking
-    └── img/
-        ├── logo.jpg               # Logotipo oficial: Equilibrio y Bienestar
-        ├── hero-wellness.jpg      # Fotografía principal: salud celular y vitalidad
-        ├── consultation.jpg       # Fotografía: asesoría personalizada 1:1
-        └── science-lifestyle.jpg  # Fotografía: deporte, ciencia y glutatión (GSH)
+1. **Branding & Contacto Oficial**:
+   - Nombre: **MarÃ­a de JesÃºs Vera** (LÃ­der y Consultora Independiente).
+   - NÃºmero oficial y Ãºnico de WhatsApp: **`+52 222 770 8716`** (`2227708716`).
+   - BotÃ³n flotante 24/7 y llamadas a la acciÃ³n con mensajes personalizados directos a WhatsApp.
+
+2. **Hero de Alta ConversiÃ³n**:
+   - Propuesta de valor clara: Emprender con respaldo cientÃ­fico, ingresos residuales y libertad de tiempo.
+   - Formulario rÃ¡pido de postulaciÃ³n para agendar llamada con MarÃ­a de JesÃºs Vera.
+
+3. **Los 4 Pilares de Solidez**:
+   - Producto patentado sin competencia (Immunocal).
+   - Ingresos residuales y retenciÃ³n rÃ©cord.
+   - Comercio electrÃ³nico y expansiÃ³n en mÃ¡s de 14 paÃ­ses.
+   - MentorÃ­a 1 a 1 y sistema de duplicaciÃ³n con MarÃ­a de JesÃºs Vera.
+
+4. **Segmentador de Perfiles ("Para QuiÃ©n Es")**:
+   - PestaÃ±as interactivas para Profesionales, Madres/Padres de Familia, Sector Salud/Fitness y Emprendedores.
+
+5. **5 Formas de Ganar Dinero (Plan de CompensaciÃ³n)**:
+   - Venta Directa (hasta 45%).
+   - Bonos de Desarrollo de Negocio (hasta 20%).
+   - Comisiones Residuales de Equipo (hasta 8 generaciones).
+   - Bonos por Ascenso de Rango (de $2,500 hasta mÃ¡s de $500,000 MXN).
+   - Viajes de Incentivo Xcelerator con todo pagado.
+
+6. **Calculadora Interactiva de Rangos e Ingresos**:
+   - Simulador en tiempo real con rangos oficiales de Immunotec: Asociado, Plata, Oro, Diamante, Diamante Ejecutivo y Platino.
+
+7. **Paquetes de Inicio de Consultor**:
+   - Paquete Ã‰xito Total, Bienestar Familiar y Alto Rendimiento con 45% de descuento de fÃ¡brica.
+
+8. **Captura de Prospectos & SincronizaciÃ³n**:
+   - IntegraciÃ³n nativa a Google Sheets (`google-apps-script.js`).
+   - RedirecciÃ³n con datos pre-cargados a WhatsApp.
+
+---
+
+## ðŸ“ Estructura del Proyecto
+
+```
+landingAsociados/
+â”œâ”€â”€ index.html                  # Landing page completa (Tailwind + Vue 3)
+â”œâ”€â”€ google-apps-script.js       # Script para Google Sheets
+â”œâ”€â”€ README.md                   # DocumentaciÃ³n oficial
+â””â”€â”€ assets/
+    â”œâ”€â”€ css/
+    â”‚   â””â”€â”€ styles.css          # Estilos y micro-animaciones
+    â”œâ”€â”€ js/
+    â”‚   â”œâ”€â”€ config.js           # ConfiguraciÃ³n de MarÃ­a de JesÃºs Vera y enlaces
+    â”‚   â””â”€â”€ app.js              # LÃ³gica reactiva de Vue 3, simulador y formularios
+    â””â”€â”€ img/                    # Logotipos e imÃ¡genes
 ```
 
 ---
 
-## ⚙️ Configuración del Asesor y WhatsApp
+## ðŸ“² Contacto Directo
 
-Tu archivo [assets/js/config.js](file:///c:/Users/User/Documents/Nestor/Desarrollo/fanpage/assets/js/config.js) ya está configurado con tus datos oficiales:
-
-```javascript
-window.APP_CONFIG = {
-  advisor: {
-    name: "Equilibrio y Bienestar",
-    role: "Consultor de Bienestar y Salud Celular Immunotec",
-    city: "México / Internacional",
-    email: "equilibrionutricion8@gmail.com", // Tu correo electrónico oficial
-    whatsappNumber: "522227708716", // Tu número de WhatsApp oficial configurado
-    whatsappDefaultMessage: "¡Hola! Vi tu página de Equilibrio y Bienestar y quiero información sobre los productos Immunotec."
-  },
-
-  socialLinks: {
-    facebook: "https://www.facebook.com/share/1DWUMNvaXq/",
-    instagram: "https://www.instagram.com/equilibrionutricion8?stkn=NHp1MjhkYWFuenJ1",
-    tiktok: "https://www.tiktok.com/@equilibriobienestarnut",
-    youtube: "https://www.youtube.com/channel/UCixehQX5txYGv-WPZ8OeeeA",
-    whatsappDirect: "https://wa.me/522227708716"
-  },
-
-  googleSheetsUrl: "", // Pega aquí tu URL de Google Apps Script para guardar todas las solicitudes
-
-  leadCaptureMethod: 'whatsapp', // 'whatsapp', 'formspree', 'webhook' o 'simulation'
-  formspreeId: "",
-  webhookUrl: "",
-
-  pixels: {
-    metaPixelId: "",   // Pega tu ID de Meta Pixel (Facebook/Instagram Ads)
-    tiktokPixelId: "", // Pega tu ID de TikTok Pixel
-    ga4Id: ""          // Google Analytics 4 (opcional)
-  }
-};
-```
-
----
-
-## 📊 Vinculación con Google Sheets (Hojas de cálculo de Google)
-
-Puedes almacenar cada solicitud de contacto enviada en un documento de Google Sheets en tiempo real mientras el cliente es redirigido a WhatsApp:
-
-1. Abre tu [Google Drive](https://drive.google.com) y crea una nueva **Hoja de cálculo de Google**.
-2. Ve a **Extensiones > Apps Script**.
-3. Abre el archivo [google-apps-script.js](file:///c:/Users/User/Documents/Nestor/Desarrollo/fanpage/google-apps-script.js) de este proyecto, copia todo su contenido y pégalo en Apps Script.
-4. Haz clic en **Implementar > Nueva implementación**, elige tipo **Aplicación web**:
-   - *Ejecutar como:* Yo
-   - *Quién tiene acceso:* Cualquier persona
-5. Copia la URL generada (`https://script.google.com/macros/s/.../exec`) y pégala en [assets/js/config.js](file:///c:/Users/User/Documents/Nestor/Desarrollo/fanpage/assets/js/config.js) en:
-   ```javascript
-   googleSheetsUrl: "https://script.google.com/macros/s/TU_URL_AQUI/exec"
-   ```
-6. Cada solicitud registrará automáticamente: *Fecha y Hora, Nombre, Teléfono / WhatsApp, Correo, Meta de Salud, Mensaje, Origen (Red Social) y un enlace directo para responderle al cliente*.
-
----
-
-## 🌐 ¿Cómo ver y probar la página?
-Solo haz doble clic en [index.html](file:///c:/Users/User/Documents/Nestor/Desarrollo/fanpage/index.html) en tu explorador de archivos. Se abrirá en cualquier navegador moderno sin necesidad de instalar programas adicionales.
+* **LÃ­der:** MarÃ­a de JesÃºs Vera
+* **WhatsApp:** [+52 222 770 8716](https://wa.me/522227708716)
