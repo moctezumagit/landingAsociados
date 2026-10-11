@@ -214,7 +214,7 @@ html {
 
 /* Evitar FOUC con Vue v-cloak */
 [v-cloak] {
-  display: none !important;
+  /* display: none removido para evitar pantalla en blanco */
 }
 
 /* Optimizaciones CRO & Mobile First */
