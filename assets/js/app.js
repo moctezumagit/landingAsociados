@@ -1,7 +1,7 @@
 /**
- * IMMUNOTEC LANDING PAGE - ASOCIADOS Y RECLUTAMIENTO MEXICO (es-MX)
+ * LANDING PAGE DE EMPRENDIMIENTO Y BIENESTAR MEXICO (es-MX)
  * Motor reactivo Vue 3 con validacion y optimizacion de conversion (CRO)
- * Mentora y Lider: Maria de Jesus Vera | Contacto: +52 222 770 8716
+ * Mentora y Lider de Equipo: Maria de Jesus Vera | Contacto: +52 222 770 8716
  */
 
 const { createApp, ref, reactive, computed, onMounted } = Vue;
@@ -12,12 +12,12 @@ const app = createApp({
     const config = window.APP_CONFIG || {
       advisor: {
         name: "Mar\u00EDa de Jes\u00FAs Vera",
-        role: "L\u00EDder y Consultora Independiente de Immunotec",
-        city: "Puebla, M\u00E9xico (Cobertura en toda la Rep\u00FAblica e Internacional)",
+        role: "L\u00EDder de Equipo y Mentora de Emprendimiento",
+        city: "Puebla, M\u00E9xico (Cobertura en toda la Rep\u00FAblica Mexicana)",
         email: "equilibrionutricion8@gmail.com",
         whatsappNumber: "522227708716",
         displayPhone: "222 770 8716",
-        whatsappDefaultMessage: "\u00A1Hola Mar\u00EDa de Jes\u00FAs! Me interesa unirme a tu equipo de Immunotec M\u00E9xico y comenzar mi negocio."
+        whatsappDefaultMessage: "\u00A1Hola Mar\u00EDa de Jes\u00FAs! Me interesa conocer los detalles del proyecto de negocio y c\u00F3mo iniciar con tu equipo."
       },
       socialLinks: {
         whatsappDirect: "https://wa.me/522227708716"
@@ -49,7 +49,7 @@ const app = createApp({
     const businessGoals = [
       { id: "extra", label: "Ingreso Extra ($5,000 - $15,000 MXN/mes)", desc: "Genera ingresos adicionales sin descuidar tu empleo o actividades actuales" },
       { id: "medio", label: "Medio Tiempo ($15,000 - $35,000 MXN/mes)", desc: "Construye una segunda fuente de ingresos s\u00F3lida y en crecimiento constante" },
-      { id: "libertad", label: "Libertad Financiera (+$50,000 MXN/mes)", desc: "Desarrolla una carrera de liderazgo con equipo nacional e internacional" },
+      { id: "libertad", label: "Libertad Financiera (+$50,000 MXN/mes)", desc: "Desarrolla una carrera de liderazgo con equipo y ganancias crecientes" },
       { id: "salud_pro", label: "Profesional de Salud o Deporte", desc: "Integra suplementaci\u00F3n cient\u00EDfica patentada en tu pr\u00E1ctica o comunidad" }
     ];
 
@@ -72,40 +72,40 @@ const app = createApp({
           "Sin horarios r\u00EDgidos: t\u00FA decides cu\u00E1ntas horas dedicarle al d\u00EDa",
           "Ingresos en pesos mexicanos depositados directamente a tu cuenta bancaria",
           "Acompa\u00F1amiento personalizado de Mar\u00EDa de Jes\u00FAs Vera paso a paso",
-          "Sin riesgos de inventario: Immunotec env\u00EDa directo al cliente en todo M\u00E9xico"
+          "Sin riesgos de inventario: los env\u00EDos se realizan directo a tus clientes por paqueter\u00EDa oficial"
         ]
       },
       hogar: {
         tag: "Trabaja desde Casa",
         title: "Monetiza tu tiempo desde el hogar sin perderte los mejores momentos con tus hijos.",
-        subtitle: "Construye un negocio rentable y con prop\u00F3sito desde tu casa o tel\u00E9fono, aportando al gasto familiar con productos que mejoran la salud.",
+        subtitle: "Construye un negocio rentable y con prop\u00F3sito desde tu casa o tel\u00E9fono, aportando al gasto familiar con productos que mejoran la calidad de vida.",
         benefits: [
           "100% compaginable con la vida familiar y escolar",
           "Capacitaciones virtuales gratuitas y grabadas para ver a tu ritmo",
-          "Comunidad c\u00E1lida de asociados que te impulsan a crecer",
-          "Precios preferenciales para el consumo de salud de toda tu familia"
+          "Comunidad c\u00E1lida de emprendedores que te impulsan a crecer",
+          "Precios preferenciales con descuentos directos para toda tu familia"
         ]
       },
       salud: {
         tag: "Respaldo Cient\u00EDfico & Nutrici\u00F3n Celular",
-        title: "Recomienda nutrac\u00E9uticos con grado farmac\u00E9utico y evidencia cl\u00EDnica mundial.",
+        title: "Recomienda nutrac\u00E9uticos con grado cient\u00EDfico y evidencia cl\u00EDnica mundial.",
         subtitle: "Ideal para m\u00E9dicos, nutri\u00F3logos, terapeutas, entrenadores y profesionales que buscan respaldo m\u00E9dico comprobado y publicaci\u00F3n en el PDR y CPS.",
         benefits: [
           "M\u00E1s de 45 a\u00F1os de investigaci\u00F3n y decenas de estudios cl\u00EDnicos en humanos",
-          "Presente en el PDR (EE. UU.) y CPS (Canad\u00E1), con registro sanitario en M\u00E9xico",
-          "Donador de ciste\u00EDna enlazada patentado para la elevaci\u00F3n del glutati\u00F3n",
+          "Presente en referencias m\u00E9dicas internacionales de prestigio (PDR y CPS)",
+          "Donador de ciste\u00EDna enlazada patentado para la elevaci\u00F3n del glutati\u00F3n celular",
           "Alianzas \u00E9ticas y prestigio profesional para tu consulta o centro de salud"
         ]
       },
       emprendedores: {
-        tag: "Expansi\u00F3n & Red Internacional",
-        title: "Construye activos financieros y un negocio heredable en m\u00E1s de 14 pa\u00EDses.",
-        subtitle: "Apal\u00E1ncate en la infraestructura multinacional de Immunotec para crear una red de distribuci\u00F3n s\u00F3lida con ingresos residuales continuos.",
+        tag: "Activos Financieros & Escalabilidad",
+        title: "Construye ingresos residuales y un negocio rentable a largo plazo.",
+        subtitle: "Apal\u00E1ncate en un sistema probado de duplicaci\u00F3n y herramientas digitales para crear un modelo de negocio en constante crecimiento.",
         benefits: [
-          "Plan de compensaci\u00F3n l\u00EDder que reparte hasta el 47% en comisiones",
-          "Expansi\u00F3n internacional: cobra de clientes y socios en 14+ pa\u00EDses",
-          "Negocio transferible y heredable a tus hijos",
-          "Reconocimientos, viajes todo pagado y bonos por avance de rango"
+          "Plan de compensaci\u00F3n de alto impacto que reparte hasta el 47% en comisiones",
+          "Ingresos residuales continuos: gana comisiones crecientes mes con mes",
+          "Negocio transferible y con visi\u00F3n de futuro para tu familia",
+          "Reconocimientos, incentivos especiales y bonos por desarrollo de equipo"
         ]
       }
     };
@@ -128,27 +128,27 @@ const app = createApp({
     const faqs = [
       {
         q: "\u00BFNecesito experiencia previa en ventas o negocios?",
-        a: "No, para nada. La gran mayor\u00EDa de los consultores inician desde cero. Al unirte al equipo de Mar\u00EDa de Jes\u00FAs Vera recibes inducci\u00F3n 1 a 1, acceso a grupos de apoyo en WhatsApp y entrenamientos semanales por Zoom donde te ense\u00F1amos exactamente qu\u00E9 hacer paso a paso."
+        a: "No, para nada. La gran mayor\u00EDa inician desde cero. Al unirte al equipo de Mar\u00EDa de Jes\u00FAs Vera recibes inducci\u00F3n 1 a 1, acceso a grupos de apoyo en WhatsApp y entrenamientos semanales donde te ense\u00F1amos exactamente qu\u00E9 hacer paso a paso."
       },
       {
         q: "\u00BFC\u00F3mo se entregan los productos a los clientes en M\u00E9xico?",
-        a: "No necesitas comprar inventario ni repartir paquetes personalmente. Immunotec cuenta con env\u00EDos directos a todo M\u00E9xico mediante paqueter\u00EDa oficial (DHL y Estafeta) con entrega r\u00E1pida y segura en el domicilio del cliente."
+        a: "No necesitas comprar inventario ni repartir paquetes personalmente. La compa\u00F1\u00EDa cuenta con log\u00EDstica y env\u00EDos directos a todo M\u00E9xico mediante paqueter\u00EDa oficial (DHL y Estafeta) con entrega r\u00E1pida y segura en el domicilio del cliente."
       },
       {
         q: "\u00BFC\u00F3mo y cu\u00E1ndo se pagan las comisiones en M\u00E9xico?",
-        a: "Immunotec deposita tus comisiones mensualmente directo a tu cuenta bancaria en cualquier banco de M\u00E9xico (BBVA, Banorte, Santander, etc.), de forma puntual y con total transparencia fiscal."
+        a: "Las comisiones se depositan mensualmente directo a tu cuenta bancaria en cualquier banco de M\u00E9xico (BBVA, Banorte, Santander, etc.), de forma puntual y con total transparencia fiscal."
       },
       {
-        q: "\u00BFCu\u00E1l es la inversi\u00F3n para registrarme como Consultor en M\u00E9xico?",
-        a: "Tu registro se realiza adquiriendo un Paquete de Inicio de Asociado. Estos paquetes incluyen producto a precio mayorista (con hasta 45% de descuento), tu tienda digital oficial, kit de bienvenida y tu oficina virtual. Existen paquetes desde aproximadamente $6,400 hasta $10,800 pesos mexicanos."
+        q: "\u00BFCu\u00E1l es la inversi\u00F3n para comenzar mi negocio en M\u00E9xico?",
+        a: "Tu inicio se realiza adquiriendo un Paquete de Inicio con descuento preferencial mayorista (con hasta 45% de ahorro). En la llamada de orientaci\u00F3n por WhatsApp, Mar\u00EDa de Jes\u00FAs Vera te detallar\u00E1 exactamente los pasos y opciones disponibles seg\u00FAn tu meta."
       },
       {
-        q: "\u00BFQu\u00E9 respaldo legal y cient\u00EDfico tiene Immunotec en M\u00E9xico?",
-        a: "Immunotec opera legalmente en M\u00E9xico desde hace a\u00F1os, cuenta con registro sanitario y aviso de funcionamiento ante COFEPRIS. Su producto estrella, Immunocal, est\u00E1 respaldado por m\u00E1s de 45 a\u00F1os de investigaci\u00F3n cl\u00EDnica y figura en prestigiosas referencias m\u00E9dicas internacionales como el PDR de EE. UU."
+        q: "\u00BFQu\u00E9 respaldo legal y cient\u00EDfico tiene este proyecto en M\u00E9xico?",
+        a: "El proyecto opera legalmente en M\u00E9xico, cuenta con registro sanitario y aviso de funcionamiento ante COFEPRIS. Las f\u00F3rmulas cuentan con m\u00E1s de 45 a\u00F1os de investigaci\u00F3n cl\u00EDnica y figuran en prestigiosas referencias m\u00E9dicas internacionales como el PDR de EE. UU."
       },
       {
         q: "\u00BFQu\u00E9 apoyo directo recibir\u00E9 de Mar\u00EDa de Jes\u00FAs Vera?",
-        a: "Mar\u00EDa de Jes\u00FAs Vera te brindar\u00E1 mentor\u00EDa directa: te ayuda en tus primeras presentaciones, te gu\u00EDa en la resoluci\u00F3n de dudas de tus prospectos y te integra a la comunidad de crecimiento para que nunca est\u00E9s solo en tu negocio."
+        a: "Mar\u00EDa de Jes\u00FAs Vera te brindar\u00E1 mentor\u00EDa directa 1 a 1: te ayuda en tus primeras presentaciones, te gu\u00EDa en la resoluci\u00F3n de dudas de tus prospectos y te integra a la comunidad para que nunca est\u00E9s solo en tu camino."
       }
     ];
 
@@ -194,7 +194,7 @@ const app = createApp({
         disponibilidad: form.timeAvailability,
         experiencia: form.experience,
         mensaje: form.message.trim(),
-        tipo: "Prospecto Asociado Negocio Immunotec",
+        tipo: "Prospecto Emprendimiento y Bienestar",
         asesora: config.advisor.name,
         telefonoAsesora: config.advisor.whatsappNumber
       };
@@ -213,9 +213,9 @@ const app = createApp({
         }
       }
 
-      // 2. Preparar mensaje de WhatsApp en formato es-MX
+      // 2. Preparar mensaje de WhatsApp en formato es-MX (sin mencionar marca previa)
       const waMsg = [
-        `\u00A1Hola ${config.advisor.name}! Me interesa asociarme a tu equipo de Immunotec M\u00E9xico.`,
+        `\u00A1Hola ${config.advisor.name}! Me interesa conocer el proyecto de negocio.`,
         ``,
         `\uD83D\uDC64 *Nombre:* ${leadData.nombre}`,
         `\uD83D\uDCF1 *Celular:* ${form.phone.trim()}`,
@@ -225,7 +225,7 @@ const app = createApp({
         `\uD83D\uDCA1 *Experiencia:* ${leadData.experiencia}`,
         form.message.trim() ? `\uD83D\uDCAC *Comentarios:* ${leadData.mensaje}` : ``,
         ``,
-        `\u00BFMe podr\u00EDas compartir los detalles de los paquetes de inicio y c\u00F3mo registrarme? \u00A1Gracias!`
+        `\u00BFMe podr\u00EDas compartir los detalles y agendar una llamada de orientaci\u00F3n? \u00A1Gracias!`
       ].filter(line => line !== null).join("\n");
 
       const waUrl = `https://wa.me/${config.advisor.whatsappNumber}?text=${encodeURIComponent(waMsg)}`;
