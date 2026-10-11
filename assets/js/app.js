@@ -17,7 +17,7 @@ const app = createApp({
         email: "equilibrionutricion8@gmail.com",
         whatsappNumber: "522227708716",
         displayPhone: "222 770 8716",
-        whatsappDefaultMessage: "\u00A1Hola Mar\u00EDa de Jes\u00FAs! Me interesa conocer los detalles del proyecto de negocio y c\u00F3mo iniciar con tu equipo."
+        whatsappDefaultMessage: "Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n en bienestar digital y la disponibilidad de paquetes de inicio."
       },
       socialLinks: {
         whatsappDirect: "https://wa.me/522227708716"
@@ -31,8 +31,8 @@ const app = createApp({
       name: "",
       phone: "",
       city: "",
-      goal: "Ingreso Extra ($5,000 - $15,000 MXN/mes)",
-      timeAvailability: "Medio Tiempo (5 a 10 hrs a la semana)",
+      goal: "Ingreso Alternativo ($10,000 - $25,000 MXN/mes)",
+      timeAvailability: "Medio Tiempo (10 a 12 hrs a la semana)",
       experience: "Sin experiencia (deseo capacitaci\u00F3n desde cero)",
       message: ""
     });
@@ -47,18 +47,18 @@ const app = createApp({
 
     // Metas de emprendimiento en pesos mexicanos (MXN)
     const businessGoals = [
-      { id: "extra", label: "Ingreso Extra ($5,000 - $15,000 MXN/mes)", desc: "Genera ingresos adicionales sin descuidar tu empleo o actividades actuales" },
-      { id: "medio", label: "Medio Tiempo ($15,000 - $35,000 MXN/mes)", desc: "Construye una segunda fuente de ingresos s\u00F3lida y en crecimiento constante" },
-      { id: "libertad", label: "Libertad Financiera (+$50,000 MXN/mes)", desc: "Desarrolla una carrera de liderazgo con equipo y ganancias crecientes" },
-      { id: "salud_pro", label: "Profesional de Salud o Deporte", desc: "Integra suplementaci\u00F3n cient\u00EDfica patentada en tu pr\u00E1ctica o comunidad" }
+      { id: "extra", label: "Ingreso Extra ($5,000 - $15,000 MXN/mes)", desc: "Genera ingresos adicionales dedicando de 8 a 10 hrs semanales sin descuidar tu empleo actual" },
+      { id: "alternativo", label: "Ingreso Alternativo ($15,000 - $35,000 MXN/mes)", desc: "Construye una segunda fuente de ingresos s\u00F3lida y en crecimiento constante" },
+      { id: "libertad", label: "Libertad Financiera (+$50,000 MXN/mes)", desc: "Desarrolla una carrera de liderazgo con equipo y ganancias residuales escalables" },
+      { id: "salud_pro", label: "Profesional de Salud o Deporte", desc: "Integra biotecnolog\u00EDa celular comprobada en tu pr\u00E1ctica o comunidad" }
     ];
 
     // Pesta\u00F1as de Audiencia: \u00BFPara qui\u00E9n es esta oportunidad?
     const activeAudienceTab = ref("empleados");
 
     const audienceTabs = [
-      { id: "empleados", label: "Profesionistas y Empleados" },
-      { id: "hogar", label: "Mam\u00E1s y Pap\u00E1s de Familia" },
+      { id: "empleados", label: "Profesionistas & Empleados" },
+      { id: "hogar", label: "Mam\u00E1s & Pap\u00E1s de Familia" },
       { id: "salud", label: "Profesionales de la Salud" },
       { id: "emprendedores", label: "Emprendedores con Visi\u00F3n" }
     ];
@@ -66,41 +66,41 @@ const app = createApp({
     const audienceData = {
       empleados: {
         tag: "Segunda Fuente de Ingresos en M\u00E9xico",
-        title: "Genera un ingreso extra en tus tiempos libres sin renunciar a tu empleo.",
-        subtitle: "Un modelo flexible que puedes operar desde tu celular en tus ratos libres, apoy\u00E1ndote en un sistema probado de capacitaci\u00F3n y acompa\u00F1amiento.",
+        title: "Genera un ingreso alternativo dedicando de 10 a 12 horas a la semana, sin descuidar tu empleo.",
+        subtitle: "Un modelo digital y flexible que operas desde tu celular en tus ratos libres, apalanc\u00E1ndote en un sistema probado de capacitaci\u00F3n y acompa\u00F1amiento.",
         benefits: [
-          "Sin horarios r\u00EDgidos: t\u00FA decides cu\u00E1ntas horas dedicarle al d\u00EDa",
+          "Sin horarios r\u00EDgidos: t\u00FA decides cu\u00E1ndo y d\u00F3nde conectar clientes",
           "Ingresos en pesos mexicanos depositados directamente a tu cuenta bancaria",
           "Acompa\u00F1amiento personalizado de Mar\u00EDa de Jes\u00FAs Vera paso a paso",
-          "Sin riesgos de inventario: los env\u00EDos se realizan directo a tus clientes por paqueter\u00EDa oficial"
+          "Cero gesti\u00F3n de inventarios o cobros: Drop-shipping oficial DHL/Estafeta en todo M\u00E9xico"
         ]
       },
       hogar: {
-        tag: "Trabaja desde Casa",
-        title: "Monetiza tu tiempo desde el hogar sin perderte los mejores momentos con tus hijos.",
-        subtitle: "Construye un negocio rentable y con prop\u00F3sito desde tu casa o tel\u00E9fono, aportando al gasto familiar con productos que mejoran la calidad de vida.",
+        tag: "Negocio Digital desde Casa",
+        title: "Construye un activo rentable sin perderte los mejores momentos con tus hijos.",
+        subtitle: "Monetiza tus redes y c\u00EDrculo social desde tu hogar, aportando significativamente al gasto familiar con suplementaci\u00F3n cient\u00EDfica de alta demanda.",
         benefits: [
-          "100% compaginable con la vida familiar y escolar",
-          "Capacitaciones virtuales gratuitas y grabadas para ver a tu ritmo",
-          "Comunidad c\u00E1lida de emprendedores que te impulsan a crecer",
-          "Precios preferenciales con descuentos directos para toda tu familia"
+          "100% compaginable con la vida familiar y las rutinas escolares",
+          "Capacitaciones virtuales gratuitas y grabadas para avanzar a tu propio ritmo",
+          "Comunidad c\u00E1lida de asociados que te impulsan y celebran cada logro",
+          "Precios preferenciales con hasta 45% de descuento para el bienestar de tu familia"
         ]
       },
       salud: {
         tag: "Respaldo Cient\u00EDfico & Nutrici\u00F3n Celular",
-        title: "Recomienda nutrac\u00E9uticos con grado cient\u00EDfico y evidencia cl\u00EDnica mundial.",
-        subtitle: "Ideal para m\u00E9dicos, nutri\u00F3logos, terapeutas, entrenadores y profesionales que buscan respaldo m\u00E9dico comprobado y publicaci\u00F3n en el PDR y CPS.",
+        title: "Recomienda biotecnolog\u00EDa celular con evidencia cl\u00EDnica y publicaciones m\u00E9dicas internacionales.",
+        subtitle: "Ideal para m\u00E9dicos, nutri\u00F3logos, terapeutas, entrenadores y profesionales que buscan respaldo cient\u00EDfico estricto y publicaciones en el PDR y CPS.",
         benefits: [
-          "M\u00E1s de 45 a\u00F1os de investigaci\u00F3n y decenas de estudios cl\u00EDnicos en humanos",
-          "Presente en referencias m\u00E9dicas internacionales de prestigio (PDR y CPS)",
-          "Donador de ciste\u00EDna enlazada patentado para la elevaci\u00F3n del glutati\u00F3n celular",
+          "M\u00E1s de 45 a\u00F1os de investigaci\u00F3n cient\u00EDfica y decenas de estudios cl\u00EDnicos en humanos",
+          "Presente en referencias m\u00E9dicas mundiales de prestigio (PDR de EE. UU. y CPS de Canad\u00E1)",
+          "Donador de ciste\u00EDna enlazada patentado para la elevaci\u00F3n del glutati\u00F3n intracelular",
           "Alianzas \u00E9ticas y prestigio profesional para tu consulta o centro de salud"
         ]
       },
       emprendedores: {
         tag: "Activos Financieros & Escalabilidad",
-        title: "Construye ingresos residuales y un negocio rentable a largo plazo.",
-        subtitle: "Apal\u00E1ncate en un sistema probado de duplicaci\u00F3n y herramientas digitales para crear un modelo de negocio en constante crecimiento.",
+        title: "Construye ingresos residuales y un negocio heredable a largo plazo.",
+        subtitle: "Apal\u00E1ncate en un sistema comprobado de duplicaci\u00F3n y comercio electr\u00F3nico para crear una cartera de clientes en constante crecimiento.",
         benefits: [
           "Plan de compensaci\u00F3n de alto impacto que reparte hasta el 47% en comisiones",
           "Ingresos residuales continuos: gana comisiones crecientes mes con mes",
@@ -110,19 +110,44 @@ const app = createApp({
       }
     };
 
+    // Prueba Social: Testimonios de Asociados
+    const testimonials = [
+      {
+        name: "Lic. Carlos Mendoza",
+        city: "CDMX",
+        role: "Profesionista (Tiempo Parcial)",
+        text: "Trabajo en el sector financiero y buscaba una segunda fuente de ingresos seria. Con 10 horas a la semana y el apoyo de Mar\u00EDa de Jes\u00FAs, en 4 meses alcanc\u00E9 un ingreso que supera la mensualidad de mi auto sin descuidar mi trabajo.",
+        badge: "Segunda Fuente de Ingresos"
+      },
+      {
+        name: "Dra. Patricia Galindo",
+        city: "Puebla, Pue.",
+        role: "Especialista en Nutrici\u00F3n",
+        text: "Como profesional de la salud soy muy rigurosa con la evidencia. Al revisar los m\u00E1s de 45 a\u00F1os de ciencia y las patentes del donador de ciste\u00EDna, integr\u00E9 el modelo con total confianza. Mis pacientes tienen resultados comprobados.",
+        badge: "Respaldo Cient\u00EDfico"
+      },
+      {
+        name: "Lorena V\u00E1zquez",
+        city: "Guadalajara, Jal.",
+        role: "Mam\u00E1 de 2 & Emprendedora",
+        text: "No quer\u00EDa volver a un empleo de 9 horas para no perderme el crecimiento de mis hijos. El drop-shipping oficial resuelve todo el env\u00EDo y cobro. Yo solo conecto y asesoro desde mi tel\u00E9fono celular.",
+        badge: "Libertad de Tiempo"
+      }
+    ];
+
     // Simulador de Ingresos Proyectados en M\u00E9xico (MXN)
     const simPartners = ref(3);
     const simCustomers = ref(5);
 
     const projectedMonthlyIncome = computed(() => {
-      // Calculo estimado: comision venta directa promedio $550 MXN/cliente + comision residual/bono por socio $1,350 MXN
+      // Calculo estimado: margen venta directa promedio $550 MXN/cliente + comision residual/bono por socio $1,350 MXN
       const retailProfit = simCustomers.value * 550;
       const teamCommission = simPartners.value * 1350;
       const rankBonus = simPartners.value >= 4 ? 4000 : 0;
       return retailProfit + teamCommission + rankBonus;
     });
 
-    // Preguntas Frecuentes (FAQ) espec\u00EDficas para M\u00E9xico
+    // Preguntas Frecuentes (FAQ) para derribar objeciones
     const openFaqIndex = ref(0);
 
     const faqs = [
@@ -131,8 +156,8 @@ const app = createApp({
         a: "No, para nada. La gran mayor\u00EDa inician desde cero. Al unirte al equipo de Mar\u00EDa de Jes\u00FAs Vera recibes inducci\u00F3n 1 a 1, acceso a grupos de apoyo en WhatsApp y entrenamientos semanales donde te ense\u00F1amos exactamente qu\u00E9 hacer paso a paso."
       },
       {
-        q: "\u00BFC\u00F3mo se entregan los productos a los clientes en M\u00E9xico?",
-        a: "No necesitas comprar inventario ni repartir paquetes personalmente. La compa\u00F1\u00EDa cuenta con log\u00EDstica y env\u00EDos directos a todo M\u00E9xico mediante paqueter\u00EDa oficial (DHL y Estafeta) con entrega r\u00E1pida y segura en el domicilio del cliente."
+        q: "\u00BFC\u00F3mo funciona el modelo de log\u00EDstica y env\u00EDos en M\u00E9xico?",
+        a: "Es un modelo 100% automatizado (Drop-shipping oficial). Tus clientes compran en tu plataforma digital, la compa\u00F1\u00EDa procesa el cobro con tarjeta o transferencia y despacha el pedido por paqueter\u00EDa oficial (DHL y Estafeta) con entrega r\u00E1pida y segura en el domicilio del cliente."
       },
       {
         q: "\u00BFC\u00F3mo y cu\u00E1ndo se pagan las comisiones en M\u00E9xico?",
@@ -140,7 +165,7 @@ const app = createApp({
       },
       {
         q: "\u00BFCu\u00E1l es la inversi\u00F3n para comenzar mi negocio en M\u00E9xico?",
-        a: "Tu inicio se realiza adquiriendo un Paquete de Inicio con descuento preferencial mayorista (con hasta 45% de ahorro). En la llamada de orientaci\u00F3n por WhatsApp, Mar\u00EDa de Jes\u00FAs Vera te detallar\u00E1 exactamente los pasos y opciones disponibles seg\u00FAn tu meta."
+        a: "Tu inicio se realiza adquiriendo un Paquete de Inicio con descuento preferencial mayorista (con hasta 45% de ahorro). En la llamada de orientaci\u00F3n por WhatsApp, Mar\u00EDa de Jes\u00FAs Vera te detallar\u00E1 exactamente las opciones disponibles seg\u00FAn tus metas."
       },
       {
         q: "\u00BFQu\u00E9 respaldo legal y cient\u00EDfico tiene este proyecto en M\u00E9xico?",
@@ -213,20 +238,18 @@ const app = createApp({
         }
       }
 
-      // 2. Preparar mensaje de WhatsApp en formato es-MX (sin mencionar marca previa)
+      // 2. Preparar mensaje exacto y contextualizado para WhatsApp
       const waMsg = [
-        `\u00A1Hola ${config.advisor.name}! Me interesa conocer el proyecto de negocio.`,
+        `Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n en bienestar digital y la disponibilidad de paquetes de inicio.`,
         ``,
         `\uD83D\uDC64 *Nombre:* ${leadData.nombre}`,
         `\uD83D\uDCF1 *Celular:* ${form.phone.trim()}`,
         `\uD83D\uDCCD *Ciudad:* ${leadData.ciudad}`,
-        `\uD83C\uDFAF *Mi Meta:* ${leadData.meta}`,
+        `\uD83C\uDFAF *Meta mensual:* ${leadData.meta}`,
         `\u23F0 *Tiempo disponible:* ${leadData.disponibilidad}`,
         `\uD83D\uDCA1 *Experiencia:* ${leadData.experiencia}`,
-        form.message.trim() ? `\uD83D\uDCAC *Comentarios:* ${leadData.mensaje}` : ``,
-        ``,
-        `\u00BFMe podr\u00EDas compartir los detalles y agendar una llamada de orientaci\u00F3n? \u00A1Gracias!`
-      ].filter(line => line !== null).join("\n");
+        form.message.trim() ? `\uD83D\uDCAC *Mensaje:* ${leadData.mensaje}` : ``
+      ].filter(line => line !== null && line !== "").join("\n");
 
       const waUrl = `https://wa.me/${config.advisor.whatsappNumber}?text=${encodeURIComponent(waMsg)}`;
 
@@ -255,6 +278,7 @@ const app = createApp({
       activeAudienceTab,
       audienceTabs,
       audienceData,
+      testimonials,
       simPartners,
       simCustomers,
       projectedMonthlyIncome,

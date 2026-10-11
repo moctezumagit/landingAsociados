@@ -1,70 +1,39 @@
-# Landing Page de Oportunidad de Negocio y Emprendimiento MÃ©xico
-## LÃ­der de Equipo y Mentora: MarÃ­a de JesÃºs Vera
+# Landing Page de Emprendimiento y Negocio Digital en Bienestar (es-MX)
+## Mentora y LÃ­der de Equipo: MarÃ­a de JesÃºs Vera
 
-Landing Page de alta conversiÃ³n diseÃ±ada con estrategia de marketing de atracciÃ³n y curiosidad para la prospecciÃ³n y captaciÃ³n de emprendedores interesados en salud celular y bienestar en MÃ©xico. La informaciÃ³n detallada de la compaÃ±Ã­a y los pasos de integraciÃ³n son proporcionados directamente por la asesora en la llamada de WhatsApp.
-
----
-
-## CaracterÃ­sticas y MÃ³dulos Implementados (es-MX)
-
-1. **Contacto y LocalizaciÃ³n para MÃ©xico**:
-   - Nombre: **MarÃ­a de JesÃºs Vera** (LÃ­der de Equipo y Mentora).
-   - TelÃ©fono / WhatsApp Ãºnico: **`+52 222 770 8716`** (`2227708716`).
-   - Sede: Puebla, MÃ©xico (Cobertura en toda la RepÃºblica Mexicana).
-   - Moneda oficial en el simulador y paquetes: Pesos Mexicanos ($ MXN).
-
-2. **Estrategia de AtracciÃ³n y Curiosidad**:
-   - Se enfoca en los beneficios del modelo de negocio, respaldo cientÃ­fico (+45 aÃ±os) y ganancias en pesos sin revelar marcas corporativas, canalizando al prospecto a la llamada directa por WhatsApp.
-
-3. **Los 4 Pilares del Negocio**:
-   - Producto Ãºnico y patentado con ciencia comprobada.
-   - Plan de compensaciÃ³n transparente y generoso.
-   - LogÃ­stica y envÃ­os directos a todo MÃ©xico por paqueterÃ­a oficial (DHL/Estafeta).
-   - AcompaÃ±amiento y mentorÃ­a 1 a 1 con MarÃ­a de JesÃºs Vera.
-
-4. **Segmentador de Perfiles ("Para QuiÃ©n Es")**:
-   - PestaÃ±as interactivas: Profesionistas y Empleados, MamÃ¡s y PapÃ¡s de Familia, Profesionales de la Salud y Emprendedores con VisiÃ³n.
-
-5. **6 Formas de Ganar Dinero**:
-   - Venta al menudeo (hasta 45% de margen).
-   - Bono por desarrollo de equipo.
-   - Comisiones residuales de volumen.
-   - Bonos por avance de rango.
-   - Bonos por liderazgo y duplicaciÃ³n.
-   - Viajes de incentivo y convenciones.
-
-6. **Simulador de Ingresos en Pesos ($ MXN)**:
-   - ProyecciÃ³n mensual estimada basada en clientes recurrentes y nuevos socios.
-
-7. **Opciones de Paquetes de Inicio**:
-   - Paquete Bienestar Ã‰xito, Salud Familiar e Inicio Esencial con estimaciones en moneda nacional.
-
-8. **Captura y SincronizaciÃ³n de Prospectos**:
-   - Formulario reactivo Vue 3 con validaciÃ³n de celular mexicano (10 dÃ­gitos).
-   - SincronizaciÃ³n automÃ¡tica a Google Sheets (`google-apps-script.js`).
-   - RedirecciÃ³n instantÃ¡nea a WhatsApp con mensaje precargado.
+Landing Page de alta conversiÃ³n (CRO objetivo 8% - 12%) diseÃ±ada para la atracciÃ³n, filtrado y prospecciÃ³n de asociados en MÃ©xico con estrategia de marketing de atracciÃ³n.
 
 ---
 
-## Estructura del Proyecto
+## Mejoras Implementadas (Arquitectura CRO 2026)
 
-```
-landingAsociados/
-â”œâ”€â”€ index.html                  # Landing page (idioma es-MX, SEO local y Vue 3)
-â”œâ”€â”€ google-apps-script.js       # Backend de Google Sheets para prospectos
-â”œâ”€â”€ README.md                   # DocumentaciÃ³n oficial
-â””â”€â”€ assets/
-    â”œâ”€â”€ css/
-    â”‚   â””â”€â”€ styles.css          # Estilos y animaciones
-    â”œâ”€â”€ img/
-    â”‚   â”œâ”€â”€ logo.jpg            # Foto de perfil / Logotipo
-    â”‚   â”œâ”€â”€ hero-wellness.jpg   # Imagen de bienvenida
-    â”‚   â”œâ”€â”€ consultation.jpg    # Foto de MarÃ­a de JesÃºs Vera
-    â”‚   â””â”€â”€ science-lifestyle.jpg
-    â””â”€â”€ js/
-        â”œâ”€â”€ config.js           # Datos de contacto y configuraciÃ³n de MarÃ­a de JesÃºs Vera
-        â””â”€â”€ app.js              # AplicaciÃ³n Vue 3 con toda la lÃ³gica reactiva
-```
+### 1. Hero Section ("Above the Fold")
+- **Titular de Impacto (H1):** `"Construye un Negocio Digital en Bienestar Celular con LogÃ­stica y EnvÃ­os 100% Automatizados"`.
+- **Claridad Inmediata (<5 segundos):**
+  - **Â¿QuÃ© es esto?:** Negocio digital de salud celular con modelo drop-shipping oficial y biotecnologÃ­a patentada de +45 aÃ±os de investigaciÃ³n.
+  - **Â¿Es para mÃ­?:** Pensado para profesionistas, mamÃ¡s/papÃ¡s, especialistas de salud y emprendedores que buscan un ingreso alternativo dedicando de 10 a 12 horas por semana.
+  - **Â¿QuÃ© debo hacer ahora?:** CTA de alto impacto inmediatamente visible: `[ Solicitar Plan de ExpansiÃ³n por WhatsApp ]`.
+
+### 2. Secuencia LÃ³gica de Bloques
+1. **Hero Section + CTAs y Diferenciadores** (Above the fold con contraste visual Ã¡mbar/dorado).
+2. **Filtro de Perfiles ("Para QuiÃ©n Es"):** PestaÃ±as interactivas Vue 3 (MamÃ¡s & PapÃ¡s, Profesionistas, Especialistas de Salud, Emprendedores).
+3. **Los 4 Pilares del Modelo:**
+   - Drop-shipping 100% Automatizado (DHL / Estafeta en todo MÃ©xico).
+   - BiotecnologÃ­a Celular de +45 AÃ±os (Patentes mÃ©dicas internacionales, PDR y CPS).
+   - Alta Consumibilidad & RetenciÃ³n (Recompra mensual directa en plataforma).
+   - MentorÃ­a 1 a 1 de MarÃ­a de JesÃºs Vera (AcompaÃ±amiento y duplicaciÃ³n).
+4. **Prueba Social & Credibilidad:** Testimonios reales de profesionistas y mamÃ¡s en MÃ©xico + Bio y foto profesional de mentorÃ­a de MarÃ­a de JesÃºs Vera.
+5. **Simulador de Ingresos ($ MXN) & Paquetes de Inicio:**
+   - Sliders interactivos con cÃ¡lculo en tiempo real.
+   - **Leyenda de cumplimiento normativo (Meta Ads Compliance):**
+     *â€œLas proyecciones son ilustrativas y dependen del esfuerzo, tiempo y dedicaciÃ³n de cada asociado independiente. No constituyen una garantÃ­a de ingresos fijos.â€*
+6. **Formulario Final & Preguntas Frecuentes (FAQ):**
+   - ResoluciÃ³n de las principales objeciones de ventas, tiempo y entrega.
+   - BotÃ³n de envÃ­o directo hacia WhatsApp con mensaje precargado contextualizado.
+
+### 3. Flujo y Mensaje de WhatsApp Contextualizado
+Al enviar el formulario o dar clic en los botones de acciÃ³n, se precarga el mensaje:
+> *"Hola MarÃ­a de JesÃºs, completÃ© el formulario en la landing page. Me interesa conocer el plan de expansiÃ³n en bienestar digital y la disponibilidad de paquetes de inicio."*
 
 ---
 

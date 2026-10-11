@@ -209,3 +209,27 @@ html {
 [v-cloak] {
   display: none !important;
 }
+
+/* Optimizaciones CRO & Mobile First */
+@media (max-width: 640px) {
+  input, select, textarea {
+    font-size: 16px !important; /* Previene zoom involuntario en iOS Safari */
+  }
+  button, a.btn-cta {
+    min-height: 48px; /* Tamano ergonomico tactil recomendado */
+  }
+}
+
+/* Efecto pulsante suave para botones de llamada a la accion */
+@keyframes cta-glow {
+  0%, 100% {
+    box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4), 0 8px 10px -6px rgba(245, 158, 11, 0.2);
+  }
+  50% {
+    box-shadow: 0 20px 35px -5px rgba(245, 158, 11, 0.6), 0 10px 15px -3px rgba(245, 158, 11, 0.3);
+  }
+}
+
+.cta-glow {
+  animation: cta-glow 3s infinite ease-in-out;
+}
