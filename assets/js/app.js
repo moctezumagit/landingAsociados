@@ -49,7 +49,7 @@
             "Sin horarios r\u00EDgidos: t\u00FA decides cu\u00E1ndo y desde d\u00F3nde operar",
             "Ingresos depositados directamente a tu cuenta bancaria local en tu pa\u00EDs",
             "Acompa\u00F1amiento 1 a 1 de Mar\u00EDa de Jes\u00FAs Vera paso a paso",
-            "Cero gesti\u00F3n de inventarios o cobros: Drop-shipping oficial con env\u00EDos directos a domicilio"
+            "Cero gesti\u00F3n de inventarios o cobros: Envíos directos de fábrica con logística oficial a domicilio"
           ]
         },
         {
@@ -123,8 +123,8 @@
           city: "Emprendedora Digital",
           role: "Mam\u00E1 de 2 & L\u00EDder de Equipo",
           initials: "LV",
-          quote: "No quer\u00EDa un empleo r\u00EDgido de oficina para no perderme el crecimiento de mis hijos. El drop-shipping oficial resuelve todo el env\u00EDo y cobro en cada pa\u00EDs. Yo solo asesoro y comparto desde mi tel\u00E9fono celular.",
-          text: "No quer\u00EDa un empleo r\u00EDgido de oficina para no perderme el crecimiento de mis hijos. El drop-shipping oficial resuelve todo el env\u00EDo y cobro en cada pa\u00EDs. Yo solo asesoro y comparto desde mi tel\u00E9fono celular."
+          quote: "No quer\u00EDa un empleo r\u00EDgido de oficina para no perderme el crecimiento de mis hijos. La logística oficial de envíos directos resuelve todo el envío y cobro en cada pa\u00EDs. Yo solo asesoro y comparto desde mi tel\u00E9fono celular.",
+          text: "No quer\u00EDa un empleo r\u00EDgido de oficina para no perderme el crecimiento de mis hijos. La logística oficial de envíos directos resuelve todo el envío y cobro en cada pa\u00EDs. Yo solo asesoro y comparto desde mi tel\u00E9fono celular."
         }
       ];
 
@@ -148,7 +148,7 @@
         },
         {
           q: "\u00BFC\u00F3mo funciona el modelo de log\u00EDstica y env\u00EDos?",
-          a: "Es un modelo 100% automatizado (Drop-shipping internacional). Tus clientes compran a trav\u00E9s de tu tienda virtual oficial, la compa\u00F1\u00EDa procesa el cobro con tarjeta o m\u00E9todos de pago autorizados y despacha el pedido por paqueter\u00EDa oficial directamente al domicilio del cliente con entrega r\u00E1pida y segura en su pa\u00EDs."
+          a: "Es un modelo 100% automatizado (Logística internacional con envíos directos de fábrica). Tus clientes compran a trav\u00E9s de tu tienda virtual oficial, la compa\u00F1\u00EDa procesa el cobro con tarjeta o m\u00E9todos de pago autorizados y despacha el pedido por paqueter\u00EDa oficial directamente al domicilio del cliente con entrega r\u00E1pida y segura en su pa\u00EDs."
         },
         {
           q: "\u00BFC\u00F3mo y cu\u00E1ndo se pagan las comisiones?",
@@ -640,7 +640,7 @@
         } catch (e) {}
       };
 
-      // Inicializacion automÃ¡tica al cargar
+      // Inicialización automática al cargar
       onMounted(() => {
         setTimeout(() => {
           openVideoFunnelModal(1);

@@ -9,7 +9,7 @@
   
   <!-- SEO & Metadatos Globales para Paises Hispanohablantes -->
   <meta name="description" content="Construye un negocio digital en bienestar celular con log&iacute;stica y env&iacute;os 100% automatizados. Genera un ingreso alternativo dedicando de 10 a 12 horas semanales con la mentor&iacute;a de Mar&iacute;a de Jes&uacute;s Vera.">
-  <meta name="keywords" content="negocio digital bienestar, ingresos residuales, drop-shipping salud celular, ganar dinero tiempo parcial, Maria de Jesus Vera, oportunidad de negocio internacional">
+  <meta name="keywords" content="negocio digital bienestar, ingresos residuales, envíos directos salud celular, ganar dinero tiempo parcial, Maria de Jesus Vera, oportunidad de negocio internacional">
   <meta name="author" content="Mar&iacute;a de Jes&uacute;s Vera - Mentora y L&iacute;der de Emprendimiento">
   <meta name="robots" content="index, follow">
   
@@ -125,7 +125,7 @@
           <div v-if="videoFunnel.isMuted && videoFunnel.isPlaying"
                @click.stop="unmuteVideo"
                class="absolute top-4 inset-x-0 mx-auto w-fit z-30 bg-emerald-600/95 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-2.5 cursor-pointer animate-bounce backdrop-blur-md border border-emerald-300 transition-all active:scale-95">
-            <span class="text-base sm:text-lg">ðŸ”Š</span>
+            <span class="text-base sm:text-lg">&#128266;</span>
             <span class="text-xs sm:text-sm font-extrabold tracking-wide uppercase">Toca para activar el sonido</span>
           </div>
 
@@ -168,7 +168,7 @@
                       class="btn-shine group relative p-4 rounded-2xl font-bold bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-lg shadow-emerald-500/25 active:scale-95 transition-all text-left flex items-center justify-between cursor-pointer border border-emerald-400/30">
                 <div>
                   <span class="block text-base sm:text-lg font-black leading-tight flex items-center gap-2">
-                    <span>âœ…</span> <span>{{ currentFunnelStepData.yesText }}</span>
+                    <span>&#9989;</span> <span>{{ currentFunnelStepData.yesText }}</span>
                   </span>
                   <span class="block text-xs text-emerald-100 font-medium mt-1">
                     {{ currentFunnelStepData.yesSubtext }} &rarr;
@@ -183,7 +183,7 @@
                       class="group relative p-4 rounded-2xl font-bold bg-slate-800/90 hover:bg-slate-800 text-slate-300 border border-slate-700 hover:border-slate-600 active:scale-95 transition-all text-left flex items-center justify-between cursor-pointer">
                 <div>
                   <span class="block text-sm sm:text-base font-bold text-slate-200 flex items-center gap-2">
-                    <span>âŒ</span> <span>{{ currentFunnelStepData.noText }}</span>
+                    <span>&#10060;</span> <span>{{ currentFunnelStepData.noText }}</span>
                   </span>
                   <span class="block text-xs text-slate-400 font-normal mt-1">
                     {{ currentFunnelStepData.noSubtext }}
@@ -195,7 +195,7 @@
 
             <div class="mt-3 flex items-center justify-center text-xs text-slate-400">
               <button type="button" @click="replayCurrentFunnelVideo" class="underline text-slate-400 hover:text-white cursor-pointer">
-                â†º Volver a ver este video
+                &#8635; Volver a ver este video
               </button>
             </div>
           </div>
@@ -222,7 +222,7 @@
             <!-- PANTALLA DE CONFIRMACION PARA OPCION A (INMEDIATO) -->
             <div v-if="videoFunnel.immediateSubmitted" class="py-4 text-center animate-fade-in">
               <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto mb-2 text-2xl font-bold">
-                âœ“
+                &#10003;
               </div>
               <h4 class="text-base sm:text-lg font-black text-white">&iexcl;Mensaje preparado con &eacute;xito!</h4>
               <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-md mx-auto leading-relaxed">
@@ -234,12 +234,12 @@
                    target="_blank"
                    rel="noopener noreferrer"
                    class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 flex items-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer">
-                  <span>ðŸ’¬ Abrir chat con Mar&iacute;a de Jes&uacute;s</span>
+                  <span>&#128172; Abrir chat con Mar&iacute;a de Jes&uacute;s</span>
                 </a>
                 <button type="button"
                         @click="closeVideoFunnelModal(true)"
                         class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 flex items-center gap-2 shadow-md transition-all cursor-pointer">
-                  <span>âœ“ Cerrar video y continuar</span>
+                  <span>&#10003; Cerrar video y continuar</span>
                 </button>
               </div>
             </div>
@@ -249,7 +249,7 @@
               <div class="mb-3.5">
                 <span class="text-[11px] font-bold uppercase tracking-wider text-blue-400 flex items-center gap-1.5">
                   <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                  <span>Paso Final â€¢ Agenda y Contacto con la Mentora</span>
+                  <span>Paso Final &bull; Agenda y Contacto con la Mentora</span>
                 </span>
                 <h3 class="text-lg sm:text-xl font-black text-white mt-1">&iquest;Cu&aacute;ndo prefieres que hablemos?</h3>
                 <p class="text-xs sm:text-sm text-slate-300 mt-0.5">Elige tu alternativa preferida para recibir tu orientaci&oacute;n personalizada:</p>
@@ -264,7 +264,7 @@
                         class="group p-3.5 rounded-2xl border transition-all text-left flex flex-col justify-between cursor-pointer hover:-translate-y-0.5 shadow-md">
                   <div>
                     <div class="flex items-center justify-between mb-2">
-                      <span class="text-2xl">âš¡</span>
+                      <span class="text-2xl">&#9889;</span>
                       <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Inmediato</span>
                     </div>
                     <span class="block text-sm sm:text-base font-extrabold text-white group-hover:text-emerald-300">En la pr&oacute;xima hora</span>
@@ -280,7 +280,7 @@
                         class="group p-3.5 rounded-2xl border transition-all text-left flex flex-col justify-between cursor-pointer hover:-translate-y-0.5 shadow-md">
                   <div>
                     <div class="flex items-center justify-between mb-2">
-                      <span class="text-2xl">ðŸ“…</span>
+                      <span class="text-2xl">&#128197;</span>
                       <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">Hoy mismo</span>
                     </div>
                     <span class="block text-sm sm:text-base font-extrabold text-white group-hover:text-blue-300">Hoy durante el d&iacute;a</span>
@@ -296,7 +296,7 @@
                         class="group p-3.5 rounded-2xl border transition-all text-left flex flex-col justify-between cursor-pointer hover:-translate-y-0.5 shadow-md">
                   <div>
                     <div class="flex items-center justify-between mb-2">
-                      <span class="text-2xl">ðŸ“†</span>
+                      <span class="text-2xl">&#128198;</span>
                       <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">Personalizado</span>
                     </div>
                     <span class="block text-sm sm:text-base font-extrabold text-white group-hover:text-purple-300">Elegir d&iacute;a y hora</span>
@@ -313,7 +313,7 @@
                 <div v-if="!videoFunnel.bookingSubmitted">
                   <div class="flex items-center justify-between mb-3">
                     <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-                      <span>âœï¸</span>
+                      <span>&#9997;&#65039;</span>
                       <span>{{ videoFunnel.selectedSlotOption === 'hoy_dia' ? 'Completa tus datos para llamarte hoy' : 'Selecciona fecha y hora de tu cita' }}</span>
                     </h4>
                     <span class="text-[11px] text-emerald-400 font-semibold">Registro Seguro</span>
@@ -342,7 +342,7 @@
                   <div v-if="videoFunnel.selectedSlotOption === 'hoy_dia'" class="mb-4">
                     <label class="block text-xs font-semibold text-slate-300 mb-1.5">Franja horaria preferida para hoy *</label>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                      <button v-for="slot in ['MaÃ±ana (9:00 AM - 12:00 PM)', 'MediodÃ­a / Tarde (12:00 PM - 4:00 PM)', 'Tarde-Noche (4:00 PM - 8:00 PM)']"
+                      <button v-for="slot in ['Mañana (9:00 AM - 12:00 PM)', 'Mediodía / Tarde (12:00 PM - 4:00 PM)', 'Tarde-Noche (4:00 PM - 8:00 PM)']"
                               :key="slot"
                               type="button"
                               @click="videoFunnel.bookingForm.timeSlot = slot"
@@ -384,7 +384,7 @@
                 <!-- PANTALLA DE CITA CONFIRMADA -->
                 <div v-else class="text-center py-4 animate-fade-in">
                   <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-2 text-2xl font-bold">
-                    âœ“
+                    &#10003;
                   </div>
                   <h4 class="text-base sm:text-lg font-black text-white">&iexcl;Cita registrada con &eacute;xito!</h4>
                   <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-md mx-auto">
@@ -396,18 +396,18 @@
                        target="_blank"
                        rel="noopener noreferrer"
                        class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 flex items-center gap-2 shadow-md hover:shadow-lg transition-all">
-                      <span>ðŸ“… Ver evento en Google Calendar</span>
+                      <span>&#128197; Ver evento en Google Calendar</span>
                     </a>
                     <a :href="videoFunnel.whatsappBookingUrl"
                        target="_blank"
                        rel="noopener noreferrer"
                        class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 flex items-center gap-2 shadow-md hover:shadow-lg transition-all">
-                      <span>ðŸ’¬ Confirmar por WhatsApp</span>
+                      <span>&#128172; Confirmar por WhatsApp</span>
                     </a>
                     <button type="button"
                             @click="closeVideoFunnelModal(true)"
                             class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 flex items-center gap-2 shadow-md transition-all cursor-pointer">
-                      <span>âœ“ Cerrar video y continuar</span>
+                      <span>&#10003; Cerrar video y continuar</span>
                     </button>
                   </div>
                 </div>
@@ -419,7 +419,7 @@
           <!-- PASO 5: DESCALIFICACION Y DESPEDIDA CORDIAL (M5) -->
           <div v-if="videoFunnel.currentStep === 5" class="text-center">
             <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-800 text-slate-300 mb-2">
-              ðŸ¤ Comunidad & Recursos Gratuitos
+              &#129309; Comunidad & Recursos Gratuitos
             </span>
             <h3 class="text-base sm:text-lg font-black text-white mb-1.5">{{ currentFunnelStepData.messageTitle }}</h3>
             <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed mb-4">
@@ -435,10 +435,10 @@
 
             <div class="flex items-center justify-center gap-3">
               <button @click="restartFunnel" type="button" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 inline-flex items-center gap-2 cursor-pointer transition-colors shadow-sm">
-                <span>â†º Volver a iniciar el video interactivo</span>
+                <span>&#8635; Volver a iniciar el video interactivo</span>
               </button>
               <button @click="closeVideoFunnelModal(true)" type="button" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-md transition-all">
-                <span>âœ“ Cerrar video y ver la p&aacute;gina</span>
+                <span>&#10003; Cerrar video y ver la p&aacute;gina</span>
               </button>
             </div>
           </div>
@@ -491,7 +491,7 @@
         <div class="flex items-center gap-3">
           <button @click="openVideoFunnelModal(1)" class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-black text-white font-bold text-xs sm:text-sm px-3.5 py-2.5 rounded-xl shadow-md border border-slate-700 transition-all cursor-pointer min-h-[44px]">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span>â–¶ Ver Video</span>
+            <span>&#9654; Ver Video</span>
           </button>
           <button @click="contactAdvisorWhatsApp()" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-teal-600 hover:to-emerald-600 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-md hover:shadow-teal-500/30 transition-all flex items-center gap-2 transform active:scale-95 min-h-[44px]">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
@@ -533,7 +533,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-left max-w-xl mx-auto lg:mx-0 text-sm font-medium text-slate-700">
               <div class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-slate-200/80 shadow-xs">
                 <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
-                <span class="text-xs sm:text-sm leading-snug"><strong>Cero inventarios o cobros:</strong> Drop-shipping oficial con env&iacute;os directos</span>
+                <span class="text-xs sm:text-sm leading-snug"><strong>Cero inventarios o cobros:</strong> Envíos directos de fábrica con entrega a domicilio</span>
               </div>
               <div class="flex items-center gap-2.5 bg-white p-3 rounded-xl border border-slate-200/80 shadow-xs">
                 <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0">&#10003;</span>
@@ -557,7 +557,7 @@
               </button>
 
               <button @click="openVideoFunnelModal(1)" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-slate-900 hover:bg-black text-white font-bold text-sm px-6 py-4 rounded-xl border border-slate-700 shadow-lg hover:shadow-slate-900/30 transition-all min-h-[52px] cursor-pointer">
-                <span class="text-emerald-400">â–¶</span>
+                <span class="text-emerald-400">&#9654;</span>
                 <span>Ver Video Presentaci&oacute;n</span>
               </button>
 
@@ -592,8 +592,8 @@
                 
                 <!-- BADGE FLOTANTE 1 -->
                 <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 border border-slate-100 shadow-lg flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-teal-100 text-brand-teal flex items-center justify-center font-black text-sm shrink-0">
-                    INTL
+                  <div class="w-10 h-10 rounded-xl bg-teal-100 text-brand-teal flex items-center justify-center font-black text-xs shrink-0 text-center uppercase tracking-wider">
+                    GLOBAL
                   </div>
                   <div class="text-xs">
                     <p class="font-extrabold text-slate-900 leading-tight">Modelo 100% Digital</p>
@@ -717,7 +717,7 @@
                 &#128230;
               </div>
               <span class="text-xs font-bold text-teal-800 uppercase tracking-wider">Pilar 01 &bull; Log&iacute;stica</span>
-              <h3 class="text-xl font-black text-slate-900 leading-snug">Drop-shipping Oficial Automatizado</h3>
+              <h3 class="text-xl font-black text-slate-900 leading-snug">Envíos Directos Oficiales y Logística Automatizada</h3>
               <p class="text-sm text-slate-600 leading-relaxed">
                 Tus clientes compran en tu plataforma virtual en su moneda local o tarjeta internacional. La compa&ntilde;&iacute;a cobra directamente y despacha el pedido a la puerta del cliente. Cero empaques ni inventarios en tu casa.
               </p>
@@ -824,7 +824,7 @@
           </div>
         </div>
 
-        <!-- MENTORA MARÃA DE JESÃšS VERA -->
+        <!-- MENTORA MARÍA DE JESÚS VERA -->
         <div id="mentora" class="bg-gradient-to-br from-teal-50/60 via-white to-slate-50 rounded-3xl border border-teal-200 p-8 sm:p-12 shadow-sm">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -1122,7 +1122,7 @@
               @click="toggleFaq(fIdx)" 
               class="w-full py-5 px-6 text-left font-bold text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors min-h-[48px]">
               <span class="text-sm sm:text-base">{{ faq.q }}</span>
-              <span class="text-xl font-bold text-brand-teal shrink-0">{{ openFaqIndex === fIdx ? 'âˆ’' : '+' }}</span>
+              <span class="text-xl font-bold text-brand-teal shrink-0">{{ openFaqIndex === fIdx ? '−' : '+' }}</span>
             </button>
             <div 
               v-show="openFaqIndex === fIdx" 
