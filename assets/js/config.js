@@ -13,6 +13,7 @@ window.APP_CONFIG = {
     email: "equilibrionutricion8@gmail.com",
     whatsappNumber: "522227708716",
     displayPhone: "+52 222 770 8716",
+    image: "assets/img/consultation.jpg",
     whatsappDefaultMessage: "Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n internacional en bienestar digital y c\u00F3mo iniciar con el modelo en mi pa\u00EDs."
   },
 

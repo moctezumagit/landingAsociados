@@ -1,6 +1,6 @@
 ﻿/**
  * LANDING PAGE DE EMPRENDIMIENTO Y BIENESTAR DIGITAL
- * Motor reactivo Vue 3 de Alta Conversion (CRO) para Paises Hispanohablantes
+ * Motor reactivo Vue 3 con Video Funnel Interactivo (M1 a M5)
  * Mentora y Lider de Equipo: Maria de Jesus Vera | Contacto Oficial: +52 222 770 8716
  */
 
@@ -23,6 +23,7 @@
           email: "equilibrionutricion8@gmail.com",
           whatsappNumber: "522227708716",
           displayPhone: "+52 222 770 8716",
+          image: "assets/img/consultation.jpg",
           whatsappDefaultMessage: "Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n internacional en bienestar digital y c\u00F3mo iniciar con el modelo en mi pa\u00EDs."
         },
         socialLinks: {
@@ -132,9 +133,6 @@
       const simPartners = ref(3);
 
       const estimatedEarnings = computed(() => {
-        // Proyeccion en Dolares Americanos ($ USD) estandar internacional:
-        // Margen promedio por cliente mensual: $45 USD
-        // Comision residual promedio por socio activo: $160 USD
         return (simCustomers.value * 45) + (simPartners.value * 160);
       });
 
@@ -174,7 +172,7 @@
         openFaqIndex.value = openFaqIndex.value === index ? -1 : index;
       };
 
-      // 6. Estado del Formulario
+      // 6. Estado del Formulario Principal
       const form = reactive({
         name: "",
         phone: "",
@@ -187,7 +185,6 @@
       const isSubmitting = ref(false);
       const submitSuccess = ref(false);
 
-      // Metodo de Envio del Formulario
       const submitForm = () => {
         if (!form.name.trim() || !form.phone.trim()) {
           alert("Por favor completa tu nombre y telefono de WhatsApp.");
@@ -209,7 +206,6 @@
           fecha: new Date().toISOString()
         };
 
-        // Envio en segundo plano a Google Sheets si esta configurado
         if (config.googleSheetsUrl) {
           try {
             fetch(config.googleSheetsUrl, {
@@ -223,7 +219,6 @@
           }
         }
 
-        // Construccion del mensaje de WhatsApp
         const waMsg = [
           `Hola Mar\u00EDa de Jes\u00FAs, complet\u00E9 el formulario en la landing page. Me interesa conocer el plan de expansi\u00F3n internacional en bienestar digital y c\u00F3mo iniciar con el modelo en mi pa\u00EDs.`,
           ``,
@@ -247,12 +242,410 @@
 
       const submitApplication = submitForm;
 
-      // 7. Accion de Enlace a WhatsApp
+      // 7. Accion de Enlace directo a WhatsApp
       const contactAdvisorWhatsApp = (customText) => {
         const msg = customText || config.advisor.whatsappDefaultMessage;
         const url = `https://wa.me/${config.advisor.whatsappNumber}?text=${encodeURIComponent(msg)}`;
         window.open(url, "_blank");
       };
+
+      // ========================================================
+      // 8. EMBUDO DE VIDEO INTERACTIVO AUTOMATICO (M1 a M5)
+      // ========================================================
+      const funnelSteps = {
+        1: {
+          id: 1,
+          title: "Paso 1: Presentaci\u00F3n & Calificaci\u00F3n",
+          subtitle: "Evaluaci\u00F3n inicial de bienestar y negocio digital",
+          badge: "Paso 1 de 4",
+          progress: 25,
+          videoSrc: "assets/video/M1.mp4",
+          questionTitle: "Pregunta de Calificaci\u00F3n 1",
+          questionDesc: "\u00BFDeseas conocer c\u00F3mo generar un ingreso alternativo y mejorar tu bienestar celular?",
+          yesText: "S\u00ED, continuar",
+          yesSubtext: "Pasa al video 2",
+          noText: "No en este momento",
+          noSubtext: "Finalizar consulta",
+          nextYes: 2,
+          nextNo: 5
+        },
+        2: {
+          id: 2,
+          title: "Paso 2: Respaldo Cient\u00EDfico & Log\u00EDstica",
+          subtitle: "Profundizando en el modelo automatizado",
+          badge: "Paso 2 de 4",
+          progress: 50,
+          videoSrc: "assets/video/M2.mp4",
+          questionTitle: "Pregunta de Calificaci\u00F3n 2",
+          questionDesc: "\u00BFTe hace sentido apalancarte en biotecnolog\u00EDa comprobada con env\u00EDos y cobros 100% automatizados?",
+          yesText: "S\u00ED, me interesa",
+          yesSubtext: "Pasa al video 3",
+          noText: "No por ahora",
+          noSubtext: "Finalizar consulta",
+          nextYes: 3,
+          nextNo: 5
+        },
+        3: {
+          id: 3,
+          title: "Paso 3: Mentor\u00EDa & Plan de Expansi\u00F3n",
+          subtitle: "Acompa\u00F1amiento 1 a 1 personalizado",
+          badge: "Paso 3 de 4",
+          progress: 75,
+          videoSrc: "assets/video/M3.mp4",
+          questionTitle: "Pregunta de Calificaci\u00F3n 3",
+          questionDesc: "\u00BFTe gustar\u00EDa recibir una llamada de orientaci\u00F3n 1 a 1 sin costo con la mentora Mar\u00EDa de Jes\u00FAs Vera?",
+          yesText: "S\u00ED, quiero hablar con Mar\u00EDa de Jes\u00FAs",
+          yesSubtext: "Pasa a elegir horario de llamada",
+          noText: "No por ahora",
+          noSubtext: "Finalizar consulta",
+          nextYes: 4,
+          nextNo: 5
+        },
+        4: {
+          id: 4,
+          title: "Paso 4: Coordinaci\u00F3n de Llamada",
+          subtitle: "Selecciona tu momento preferido",
+          badge: "Paso Final",
+          progress: 100,
+          videoSrc: "assets/video/M4.mp4",
+          questionTitle: "\u00BFCu\u00E1ndo prefieres que hablemos?",
+          questionDesc: "Elige la alternativa que mejor se adapte a tu horario y pa\u00EDs para coordinar con Mar\u00EDa de Jes\u00FAs Vera:"
+        },
+        5: {
+          id: 5,
+          title: "Agradecimiento & Comunidad",
+          subtitle: "Recursos y contenido gratuito",
+          badge: "Finalizado",
+          progress: 100,
+          videoSrc: "assets/video/M5.mp4",
+          isDisqualified: true,
+          messageTitle: "Gracias por tu sinceridad",
+          messageDesc: "En este momento nuestro modelo podr\u00EDa no adaptarse a lo que buscas, pero te invitamos a seguir nuestro contenido en redes sociales y explorar nuestra comunidad."
+        }
+      };
+
+      const videoFunnel = reactive({
+        isOpen: true,
+        currentStep: 1,
+        isPlaying: false,
+        isMuted: true,
+        isPausedForAnswer: false,
+        hasEnded: false,
+        autoplayBlocked: false,
+        selectedSlotOption: null,
+        bookingSubmitted: false,
+        immediateSubmitted: false,
+        whatsappImmediateUrl: "",
+        calendarUrl: "",
+        whatsappBookingUrl: "",
+        bookingForm: {
+          name: "",
+          phone: "",
+          timeSlot: "Ma\u00F1ana (9:00 AM - 12:00 PM)",
+          date: new Date().toISOString().split("T")[0],
+          time: "11:00",
+          notes: ""
+        },
+        bookingErrors: {
+          name: "",
+          phone: ""
+        }
+      });
+
+      const currentFunnelStepData = computed(() => {
+        return funnelSteps[videoFunnel.currentStep] || funnelSteps[1];
+      });
+
+      const canCloseFunnelModal = computed(() => {
+        if (videoFunnel.currentStep === 5) return true;
+        if (videoFunnel.currentStep === 4 && (videoFunnel.bookingSubmitted || videoFunnel.immediateSubmitted)) return true;
+        return false;
+      });
+
+      const openVideoFunnelModal = (step = null) => {
+        videoFunnel.isOpen = true;
+        const targetStep = step || videoFunnel.currentStep || 1;
+        playFunnelStep(targetStep);
+      };
+
+      const closeVideoFunnelModal = (force = false) => {
+        if (!force && !canCloseFunnelModal.value) {
+          console.log("[Video Funnel] Cierre guiado: completa el flujo para continuar.");
+          return;
+        }
+        videoFunnel.isOpen = false;
+        const vid = document.getElementById("funnelVideoPlayer");
+        if (vid) {
+          vid.pause();
+        }
+      };
+
+      const playFunnelStep = (stepId) => {
+        videoFunnel.currentStep = stepId;
+        videoFunnel.isPausedForAnswer = false;
+        videoFunnel.hasEnded = false;
+        videoFunnel.selectedSlotOption = null;
+        videoFunnel.bookingSubmitted = false;
+        videoFunnel.immediateSubmitted = false;
+
+        const stepData = funnelSteps[stepId];
+        if (!stepData) return;
+
+        const attemptPlay = () => {
+          const vid = document.getElementById("funnelVideoPlayer");
+          if (!vid) return;
+
+          vid.pause();
+          vid.currentTime = 0;
+          if (vid.src !== stepData.videoSrc) {
+            vid.src = stepData.videoSrc;
+            vid.load();
+          }
+
+          if (!videoFunnel.isMuted) {
+            vid.muted = false;
+            const playPromise = vid.play();
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                videoFunnel.isPlaying = true;
+                videoFunnel.isMuted = false;
+                videoFunnel.autoplayBlocked = false;
+              }).catch(() => {
+                vid.muted = true;
+                videoFunnel.isMuted = true;
+                vid.play().then(() => {
+                  videoFunnel.isPlaying = true;
+                  videoFunnel.autoplayBlocked = false;
+                }).catch(() => {
+                  videoFunnel.autoplayBlocked = true;
+                  videoFunnel.isPlaying = false;
+                });
+              });
+            }
+          } else {
+            vid.muted = true;
+            videoFunnel.isMuted = true;
+            const playPromise = vid.play();
+            if (playPromise !== undefined) {
+              playPromise.then(() => {
+                videoFunnel.isPlaying = true;
+                videoFunnel.autoplayBlocked = false;
+              }).catch(() => {
+                videoFunnel.autoplayBlocked = true;
+                videoFunnel.isPlaying = false;
+              });
+            }
+          }
+        };
+
+        setTimeout(attemptPlay, 60);
+      };
+
+      const unmuteVideo = () => {
+        const vid = document.getElementById("funnelVideoPlayer");
+        if (vid) {
+          vid.muted = false;
+          videoFunnel.isMuted = false;
+          videoFunnel.autoplayBlocked = false;
+          if (vid.currentTime < 4) {
+            vid.currentTime = 0;
+          }
+          vid.play().then(() => {
+            videoFunnel.isPlaying = true;
+          }).catch(e => console.warn("[Video Funnel] Audio unmuting:", e));
+        }
+      };
+
+      const handleVideoClick = () => {
+        if (videoFunnel.isMuted) {
+          unmuteVideo();
+        }
+      };
+
+      const answerFunnelQuestion = (isYes) => {
+        const stepData = currentFunnelStepData.value;
+        if (!stepData) return;
+
+        if (isYes) {
+          if (stepData.nextYes) {
+            playFunnelStep(stepData.nextYes);
+          }
+        } else {
+          if (stepData.nextNo) {
+            playFunnelStep(stepData.nextNo);
+          }
+        }
+      };
+
+      const restartFunnel = () => {
+        playFunnelStep(1);
+      };
+
+      const replayCurrentFunnelVideo = () => {
+        const vid = document.getElementById("funnelVideoPlayer");
+        if (vid) {
+          vid.currentTime = 0;
+          videoFunnel.isPausedForAnswer = false;
+          videoFunnel.hasEnded = false;
+          vid.play().then(() => {
+            videoFunnel.isPlaying = true;
+          }).catch(() => {
+            unmuteVideo();
+          });
+        }
+      };
+
+      const onFunnelVideoEnded = () => {
+        videoFunnel.isPlaying = false;
+        videoFunnel.hasEnded = true;
+        videoFunnel.isPausedForAnswer = true;
+      };
+
+      const onFunnelVideoPlay = () => {
+        videoFunnel.isPlaying = true;
+        videoFunnel.isPausedForAnswer = false;
+      };
+
+      const onFunnelVideoPause = () => {
+        videoFunnel.isPlaying = false;
+      };
+
+      // Opcion A: En la proxima hora con Maria de Jesus Vera
+      const selectOptionA_ProximaHora = () => {
+        videoFunnel.selectedSlotOption = "proxima_hora";
+
+        const customMessage = `\u00A1Hola Mar\u00EDa de Jes\u00FAs! Acabo de ver el video interactivo y solicito una llamada en la pr\u00F3xima hora para mi orientaci\u00F3n personalizada en bienestar digital.`;
+        const waUrl = `https://wa.me/${config.advisor.whatsappNumber}?text=${encodeURIComponent(customMessage)}`;
+        videoFunnel.whatsappImmediateUrl = waUrl;
+
+        if (config.googleSheetsUrl) {
+          try {
+            fetch(config.googleSheetsUrl, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                name: "Interesado en llamada urgente (Paso 4)",
+                phone: "",
+                tipo: "Llamada Urgente Video Funnel",
+                asesora: config.advisor.name,
+                fecha: new Date().toISOString()
+              })
+            }).catch(e => console.warn("Sheets sync:", e));
+          } catch (e) {}
+        }
+
+        videoFunnel.immediateSubmitted = true;
+
+        try {
+          window.open(waUrl, "_blank");
+        } catch (e) {
+          console.warn("Popup blocked:", e);
+        }
+      };
+
+      // Opcion B: Hoy durante el dia
+      const selectOptionB_HoyDia = () => {
+        videoFunnel.selectedSlotOption = "hoy_dia";
+        videoFunnel.bookingSubmitted = false;
+      };
+
+      // Opcion C: Elegir dia y hora
+      const selectOptionC_ElegirFecha = () => {
+        videoFunnel.selectedSlotOption = "elegir_fecha";
+        videoFunnel.bookingSubmitted = false;
+      };
+
+      // Creador de enlace a Google Calendar
+      const createGoogleCalendarUrl = ({ title, details, dateStr, timeStr }) => {
+        try {
+          const [year, month, day] = dateStr.split("-").map(Number);
+          const [hour, minute] = timeStr.split(":").map(Number);
+          const startDate = new Date(year, month - 1, day, hour, minute);
+          const endDate = new Date(startDate.getTime() + 30 * 60000);
+
+          const pad = n => String(n).padStart(2, "0");
+          const formatCalTime = d => `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(d.getUTCHours())}${pad(d.getUTCMinutes())}00Z`;
+
+          const datesParam = `${formatCalTime(startDate)}/${formatCalTime(endDate)}`;
+          return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${datesParam}&details=${encodeURIComponent(details)}&add=${encodeURIComponent(config.advisor.email)}`;
+        } catch (e) {
+          return "https://calendar.google.com/";
+        }
+      };
+
+      // Envio de reserva de cita (Opciones B y C)
+      const submitBookingFunnel = async () => {
+        videoFunnel.bookingErrors.name = "";
+        videoFunnel.bookingErrors.phone = "";
+
+        if (!videoFunnel.bookingForm.name.trim()) {
+          videoFunnel.bookingErrors.name = "Por favor ingresa tu nombre completo.";
+          return;
+        }
+        if (!videoFunnel.bookingForm.phone.trim()) {
+          videoFunnel.bookingErrors.phone = "Por favor ingresa tu WhatsApp con c\u00F3digo de pa\u00EDs.";
+          return;
+        }
+
+        const isHoy = videoFunnel.selectedSlotOption === "hoy_dia";
+        const slotText = isHoy ? videoFunnel.bookingForm.timeSlot : `${videoFunnel.bookingForm.date} a las ${videoFunnel.bookingForm.time} hrs`;
+
+        let dateForCalendar = videoFunnel.bookingForm.date;
+        let timeForCalendar = videoFunnel.bookingForm.time || "11:00";
+        if (isHoy) {
+          dateForCalendar = new Date().toISOString().split("T")[0];
+          if (videoFunnel.bookingForm.timeSlot.includes("Ma\u00F1ana")) timeForCalendar = "10:30";
+          else if (videoFunnel.bookingForm.timeSlot.includes("Mediod\u00EDa") || videoFunnel.bookingForm.timeSlot.includes("Tarde")) timeForCalendar = "14:00";
+          else timeForCalendar = "18:00";
+        }
+
+        const eventTitle = `Orientaci\u00F3n Bienestar Digital con Mar\u00EDa de Jes\u00FAs Vera - ${videoFunnel.bookingForm.name.trim()}`;
+        const eventDetails = `Cita de orientaci\u00F3n 1 a 1 de bienestar celular con Mar\u00EDa de Jes\u00FAs Vera (${config.advisor.displayPhone}).\nCliente: ${videoFunnel.bookingForm.name.trim()}\nWhatsApp: ${videoFunnel.bookingForm.phone.trim()}\nHorario seleccionado: ${slotText}`;
+
+        const calUrl = createGoogleCalendarUrl({
+          title: eventTitle,
+          details: eventDetails,
+          dateStr: dateForCalendar,
+          timeStr: timeForCalendar
+        });
+        videoFunnel.calendarUrl = calUrl;
+
+        const waMessage = `\u00A1Hola Mar\u00EDa de Jes\u00FAs! Acabo de registrar mi cita en el video interactivo:\n\n\uD83D\uDC64 *Nombre:* ${videoFunnel.bookingForm.name.trim()}\n\uD83D\uDCF1 *WhatsApp:* ${videoFunnel.bookingForm.phone.trim()}\n\uD83D\uDCC5 *Horario preferido:* ${slotText}\n\nQuedo a la espera de la llamada para mi orientaci\u00F3n personalizada.`;
+        videoFunnel.whatsappBookingUrl = `https://wa.me/${config.advisor.whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
+
+        if (config.googleSheetsUrl) {
+          try {
+            fetch(config.googleSheetsUrl, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                name: videoFunnel.bookingForm.name.trim(),
+                phone: videoFunnel.bookingForm.phone.trim(),
+                meta: `Cita Video Funnel: ${slotText}`,
+                tipo: `Cita Video Funnel (${videoFunnel.selectedSlotOption})`,
+                asesora: config.advisor.name,
+                telefonoAsesora: config.advisor.whatsappNumber,
+                fecha: new Date().toISOString()
+              })
+            }).catch(e => console.warn("Sheets sync:", e));
+          } catch (e) {}
+        }
+
+        videoFunnel.bookingSubmitted = true;
+
+        try {
+          window.open(calUrl, "_blank");
+        } catch (e) {}
+      };
+
+      // Inicializacion automÃ¡tica al cargar
+      onMounted(() => {
+        setTimeout(() => {
+          openVideoFunnelModal(1);
+        }, 300);
+      });
 
       return {
         config,
@@ -273,7 +666,27 @@
         submitSuccess,
         submitForm,
         submitApplication,
-        contactAdvisorWhatsApp
+        contactAdvisorWhatsApp,
+        // Funciones y datos del Video Funnel Interactivo
+        funnelSteps,
+        videoFunnel,
+        currentFunnelStepData,
+        canCloseFunnelModal,
+        openVideoFunnelModal,
+        closeVideoFunnelModal,
+        playFunnelStep,
+        unmuteVideo,
+        handleVideoClick,
+        answerFunnelQuestion,
+        restartFunnel,
+        replayCurrentFunnelVideo,
+        onFunnelVideoEnded,
+        onFunnelVideoPlay,
+        onFunnelVideoPause,
+        selectOptionA_ProximaHora,
+        selectOptionB_HoyDia,
+        selectOptionC_ElegirFecha,
+        submitBookingFunnel
       };
     }
   });
