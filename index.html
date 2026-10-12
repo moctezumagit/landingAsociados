@@ -85,11 +85,11 @@
     <!-- Se reproduce de forma automatica y califica al prospecto paso a paso -->
     <!-- ======================================================== -->
     <div v-if="videoFunnel.isOpen" 
-         class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/90 backdrop-blur-md overflow-y-auto animate-fade-in"
+         class="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-5 bg-slate-950 min-h-screen overflow-y-auto animate-fade-in"
          @click.self="canCloseFunnelModal ? closeVideoFunnelModal() : null">
       
       <!-- Contenedor del Modal -->
-      <div class="relative w-full max-w-2xl bg-black rounded-3xl overflow-hidden shadow-2xl border border-slate-700/80 my-auto flex flex-col text-white">
+      <div class="relative w-full max-w-3xl bg-black rounded-3xl overflow-hidden shadow-2xl border border-slate-700/80 my-auto flex flex-col text-white">
         
         <!-- Boton para Cerrar Ventana Emergente (Visible cuando se permite cerrar el flujo) -->
         <button v-if="canCloseFunnelModal"
@@ -380,7 +380,9 @@
       </div>
     </div>
 
-    <!-- ======================================================== -->
+    <!-- CONTENIDO DE LA LANDING PAGE: SE OCULTA MIENTRAS EL EMBUDO DE VIDEO ESTA ACTIVO -->
+    <div v-show="!videoFunnel.isOpen" class="w-full flex-1 flex flex-col">
+      <!-- ======================================================== -->
     <!-- BARRA DE ANUNCIOS SUPERIOR: COBERTURA INTERNACIONAL -->
     <!-- ======================================================== -->
     <div class="bg-gradient-to-r from-brand-navy via-brand-blue to-brand-deep text-white text-xs sm:text-sm py-2 px-4 text-center font-semibold tracking-wide flex items-center justify-center gap-2 shadow-inner">
@@ -410,7 +412,7 @@
         </a>
 
         <!-- NAVEGACION DESKTOP -->
-        <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600">
+        <nav class="hidden items-center gap-6 text-sm font-semibold text-slate-600">
           <a href="#para-quien" class="hover:text-brand-blue transition-colors">Para Qui&eacute;n Es</a>
           <a href="#pilares" class="hover:text-brand-blue transition-colors">Los 4 Pilares</a>
           <a href="#testimonios" class="hover:text-brand-blue transition-colors">Prueba Social</a>
@@ -1115,6 +1117,7 @@
         <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-1.144-.069-.643-.21-1.464-.672-2.133-1.341-.669-.669-1.131-1.49-1.341-2.133-.146-.446-.114-.832-.069-1.144.05-.333.419-1.026.824-1.17.135-.048.283-.075.433-.075.105 0 .21.015.309.045.143.045.242.129.288.225.105.21.36 1.005.39 1.095.045.12.045.24 0 .345-.045.12-.105.21-.195.315-.09.09-.165.165-.255.27-.09.09-.12.18-.045.33.15.3.495.825.96 1.29.585.585 1.155.855 1.5.99.15.06.24.045.33-.045.105-.105.42-.495.54-.675.12-.165.255-.15.42-.09.165.06 1.065.51 1.245.6.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
       </button>
     </div>
+    <!-- FIN CONTENIDO LANDING PAGE -->
 
   </div>
 
