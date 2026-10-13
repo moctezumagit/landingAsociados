@@ -370,7 +370,7 @@
 
       const canCloseFunnelModal = computed(() => {
         if (videoFunnel.currentStep === 6) return true; // Descarte amable
-        if (videoFunnel.currentStep === 5 && videoFunnel.bookingSubmitted) return true; // Cita agendada
+        if (videoFunnel.currentStep === 5) return true; // Al llegar/finalizar el video 5, permitir salir a la pagina
         return false;
       });
 
